@@ -28,8 +28,6 @@ public class Game extends JPanel implements ActionListener , MouseListener{
     private ImageIcon soundOn = new ImageIcon("SoundOn.png");
     private ImageIcon soundOff = new ImageIcon("SoundOff.png");
     private JCheckBox Sound = new JCheckBox();
-    JButton okButton = new JButton("OK");
-    JLabel label = new JLabel();
     Game(int HitBalls , double[] arr){
         frame.setSize(800 , 1000);
         frame.setLocationRelativeTo(null);
@@ -77,55 +75,17 @@ public class Game extends JPanel implements ActionListener , MouseListener{
                 at = AffineTransform.getTranslateInstance((frame.getWidth() / 2 ) , trowingY);
                 at.rotate(Math.toRadians(45));
                 g2d.drawImage(arrow, at , null);
-                trowingY -=15;
+                trowingY -= 15;
                 if(trowingY <= (frame.getHeight()/2) +imageY + arrow.getHeight())
                     trowing= false;
                 }
-                if(lost()){
-                    timer.stop();
-                    isLost = true;
-                    isEnd = true;
-                    repaint();
-                    g2d.setPaint(Color.black);
-                    g2d.fillRect(frame.getWidth()/2 - 135,frame.getHeight()/2 - 210, 270, 420);
-                    g2d.setPaint(Color.blue);
-                    g2d.fillRect(frame.getWidth()/2 - 125,frame.getHeight()/2 - 200, 250, 400);
-                    this.add(okButton);
-                    okButton.setBounds(frame.getWidth() / 2 -25 , frame.getHeight()/ 2 +70, 50, 25);
-                    okButton.setBackground(Color.yellow);
-                    okButton.setForeground(Color.blue);
-                    label.setFont(new Font("MV Boli" , Font.PLAIN,75));
-                    label.setForeground(Color.red);
-                    label.setText("Game Over");
-                    this.add(label);
-                    label.setBounds(frame.getWidth() / 2 -100 , frame.getHeight()/ 2 -150, 200, 75);
-
-                }
-                    else if(numberOfNeedle == arr.length ){
-                        isEnd = true;
-                        timer.stop();
-                        endGame(isLost);
-                        repaint();
-                    }
             }
-            else{
-                if(numberOfNeedle != arr.length){
+                if(numberOfNeedle != arr.length ){
                 at = AffineTransform.getTranslateInstance((frame.getWidth() / 2 ) , 500 );
                 at.rotate(Math.toRadians(45));
                 g2d.drawImage(arrow, at , null);
-                }
             }
     }
-    // if(isEnd){
-    //     g2d.setFont(new Font("MV Boli" , Font.PLAIN,75));
-    //     g2d.setPaint(Color.black);
-    //     if(isLost){
-    //         g2d.drawString("Game Over", (frame.getWidth()/ 2) - 200, (frame.getHeight() / 2)+250);
-    //     }
-    //     else{
-    //         g2d.drawString("Victory", (frame.getWidth() / 2) - 130, (frame.getHeight() / 2) +250);
-    //     }
-    // }
     }
     BufferedImage loadImage(String Filename){
         BufferedImage img = null;
@@ -158,14 +118,25 @@ public class Game extends JPanel implements ActionListener , MouseListener{
     @Override
     public void mouseClicked(MouseEvent e){
         //invoked when a mouse button has been clicked (pressed and released) on a component
-        try{
+        if(!isEnd){
             arr[numberOfNeedle] =45;
             numberOfNeedle += 1;
             trowing = true;
-            }catch(Exception o){
-
+            
+            if(lost()){
+                timer.stop();
+                isLost = true;
+                isEnd = true;
+                repaint();
+                endGame(isLost);
             }
-
+            else if(numberOfNeedle == arr.length ){
+                isEnd = true;
+                timer.stop();
+                repaint();
+                endGame(isLost);
+            }
+        }
     }
     @Override
     public void mousePressed(MouseEvent e){
@@ -211,25 +182,30 @@ public class Game extends JPanel implements ActionListener , MouseListener{
         imageY = y;
     }
     public void endGame(boolean isLost){
-        Graphics2D g = (Graphics2D) this.getGraphics();
-        g.setPaint(Color.black);
-        g.fillRect(frame.getWidth()/2 - 135,frame.getHeight()/2 - 210, 270, 420);
-        g.setPaint(Color.blue);
-        g.fillRect(frame.getWidth()/2 - 125,frame.getHeight()/2 - 200, 250, 400);
-        this.add(okButton);
-        okButton.setBackground(Color.yellow);
-        okButton.setForeground(Color.blue);
-        if(isLost){
-            label.setForeground(Color.red);
-            label.setText("Game Over");
-        }
-        else{
-            label.setForeground(Color.green);
-            label.setText("Victory");
-        }
-        okButton.setBounds((2*frame.getWidth() )/ 3 , (2 * frame.getHeight())/ 3 , 100,100);
-        this.add(label);
-        label.setBounds(frame.getWidth() / 2  -125, frame.getHeight()/2 - 40 , 250 , 75);
+        // try {
+        //     Thread.sleep(50);
+        // } catch (InterruptedException e) {
+        //     System.out.println("INNNNN");
+        // }
+        // JFrame frame1 = new JFrame();
+        // frame1.setSize(800 , 1000);
+        // frame1.setLocationRelativeTo(null);
+        // frame1.setBackground(Color.WHITE);
+        // frame1.setLayout(null);
+        // JLabel label = new JLabel();
+        // label.setFont(new Font("MV Boli" , Font.BOLD , 75));
+        // if(isLost){
+        //     label.setText("Game Over");
+        //     label.setForeground(Color.RED);
+        // }
+        // else {
+        //     label.setText("Sucsses");
+        //     label.setForeground(Color.GREEN); 
+        // }
+        // label.setPreferredSize();
+        // frame1.setVisible(true);
+        // frame.setVisible(false);
+
     }
 
 }
