@@ -28,21 +28,8 @@ public class Game extends JPanel implements ActionListener , MouseListener{
     private ImageIcon soundOn = new ImageIcon("SoundOn.png");
     private ImageIcon soundOff = new ImageIcon("SoundOff.png");
     private JCheckBox Sound = new JCheckBox();
-    Game(int n){
-        frame.setSize(800 , 1000);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(this);
-        this.addMouseListener(this);
-        arr = new double[n];
-        arr[0] = 2;
-        arrow = loadImage(imagePathName);
-        this.setLayout(null);
-        Sound.setSelectedIcon(soundOff);
-        Sound.setIcon(soundOn);
-        timer.start();
-        frame.setVisible(true);
-    }
+    JButton okButton = new JButton("OK");
+    JLabel label = new JLabel();
     Game(int HitBalls , double[] arr){
         frame.setSize(800 , 1000);
         frame.setLocationRelativeTo(null);
@@ -71,7 +58,7 @@ public class Game extends JPanel implements ActionListener , MouseListener{
             }
             else{
                 g2d.setPaint(Color.GREEN);
-                Sound.setBackground(Color.red);
+                Sound.setBackground(Color.green);
             }
             g2d.fillRect(0, 0, frame.getWidth() , frame.getHeight());
         }
@@ -99,10 +86,25 @@ public class Game extends JPanel implements ActionListener , MouseListener{
                     isLost = true;
                     isEnd = true;
                     repaint();
+                    g2d.setPaint(Color.black);
+                    g2d.fillRect(frame.getWidth()/2 - 135,frame.getHeight()/2 - 210, 270, 420);
+                    g2d.setPaint(Color.blue);
+                    g2d.fillRect(frame.getWidth()/2 - 125,frame.getHeight()/2 - 200, 250, 400);
+                    this.add(okButton);
+                    okButton.setBounds(frame.getWidth() / 2 -25 , frame.getHeight()/ 2 +70, 50, 25);
+                    okButton.setBackground(Color.yellow);
+                    okButton.setForeground(Color.blue);
+                    label.setFont(new Font("MV Boli" , Font.PLAIN,75));
+                    label.setForeground(Color.red);
+                    label.setText("Game Over");
+                    this.add(label);
+                    label.setBounds(frame.getWidth() / 2 -100 , frame.getHeight()/ 2 -150, 200, 75);
+
                 }
                     else if(numberOfNeedle == arr.length ){
                         isEnd = true;
                         timer.stop();
+                        endGame(isLost);
                         repaint();
                     }
             }
@@ -208,10 +210,26 @@ public class Game extends JPanel implements ActionListener , MouseListener{
         imageX = x;
         imageY = y;
     }
-    JPanel panel;
-    JButton button;
     public void endGame(boolean isLost){
-
+        Graphics2D g = (Graphics2D) this.getGraphics();
+        g.setPaint(Color.black);
+        g.fillRect(frame.getWidth()/2 - 135,frame.getHeight()/2 - 210, 270, 420);
+        g.setPaint(Color.blue);
+        g.fillRect(frame.getWidth()/2 - 125,frame.getHeight()/2 - 200, 250, 400);
+        this.add(okButton);
+        okButton.setBackground(Color.yellow);
+        okButton.setForeground(Color.blue);
+        if(isLost){
+            label.setForeground(Color.red);
+            label.setText("Game Over");
+        }
+        else{
+            label.setForeground(Color.green);
+            label.setText("Victory");
+        }
+        okButton.setBounds((2*frame.getWidth() )/ 3 , (2 * frame.getHeight())/ 3 , 100,100);
+        this.add(label);
+        label.setBounds(frame.getWidth() / 2  -125, frame.getHeight()/2 - 40 , 250 , 75);
     }
 
 }
