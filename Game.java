@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -23,9 +24,9 @@ public class Game extends JPanel implements ActionListener , MouseListener{
     private int imageRadian = -3;
     private AffineTransform at;
     private BufferedImage arrow;
-    private String imagePathName = "DefaultArrow.png";
-    private ImageIcon soundOn = new ImageIcon("SoundOn.png");
-    private ImageIcon soundOff = new ImageIcon("SoundOff.png");
+    private String imagePathName = "C:\\Users\\asus\\OneDrive\\Desktop\\AA_FinalProject-main\\AA_FinalProject-main\\DefaultArrow.png";
+    private ImageIcon soundOn = new ImageIcon("C:\\Users\\asus\\OneDrive\\Desktop\\AA_FinalProject-main\\AA_FinalProject-main\\SoundOn.png");
+    private ImageIcon soundOff = new ImageIcon("C:\\Users\\asus\\OneDrive\\Desktop\\AA_FinalProject-main\\AA_FinalProject-main\\SoundOff.png");
     private JCheckBox Sound = new JCheckBox();
     private int n = 0;
     private double startTime;
@@ -131,6 +132,18 @@ public class Game extends JPanel implements ActionListener , MouseListener{
     @Override
     public void mouseClicked(MouseEvent e){
         //invoked when a mouse button has been clicked (pressed and released) on a component
+        try
+        {
+        SimpleAudioPlayer audioPlayer =
+                    new SimpleAudioPlayer();
+        audioPlayer.clip.start();
+        }
+        catch (Exception ex)
+        {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+        
         if(!isEnd){
             arr[numberOfNeedle] =45;
             numberOfNeedle += 1;
