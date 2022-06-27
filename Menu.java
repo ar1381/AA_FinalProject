@@ -1,7 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Menu extends JFrame {
+public class Menu extends JFrame implements ActionListener, MouseListener {
         private ButtonGroup buttonGroup1;
         private JButton jButton1;
         private JButton jButton2;
@@ -21,7 +22,6 @@ public class Menu extends JFrame {
 
                 buttonGroup1 = new ButtonGroup();
                 jPanel1 = new JPanel();
-
                 jLabel1 = new JLabel();
                 jButton1 = new JButton();
                 jButton2 = new JButton();
@@ -31,7 +31,6 @@ public class Menu extends JFrame {
                 jLabel2 = new JLabel(new ImageIcon("AA_FinalProject/bg.jpg"));
                 add(jLabel2);
 
-                jPanel1.setBackground(new Color(0, 0, 0, 85));
                 jLabel1.setFont(new Font("SansSerif", 1, 60));
                 jLabel1.setForeground(new Color(204, 255, 255));
                 jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -42,24 +41,28 @@ public class Menu extends JFrame {
                 jButton1.setForeground(new Color(255, 255, 255));
                 jButton1.setText("Start");
                 jButton1.setFocusable(false);
+                jButton1.addMouseListener(this);
 
                 jButton2.setBackground(new Color(5, 61, 109));
                 jButton2.setFont(new Font("Ink Free", 1, 24));
                 jButton2.setForeground(new Color(255, 255, 255));
                 jButton2.setText("Settings");
                 jButton2.setFocusable(false);
+                jButton2.addMouseListener(this);
 
                 jButton3.setBackground(new Color(5, 61, 109));
                 jButton3.setFont(new Font("Ink Free", 1, 24));
                 jButton3.setForeground(new Color(255, 255, 255));
                 jButton3.setText("About");
                 jButton3.setFocusable(false);
+                jButton3.addMouseListener(this);
 
                 jButton4.setBackground(new Color(5, 61, 109));
                 jButton4.setFont(new Font("Ink Free", 1, 24));
                 jButton4.setForeground(new Color(255, 255, 255));
                 jButton4.setText("Exit");
                 jButton4.setFocusable(false);
+                jButton4.addMouseListener(this);
 
                 GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
@@ -121,12 +124,59 @@ public class Menu extends JFrame {
                                                                                 GroupLayout.PREFERRED_SIZE)
                                                                 .addContainerGap(61, Short.MAX_VALUE)));
 
+                jPanel1.setBackground(new Color(0, 0, 0, 80));
                 jLabel2.setLayout(new FlowLayout());
                 jLabel2.add(jPanel1);
 
                 pack();
                 setLocationRelativeTo(null);
                 setVisible(true);
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+                if (e.getSource() == jButton1)
+                        jButton1.setBackground(new Color(255, 51, 0));
+                if (e.getSource() == jButton2)
+                        jButton2.setBackground(new Color(255, 51, 0));
+                if (e.getSource() == jButton3)
+                        jButton3.setBackground(new Color(255, 51, 0));
+                if (e.getSource() == jButton4)
+                        jButton4.setBackground(new Color(255, 51, 0));
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+                jButton1.setBackground(new Color(5, 61, 109));
+                jButton2.setBackground(new Color(5, 61, 109));
+                jButton3.setBackground(new Color(5, 61, 109));
+                jButton4.setBackground(new Color(5, 61, 109));
+
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+
         }
 
 }
