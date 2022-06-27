@@ -5,7 +5,6 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 import java.awt.geom.AffineTransform;
 import javax.swing.Timer;
 public class Game extends JPanel implements ActionListener , MouseListener{
@@ -28,6 +27,9 @@ public class Game extends JPanel implements ActionListener , MouseListener{
     private ImageIcon soundOn = new ImageIcon("SoundOn.png");
     private ImageIcon soundOff = new ImageIcon("SoundOff.png");
     private JCheckBox Sound = new JCheckBox();
+    private int n = 0;
+    private double startTime;
+    private double endTime;
     Game(int HitBalls , double[] arr){
         frame.setSize(800 , 1000);
         frame.setLocationRelativeTo(null);
@@ -41,6 +43,7 @@ public class Game extends JPanel implements ActionListener , MouseListener{
         Sound.setSelectedIcon(soundOff);
         Sound.setIcon(soundOn);
         timer.start();
+        startTime = System.nanoTime()/ Math.pow(10, 9);
         frame.setVisible(true);
 
     }
@@ -53,12 +56,22 @@ public class Game extends JPanel implements ActionListener , MouseListener{
             if(isLost){
             g2d.setPaint(Color.red);
             Sound.setBackground(Color.red);
+            g2d.fillRect(0, 0, frame.getWidth() , frame.getHeight());   
+            g2d.setFont(new Font("MV Boli" , Font.BOLD,30));
+            g2d.setPaint(Color.BLACK);   
+            g2d.drawString("You Lost!",frame.getWidth() / 2 - 80, (3 * frame.getHeight()) / 5);
             }
             else{
                 g2d.setPaint(Color.GREEN);
                 Sound.setBackground(Color.green);
-            }
-            g2d.fillRect(0, 0, frame.getWidth() , frame.getHeight());
+                g2d.fillRect(0, 0, frame.getWidth() , frame.getHeight());   
+                g2d.setFont(new Font("MV Boli" , Font.BOLD,30));
+                g2d.setPaint(Color.BLACK);   
+                g2d.drawString("You Win!",frame.getWidth() / 2 - 80, (3 * frame.getHeight()) / 5);
+            }   
+            g2d.setFont(new Font("MV Boli" , Font.PLAIN,20));
+            g2d.drawString("when you are ready click on screen!", frame.getWidth()/2 - 170, (3*frame.getHeight())/5 + 50);
+
         }
         for(int i = 0 ; i < numberOfNeedle; i++){
             at = AffineTransform.getTranslateInstance((frame.getWidth() / 2 )  + imageX, (frame.getHeight() / 2) +imageY );
@@ -128,13 +141,20 @@ public class Game extends JPanel implements ActionListener , MouseListener{
                 isLost = true;
                 isEnd = true;
                 repaint();
-                endGame(isLost);
+                endTime = System.nanoTime()/  Math.pow(10, 9);
             }
             else if(numberOfNeedle == arr.length ){
                 isEnd = true;
                 timer.stop();
                 repaint();
-                endGame(isLost);
+                endTime = System.nanoTime()/  Math.pow(10, 9);
+
+            }
+        }
+        else {
+            if(n == 0){
+            gameEnd();
+            n++;
             }
         }
     }
@@ -181,31 +201,8 @@ public class Game extends JPanel implements ActionListener , MouseListener{
         imageX = x;
         imageY = y;
     }
-    public void endGame(boolean isLost){
-        // try {
-        //     Thread.sleep(50);
-        // } catch (InterruptedException e) {
-        //     System.out.println("INNNNN");
-        // }
-        // JFrame frame1 = new JFrame();
-        // frame1.setSize(800 , 1000);
-        // frame1.setLocationRelativeTo(null);
-        // frame1.setBackground(Color.WHITE);
-        // frame1.setLayout(null);
-        // JLabel label = new JLabel();
-        // label.setFont(new Font("MV Boli" , Font.BOLD , 75));
-        // if(isLost){
-        //     label.setText("Game Over");
-        //     label.setForeground(Color.RED);
-        // }
-        // else {
-        //     label.setText("Sucsses");
-        //     label.setForeground(Color.GREEN); 
-        // }
-        // label.setPreferredSize();
-        // frame1.setVisible(true);
-        // frame.setVisible(false);
-
+    public void gameEnd(){
+        endGame g = new endGame(isLost, 10 ,  (int)endTime - startTime);// example
     }
 
 }

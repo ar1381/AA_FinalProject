@@ -71,7 +71,6 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
         panelRight.setBackground(Color.WHITE);
         panelLeft.setBackground(Color.WHITE);
         panelCenter.setBackground(Color.WHITE);
-        mission[15].setEnabled(false);
         this.add(panelLeft, BorderLayout.WEST);
         this.add(panelRight , BorderLayout.EAST);
         this.pack();
