@@ -36,32 +36,36 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
                 jLabel1.setText("AA Game");
 
-                jButton1.setBackground(new Color(5, 61, 109));
+                jButton1.setBackground(new Color(11, 168, 156));
                 jButton1.setFont(new Font("Ink Free", 1, 36));
                 jButton1.setForeground(new Color(255, 255, 255));
                 jButton1.setText("Start");
                 jButton1.setFocusable(false);
+                jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 jButton1.addMouseListener(this);
 
-                jButton2.setBackground(new Color(5, 61, 109));
+                jButton2.setBackground(new Color(11, 168, 156));
                 jButton2.setFont(new Font("Ink Free", 1, 24));
                 jButton2.setForeground(new Color(255, 255, 255));
                 jButton2.setText("Settings");
                 jButton2.setFocusable(false);
+                jButton2.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 jButton2.addMouseListener(this);
 
-                jButton3.setBackground(new Color(5, 61, 109));
+                jButton3.setBackground(new Color(11, 168, 156));
                 jButton3.setFont(new Font("Ink Free", 1, 24));
                 jButton3.setForeground(new Color(255, 255, 255));
                 jButton3.setText("About");
                 jButton3.setFocusable(false);
+                jButton3.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 jButton3.addMouseListener(this);
 
-                jButton4.setBackground(new Color(5, 61, 109));
+                jButton4.setBackground(new Color(11, 168, 156));
                 jButton4.setFont(new Font("Ink Free", 1, 24));
                 jButton4.setForeground(new Color(255, 255, 255));
                 jButton4.setText("Exit");
                 jButton4.setFocusable(false);
+                jButton4.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 jButton4.addMouseListener(this);
 
                 GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
@@ -166,10 +170,10 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
 
         @Override
         public void mouseExited(MouseEvent e) {
-                jButton1.setBackground(new Color(5, 61, 109));
-                jButton2.setBackground(new Color(5, 61, 109));
-                jButton3.setBackground(new Color(5, 61, 109));
-                jButton4.setBackground(new Color(5, 61, 109));
+                jButton1.setBackground(new Color(11, 168, 156));
+                jButton2.setBackground(new Color(11, 168, 156));
+                jButton3.setBackground(new Color(11, 168, 156));
+                jButton4.setBackground(new Color(11, 168, 156));
 
         }
 
