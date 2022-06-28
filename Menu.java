@@ -143,6 +143,11 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
+                if (e.getSource() == jButton1){
+                        this.setVisible(false);
+                        GameMissions a = new GameMissions();
+                        dispose();
+                }
 
         }
 
