@@ -132,18 +132,22 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
         switch(e.getActionCommand()){
             case "1":
                 double[]  arr1 = {1 , 68 , 79 , 180 , 200 , 0,0,0};
+                this.setVisible(false);
                 Game t1 = new Game(5, arr1);
+                dispose();
                 break;
             case "2":
                 double[]  arr2 = {1 , 68 , 79 , 180  , 0,0,0};
+                this.setVisible(false);
                 Game t2 = new Game(4, arr2);
+                dispose();
                 break;
             case "3":
                 double[]  arr3 = {1 , 68 , 79 , 0,0,0};
+                this.setVisible(false);
                 Game t3 = new Game(3, arr3);
+                dispose();
                 break;
-            
-
         }
         
     }
