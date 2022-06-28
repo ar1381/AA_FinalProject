@@ -165,7 +165,6 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
                 timer.stop();
                 repaint();
                 endTime = System.nanoTime()/  Math.pow(10, 9);
-
             }
         }
         else {
@@ -219,7 +218,9 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
         imageY = y;
     }
     public void gameEnd(){
+        this.setVisible(false);
         endGame g = new endGame(isLost, 10 ,  (int)endTime - startTime);// example
+        frame.dispose();
     }
 
 }
