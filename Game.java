@@ -7,8 +7,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.awt.geom.AffineTransform;
+import java.net.URL;
 import javax.swing.Timer;
-public class Game extends JPanel implements ActionListener , MouseListener{
+public class Game<url> extends JPanel implements ActionListener , MouseListener{
     private double speed = 2;
     private int numberOfNeedle = 1;
     private boolean trowing = false;
@@ -24,9 +25,12 @@ public class Game extends JPanel implements ActionListener , MouseListener{
     private int imageRadian = -3;
     private AffineTransform at;
     private BufferedImage arrow;
-    private String imagePathName = "C:\\Users\\asus\\OneDrive\\Desktop\\AA_FinalProject-main\\AA_FinalProject-main\\DefaultArrow.png";
-    private ImageIcon soundOn = new ImageIcon("C:\\Users\\asus\\OneDrive\\Desktop\\AA_FinalProject-main\\AA_FinalProject-main\\SoundOn.png");
-    private ImageIcon soundOff = new ImageIcon("C:\\Users\\asus\\OneDrive\\Desktop\\AA_FinalProject-main\\AA_FinalProject-main\\SoundOff.png");
+    URL url = getClass().getResource("DefaultArrow.png");
+    private String imagePathName = new File(url.getPath()).getAbsolutePath();
+    URL url2 = getClass().getResource("SoundOn.png");
+    private ImageIcon soundOn = new ImageIcon(new File(url2.getPath()).getAbsolutePath());
+    URL url3 = getClass().getResource("SoundOff.png");
+    private ImageIcon soundOff = new ImageIcon(new File(url3.getPath()).getAbsolutePath());
     private JCheckBox Sound = new JCheckBox();
     private int n = 0;
     private double startTime;

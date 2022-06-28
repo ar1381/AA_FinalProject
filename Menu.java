@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.net.URL;
 
 public class Menu extends JFrame implements ActionListener, MouseListener {
         private ButtonGroup buttonGroup1;
@@ -27,8 +29,9 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 jButton2 = new JButton();
                 jButton3 = new JButton();
                 jButton4 = new JButton();
-
-                jLabel2 = new JLabel(new ImageIcon("AA_FinalProject/bg.jpg"));
+        
+                URL url = getClass().getResource("bg.jpg");
+                jLabel2 = new JLabel(new ImageIcon(new File(url.getPath()).getAbsolutePath()));
                 add(jLabel2);
 
                 jLabel1.setFont(new Font("SansSerif", 1, 60));
