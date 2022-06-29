@@ -10,6 +10,7 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
         private JButton jButton2;
         private JButton jButton3;
         private JButton jButton4;
+        private JButton jButton5;
         private JLabel jLabel1;
         private JLabel jLabel2;
         private JPanel jPanel1;
@@ -30,6 +31,7 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 jButton2 = new JButton();
                 jButton3 = new JButton();
                 jButton4 = new JButton();
+                jButton5 = new JButton();
 
                 URL url = getClass().getResource("menu-bg.jpg");
                 jLabel2 = new JLabel(new ImageIcon(new File(url.getPath()).getAbsolutePath()));
@@ -72,6 +74,14 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 jButton4.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 jButton4.addMouseListener(this);
 
+                jButton5.setBackground(new Color(11, 168, 156));
+                jButton5.setFont(new java.awt.Font("Ink Free", 1, 24));
+                jButton5.setForeground(new java.awt.Color(255, 255, 255));
+                jButton5.setText("Market");
+                jButton5.setFocusable(false);
+                jButton5.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                jButton5.addMouseListener(this);
+
                 GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
                 jPanel1Layout.setHorizontalGroup(
@@ -101,6 +111,10 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                                                                                                                 .addComponent(jButton4,
                                                                                                                                 GroupLayout.DEFAULT_SIZE,
                                                                                                                                 GroupLayout.DEFAULT_SIZE,
+                                                                                                                                Short.MAX_VALUE)
+                                                                                                                .addComponent(jButton5,
+                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                GroupLayout.DEFAULT_SIZE,
                                                                                                                                 Short.MAX_VALUE)))
                                                                                 .addGroup(jPanel1Layout
                                                                                                 .createSequentialGroup()
@@ -114,23 +128,39 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                                 jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addGap(34, 34, 34)
-                                                                .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 83,
+                                                                .addComponent(jLabel1,
+                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                83,
                                                                                 GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(41, 41, 41)
-                                                                .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 56,
+                                                                .addComponent(jButton1,
+                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                56,
                                                                                 GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(
                                                                                 LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 34,
+                                                                .addComponent(jButton2,
+                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                34,
                                                                                 GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(
                                                                                 LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 34,
+                                                                .addComponent(jButton3,
+                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                34,
                                                                                 GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(60, 60, 60)
-                                                                .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 53,
+                                                                .addPreferredGap(
+                                                                                LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(jButton5,
+                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                34,
                                                                                 GroupLayout.PREFERRED_SIZE)
-                                                                .addContainerGap(61, Short.MAX_VALUE)));
+                                                                .addGap(31, 31, 31)
+                                                                .addComponent(jButton4,
+                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                53,
+                                                                                GroupLayout.PREFERRED_SIZE)
+                                                                .addContainerGap(44, Short.MAX_VALUE)));
 
                 jPanel1.setBackground(new Color(0, 0, 0, 80));
                 jLabel2.setLayout(new FlowLayout());
@@ -172,6 +202,8 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                         jButton3.setBackground(new Color(255, 51, 0));
                 if (e.getSource() == jButton4)
                         jButton4.setBackground(new Color(255, 51, 0));
+                if (e.getSource() == jButton5)
+                        jButton5.setBackground(new Color(255, 51, 0));
 
         }
 
@@ -181,6 +213,7 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 jButton2.setBackground(new Color(11, 168, 156));
                 jButton3.setBackground(new Color(11, 168, 156));
                 jButton4.setBackground(new Color(11, 168, 156));
+                jButton5.setBackground(new Color(11, 168, 156));
 
         }
 
