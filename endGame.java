@@ -2,7 +2,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class endGame extends JPanel implements ActionListener , MouseListener  {
+
+
+public class endGame extends JPanel implements ActionListener  {
     private JFrame frame;
     private JButton OKBUtton;
     private JButton RetryButton;
@@ -14,6 +16,7 @@ public class endGame extends JPanel implements ActionListener , MouseListener  {
     private int level;
     private double runTime;
     private double money;
+    private int command = -1;
     
     endGame(boolean isLost , int level , double TimeInSecond){
         frame = new JFrame();
@@ -57,6 +60,7 @@ public class endGame extends JPanel implements ActionListener , MouseListener  {
         this.add(label);
         this.add(moneyLabel);
         this.add(runTimeLabel);
+        OKBUtton.addActionListener(this);
 
         OKBUtton.setFocusable(false);
         RetryButton.setFocusable(false);
@@ -86,40 +90,16 @@ public class endGame extends JPanel implements ActionListener , MouseListener  {
         runTimeLabel.setBounds((4 * frame.getWidth()) / 6 - 100 , frame.getHeight() / 2, 300, 30);
         moneyLabel.setText("Money : " + money);
         moneyLabel.setBounds( (2 * frame.getWidth()) / 6  - 100 , frame.getHeight() / 2, 300, 30);
-    }
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
+     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        repaint();
+        if(e.getSource() == OKBUtton){
+            command = 1;
+        }
+        else{
+            repaint();
+        }
         
     }
     public double amountOfMoney(){
@@ -129,5 +109,36 @@ public class endGame extends JPanel implements ActionListener , MouseListener  {
         money = (Math.round(money));
         money /= 100;
         return money;
+    }
+    public int getCommand(){
+        return command;
+    }
+    // @Override
+    // public void mouseClicked(java.awt.event.MouseEvent e) {
+        
+    // }
+    // @Override
+    // public void mousePressed(java.awt.event.MouseEvent e) {
+    //     // TODO Auto-generated method stub
+        
+    // }
+    // @Override
+    // public void mouseReleased(java.awt.event.MouseEvent e) {
+    //     // TODO Auto-generated method stub
+        
+    // }
+    // @Override
+    // public void mouseEntered(java.awt.event.MouseEvent e) {
+    //     // TODO Auto-generated method stub
+        
+    // }
+    // @Override
+    // public void mouseExited(java.awt.event.MouseEvent e) {
+    //     // TODO Auto-generated method stub
+        
+    //}
+    public void DisposeFrame(){
+        command = -1;
+        frame.dispose();
     }
 }
