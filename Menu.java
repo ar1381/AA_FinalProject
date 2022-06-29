@@ -30,8 +30,8 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 jButton2 = new JButton();
                 jButton3 = new JButton();
                 jButton4 = new JButton();
-        
-                URL url = getClass().getResource("bg.jpg");
+
+                URL url = getClass().getResource("menu-bg.jpg");
                 jLabel2 = new JLabel(new ImageIcon(new File(url.getPath()).getAbsolutePath()));
                 add(jLabel2);
 
@@ -138,12 +138,13 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
 
                 pack();
                 setLocationRelativeTo(null);
+                setVisible(true);
         }
 
         @Override
         public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                if (e.getSource() == jButton1){
+                if (e.getSource() == jButton1) {
                         command = 2;
                 }
 
@@ -188,10 +189,12 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 // TODO Auto-generated method stub
 
         }
-        public int getCommand(){
+
+        public int getCommand() {
                 return command;
         }
-        public void setCommand(int n){
+
+        public void setCommand(int n) {
                 command = n;
         }
 
