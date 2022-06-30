@@ -11,11 +11,13 @@ public class Launch implements ActionListener{
     private int command = 1;
     private int NO_COMMAND = -1;
     private int n = 0;
+    private String username;
     Menu menu = new Menu();
     GameMissions gameMissions = new GameMissions();
-    Launch(){
+    Launch(String username){
         timer = new Timer(100, this);
         timer.start();
+        this.username = username;
     }
 
     @Override
@@ -38,12 +40,12 @@ public class Launch implements ActionListener{
                 gameMissions.setVisible(true);
                 n++;
             }
-        if(gameMissions.getCommand() != NO_COMMAND){
-            command = gameMissions.getCommand();
-            n = 0;
-            gameMissions.setVisible(false);
-            gameMissions.DisposeGame();
-        }   
+            if(gameMissions.getCommand() != NO_COMMAND){
+                command = gameMissions.getCommand();
+                n = 0;
+                gameMissions.setVisible(false);
+                gameMissions.DisposeGame();
+            }
         }
 
     }

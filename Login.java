@@ -11,8 +11,8 @@ public class LogIn extends javax.swing.JFrame {
         initComponents();
         this.getContentPane().setBackground(new Color(51,51,51));
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
-
 
     private void initComponents() {
 
@@ -97,9 +97,6 @@ public class LogIn extends javax.swing.JFrame {
         if(evt.getSource()==buttonSignUp){
             SignUp signUp1=new SignUp();
             signUp1.setVisible(true);
-            
-           
-            
         }
            
     }
@@ -121,6 +118,7 @@ public class LogIn extends javax.swing.JFrame {
                         if (data.substring(data.indexOf(':')+1,data.length()).equals(pass22)){
                             checkPass=true;
                             JOptionPane.showMessageDialog(rootPane,"You are in");
+                            new Launch(user22);
                             this.dispose();
                             //کد ها رو اینجا بزنید
                         }
@@ -141,14 +139,13 @@ public class LogIn extends javax.swing.JFrame {
         }
     }
 
-    public static void main(String args[]) {
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LogIn().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new LogIn().setVisible(true);
+//            }
+//        });
+//    }
 
 
     private javax.swing.JButton buttonLogin;

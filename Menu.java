@@ -177,6 +177,10 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 if (e.getSource() == startbtn) {
                         command = 2;
                 }
+                else if(e.getSource() == exitbtn){
+                        new LogIn();
+                        this.dispose();
+                }
 
         }
 
