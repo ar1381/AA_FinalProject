@@ -135,18 +135,112 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
                 double[]  arr1 = {1 , 68 , 79 , 180 , 200 , 0,0,0 ,0,0,0,0,0,0,0,0,0};
                 this.setVisible(false);
                 t1 = new Game(5, arr1);
+                t1.setSpeed(2);
                 money =t1.getMoney();
                 break;
             case "2":
                 double[]  arr2 = {1 , 68 , 79 , 180  , 0,0,0};
                 this.setVisible(false);
                 t1 = new Game(4, arr2);
+                t1.setSpeed(-2);
                 dispose();
                 break;
             case "3":
                 double[]  arr3 = {1 , 68 , 79 , 0,0,0};
                 this.setVisible(false);
                 t1 = new Game(3, arr3);
+                t1.setSpeed(2);
+                dispose();
+                break;
+            case "4":
+                double[]  arr4 = {1 , 61 , 122, 182,242, 302 , 0, 0, 0, 0, 0, 0, 0, 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(6, arr4);
+                t1.setSpeed(-2);
+                dispose();
+                break;
+            case "5":
+                double[]  arr5 = {1 , 45 , 90, 135, 180, 225, 270, 315 , 0,0,0,0,0,0,0,0,0,0,0,0};
+                this.setVisible(false);
+                t1 = new Game(8, arr5);
+                t1.setSpeed(2);
+                dispose();
+                break;
+            case "6":
+                double[]  arr6 = {1 , 36 , 72,108 ,144, 180, 216,252, 288, 324,0,0,0,0,0 ,0,0,0,0,0,0};
+                this.setVisible(false);
+                t1 = new Game(10, arr6);
+                t1.setSpeed(-2);
+                dispose();
+                break;
+            case "7":
+                double[]  arr7 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0, 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(12, arr7);
+                t1.setSpeed(2);
+                dispose();
+                break;
+            case "8":
+                double[]  arr8 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(12, arr8);
+                t1.setSpeed(-2);
+                dispose();
+                break;
+            case "9":
+                double[]  arr9 = {1 , 68 , 79 , 180 , 200 , 0,0,0 ,0,0,0,0,0,0,0,0,0};
+                this.setVisible(false);
+                t1 = new Game(5, arr9);
+                t1.setSpeed(4);
+                money =t1.getMoney();
+                break;
+            case "10":
+                double[]  arr10 = {1 , 68 , 79 , 180  , 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(4, arr10);
+                t1.setSpeed(-4);
+                dispose();
+                break;
+            case "11":
+                double[]  arr11 = {1 , 68 , 79 , 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(3, arr11);
+                t1.setSpeed(4);
+                dispose();
+                break;
+            case "12":
+                double[]  arr12 = {1 , 61 , 122, 182,242, 302 , 0, 0, 0, 0, 0, 0, 0, 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(6, arr12);
+                t1.setSpeed(-4);
+                dispose();
+                break;
+            case "13":
+                double[]  arr13 = {1 , 45 , 90, 135, 180, 225, 270, 315 , 0,0,0,0,0,0,0,0,0,0,0,0};
+                this.setVisible(false);
+                t1 = new Game(8, arr13);
+                t1.setSpeed(4);
+                dispose();
+                break;
+            case "14":
+                double[]  arr14 = {1 , 36 , 72,108 ,144, 180, 216,252, 288, 324,0,0,0,0,0 ,0,0,0,0,0,0};
+                this.setVisible(false);
+                t1 = new Game(10, arr14);
+                t1.setSpeed(-4);
+                dispose();
+                break;
+            case "15":
+                double[]  arr15 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0, 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(12, arr15);
+                t1.setSpeed(4);
+                dispose();
+                break;
+            case "16":
+                double[]  arr16 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(12, arr16);
+                t1.setSpeed(-4);
                 dispose();
                 break;
         }
