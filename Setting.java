@@ -1,3 +1,5 @@
+import java.io.File;
+import java.net.URL;
 
 public class Setting extends javax.swing.JFrame {
 
@@ -87,7 +89,8 @@ public class Setting extends javax.swing.JFrame {
         jLabel2.setBounds(10, 30, 50, 16);
 
         jButton5.setBackground(new java.awt.Color(102, 102, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mohammad Mahdi Eyni\\Desktop\\icons8-u-turn-to-left-48.png")); // NOI18N
+        URL url = getClass().getResource("icons8-u-turn-to-left-48.png");
+        jButton5.setIcon(new javax.swing.ImageIcon(new File(url.getPath()).getAbsolutePath())); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -129,11 +132,11 @@ public class Setting extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6);
         jButton6.setBounds(120, 360, 150, 40);
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mohammad Mahdi Eyni\\Desktop\\bg.jpg")); // NOI18N
+    
+        URL url2 = getClass().getResource("bg.jpg");
+        jLabel7.setIcon(new javax.swing.ImageIcon(new File(url2.getPath()).getAbsolutePath())); // NOI18N
         getContentPane().add(jLabel7);
         jLabel7.setBounds(0, 0, 400, 520);
-
         pack();
     }
 

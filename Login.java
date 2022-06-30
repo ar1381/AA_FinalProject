@@ -1,153 +1,164 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.URL;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 
-public class Login extends JFrame implements ActionListener, MouseListener {
-        private JLabel jLabel1;
-        private JLabel jLabel2;
-        private JLabel jLabel3;
-        private JPanel jPanel1;
-        private JTextField jTextField1;
-        private JButton jButton1;
+public class LogIn extends javax.swing.JFrame {
+      
+    public LogIn() {
+        initComponents();
+        this.getContentPane().setBackground(new Color(51,51,51));
+        this.setLocationRelativeTo(null);
+    }
 
-        public Login() {
-                setLayout(new BorderLayout());
-                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                setTitle("Login");
-                setBackground(new Color(0, 64, 255));
-                setPreferredSize(new Dimension(800, 600));
-                setResizable(false);
 
-                jPanel1 = new JPanel();
-                jLabel2 = new JLabel();
-                jLabel3 = new JLabel();
-                jTextField1 = new JTextField();
-                jButton1 = new JButton();
+    private void initComponents() {
 
-                jLabel1 = new JLabel(new ImageIcon("AA_FinalProject/Login-bg.jpg"));
-                add(jLabel1);
+        jProgressBar1 = new javax.swing.JProgressBar();
+        loginUserName = new javax.swing.JTextField();
+        labelLoginUserName = new javax.swing.JLabel();
+        labelLoginPassword = new javax.swing.JLabel();
+        buttonLogin = new javax.swing.JButton();
+        buttonSignUp = new javax.swing.JButton();
+        loginPassword = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-                jButton1.setText("Submit");
-                jButton1.setBackground(new Color(11, 187, 172));
-                jButton1.setForeground(new Color(255, 255, 255));
-                jButton1.setFont(new Font("Ink Free", 1, 18));
-                jButton1.setFocusable(false);
-                jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                jButton1.addMouseListener(this);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sign In");
+        setBackground(new java.awt.Color(51, 51, 51));
+        setForeground(new java.awt.Color(51, 255, 255));
+        setMaximumSize(new java.awt.Dimension(750, 468));
+        setMinimumSize(new java.awt.Dimension(750, 468));
+        setName("Login"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(750, 468));
+        setResizable(false);
+        setSize(new java.awt.Dimension(750, 468));
+        getContentPane().setLayout(null);
+        getContentPane().add(loginUserName);
+        loginUserName.setBounds(280, 190, 240, 22);
 
-                jTextField1.setFont(new Font("Yu Gothic UI Semibold", 1, 16));
-                jTextField1.setBackground(new Color(0, 20, 0));
-                jTextField1.setForeground(new Color(255, 255, 255));
+        labelLoginUserName.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        labelLoginUserName.setForeground(new java.awt.Color(255, 255, 255));
+        labelLoginUserName.setText("User Name");
+        getContentPane().add(labelLoginUserName);
+        labelLoginUserName.setBounds(210, 190, 72, 16);
 
-                jLabel2.setBackground(new Color(255, 255, 255));
-                jLabel2.setFont(new Font("Yu Gothic UI", 1, 48));
-                jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-                jLabel2.setForeground(new Color(255, 255, 255));
-                jLabel2.setText("Welcome");
+        labelLoginPassword.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        labelLoginPassword.setForeground(new java.awt.Color(255, 255, 255));
+        labelLoginPassword.setText("Password");
+        getContentPane().add(labelLoginPassword);
+        labelLoginPassword.setBounds(210, 230, 61, 16);
 
-                jLabel3.setFont(new Font("Ink Free", 1, 24));
-                jLabel3.setForeground(new Color(255, 255, 255));
-                jLabel3.setText("Username :");
+        buttonLogin.setBackground(new java.awt.Color(0, 204, 51));
+        buttonLogin.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        buttonLogin.setText("Login");
+        buttonLogin.setFocusable(false);
+        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buttonLogin);
+        buttonLogin.setBounds(290, 280, 78, 33);
 
-                GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-                jPanel1.setLayout(jPanel1Layout);
-                jPanel1Layout.setHorizontalGroup(
-                                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout
-                                                                .createSequentialGroup()
-                                                                .addContainerGap(GroupLayout.DEFAULT_SIZE,
-                                                                                Short.MAX_VALUE)
-                                                                .addComponent(jLabel2)
-                                                                .addGap(86, 86, 86))
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(jPanel1Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(29, 29, 29)
-                                                                                                .addComponent(jLabel3,
-                                                                                                                GroupLayout.PREFERRED_SIZE,
-                                                                                                                128,
-                                                                                                                GroupLayout.PREFERRED_SIZE)
-                                                                                                .addGap(18, 18, 18)
-                                                                                                .addComponent(jTextField1,
-                                                                                                                GroupLayout.PREFERRED_SIZE,
-                                                                                                                183,
-                                                                                                                GroupLayout.PREFERRED_SIZE))
-                                                                                .addGroup(jPanel1Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(124, 124, 124)
-                                                                                                .addComponent(jButton1,
-                                                                                                                GroupLayout.PREFERRED_SIZE,
-                                                                                                                143,
-                                                                                                                GroupLayout.PREFERRED_SIZE)))
-                                                                .addContainerGap(32, Short.MAX_VALUE)));
-                jPanel1Layout.setVerticalGroup(
-                                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addComponent(jLabel2)
-                                                                .addGap(66, 66, 66)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(jLabel3)
-                                                                                .addComponent(jTextField1,
-                                                                                                GroupLayout.PREFERRED_SIZE,
-                                                                                                37,
-                                                                                                GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(33, 33, 33)
-                                                                .addComponent(jButton1,
-                                                                                GroupLayout.PREFERRED_SIZE,
-                                                                                30,
-                                                                                GroupLayout.PREFERRED_SIZE)
-                                                                .addContainerGap(14, Short.MAX_VALUE)));
+        buttonSignUp.setBackground(new java.awt.Color(255, 0, 51));
+        buttonSignUp.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        buttonSignUp.setText("Sign Up");
+        buttonSignUp.setFocusPainted(false);
+        buttonSignUp.setFocusable(false);
+        buttonSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSignUpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buttonSignUp);
+        buttonSignUp.setBounds(390, 280, 81, 33);
+        getContentPane().add(loginPassword);
+        loginPassword.setBounds(280, 230, 240, 22);
 
-                jPanel1.setBackground(new Color(0, 0, 0, 70));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Login");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(300, 30, 320, 70);
+    
+        URL url = getClass().getResource("img.png");
+        jLabel2.setIcon(new javax.swing.ImageIcon(new File(url.getPath()).getAbsolutePath())); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 910, 450);
 
-                jLabel1.setLayout(new FlowLayout());
-                jLabel1.add(jPanel1);
+        pack();
+    }
 
-                pack();
-                setLocationRelativeTo(null);
-                setVisible(true);
-
+    private void buttonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignUpActionPerformed
+        if(evt.getSource()==buttonSignUp){
+            SignUp signUp1=new SignUp();
+            signUp1.setVisible(true);
+            
+           
+            
         }
+           
+    }
 
-        @Override
-        public void mouseClicked(MouseEvent e) {
-                // TODO Auto-generated method stub
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        if(evt.getSource()==buttonLogin){
+            String user22=loginUserName.getText();
+            String pass22=String.copyValueOf(loginPassword.getPassword());
+            boolean checkUser=false;
+            boolean checkPass=false;
+            URL url2 = getClass().getResource("userPass.txt");
+            File userPass1 = new File(new File(url2.getPath()).getAbsolutePath());
+            try {
+                Scanner myReader = new Scanner(userPass1);
+                while (myReader.hasNextLine()){
+                    String data = myReader.nextLine();
+                    if(data.substring(0,data.indexOf(':')).equals(user22)){
+                        checkUser=true;
+                        if (data.substring(data.indexOf(':')+1,data.length()).equals(pass22)){
+                            checkPass=true;
+                            JOptionPane.showMessageDialog(rootPane,"You are in");
+                            this.dispose();
+                            //کد ها رو اینجا بزنید
+                        }
+                    }
 
+                }
+
+            } catch (FileNotFoundException e) {
+                JOptionPane.showMessageDialog(null,"file not exist");
+            }
+
+            if(checkUser==false || checkPass==false){
+                
+                JOptionPane.showMessageDialog(rootPane, "User name or password is wrong","Error",JOptionPane.ERROR_MESSAGE);
+            }
+
+            
         }
+    }
 
-        @Override
-        public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
+    public static void main(String args[]) {
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LogIn().setVisible(true);
+            }
+        });
+    }
 
-        }
 
-        @Override
-        public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-                if (e.getSource() == jButton1)
-                        jButton1.setBackground(new Color(255, 51, 0));
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-                jButton1.setBackground(new Color(11, 187, 172));
-
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-
-        }
+    private javax.swing.JButton buttonLogin;
+    private javax.swing.JButton buttonSignUp;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JLabel labelLoginPassword;
+    private javax.swing.JLabel labelLoginUserName;
+    private javax.swing.JPasswordField loginPassword;
+    private javax.swing.JTextField loginUserName;
 
 }
