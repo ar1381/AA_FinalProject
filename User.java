@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.*;
+import java.net.URL;
 
 public class User {
     private String userName;
@@ -11,10 +12,12 @@ public class User {
         this.password=password;
         score=0;
         try{
-            BufferedWriter passWriter=new BufferedWriter(new FileWriter("userPass.txt",true));
+            URL url = getClass().getResource("userPass.txt");
+            BufferedWriter passWriter=new BufferedWriter(new FileWriter(new File(url.getPath()).getAbsolutePath(),true));
             passWriter.write(this.userName+":"+this.password+"\n");
             passWriter.close();
-            BufferedWriter  scoreWriter=new BufferedWriter(new FileWriter("userScore.txt",true));
+            URL url2 = getClass().getResource("userScore.txt");
+            BufferedWriter  scoreWriter=new BufferedWriter(new FileWriter(new File(url.getPath()).getAbsolutePath(),true));
             scoreWriter.write(this.userName+":"+score+"\n");
             scoreWriter.close();
 

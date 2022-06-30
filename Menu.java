@@ -181,13 +181,15 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                         new LogIn();
                         this.dispose();
                 }
+                else if(e.getSource() == settingsbtn){
+                        command = 3;
+                }
 
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
                 // TODO Auto-generated method stub
-
         }
 
         @Override

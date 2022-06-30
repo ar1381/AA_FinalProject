@@ -8,13 +8,16 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class SignUp extends javax.swing.JFrame {
-    
+
+    private Scanner myReader;
+
     public SignUp() {
         initComponents();
         this.getContentPane().setBackground(new Color(51,51,51));
         this.setLocationRelativeTo(null);
     }
-    
+
+
     @SuppressWarnings("unchecked")
 
     private void initComponents() {
@@ -97,7 +100,7 @@ public class SignUp extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(300, 30, 290, 50);
     
-        URL url = getClass().getResource("img.png");
+        URL url = getClass().getResource("Login-bg.jpg");
         jLabel2.setIcon(new javax.swing.ImageIcon(new File(url.getPath()).getAbsolutePath())); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(-10, 0, 750, 430);
@@ -119,8 +122,8 @@ public class SignUp extends javax.swing.JFrame {
 
                 if(pass.equals(passc)){
     
-                    URL url = getClass().getResource("userPass.txt");
-                    File userPass1 = new File(new File(url.getPath()).getAbsolutePath());
+                    URL url2 = getClass().getResource("userPass.txt");
+                      File userPass1 = new File(new File(url2.getPath()).getAbsolutePath());
                     try {
                         Scanner myReader = new Scanner(userPass1);
                         while (myReader.hasNextLine()){
