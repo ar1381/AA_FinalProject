@@ -24,11 +24,8 @@ public class Market extends javax.swing.JFrame {
         private JLabel redlbl;
         private JLabel whitelbl;
         private JPanel jPanel1;
-
-        public static void main(String[] args) {
-                new Market();
-        }
-
+        private int command = -1;
+        
         public Market() {
                 setLayout(new BorderLayout());
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -361,7 +358,14 @@ public class Market extends javax.swing.JFrame {
 
                 pack();
                 setLocationRelativeTo(null);
-                setVisible(true);
+//                setVisible(true);
+        }
+        public int getCommand() {
+                return command;
+        }
+        
+        public void setCommand(int n) {
+                command = n;
         }
 
 }

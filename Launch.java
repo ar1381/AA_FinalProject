@@ -9,6 +9,7 @@ public class Launch implements ActionListener{
     private int MENU = 1;
     private int GAME_MISSIONS = 2;
     private int SETTINGS = 3;
+    private int MARKET = 4;
     private int command = 1;
     private int NO_COMMAND = -1;
     private int n = 0;
@@ -16,6 +17,7 @@ public class Launch implements ActionListener{
     Menu menu = new Menu();
     GameMissions gameMissions = new GameMissions();
     Settings settings = new Settings();
+    Market market = new Market();
     Launch(String username){
         timer = new Timer(100, this);
         timer.start();
@@ -60,6 +62,16 @@ public class Launch implements ActionListener{
                 settings.setVisible(false);
                 settings.dispose();
             }
+        }
+        else if (command == MARKET){
+            market.setVisible(true);
+            n++;
+        }
+        if (market.getCommand() != NO_COMMAND){
+            command = market.getCommand();
+            n = 0;
+            market.setVisible(false);
+            market.dispose();
         }
 
     }

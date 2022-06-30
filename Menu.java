@@ -184,6 +184,12 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 else if(e.getSource() == settingsbtn){
                         command = 3;
                 }
+                else if(e.getSource() == marketbtn){
+                        command = 4;
+                }
+                else if(e.getSource() == aboutbtn){
+                        JOptionPane.showMessageDialog(new JRootPane(),"we are some newbie java developers from kharazmi University");
+                }
 
         }
 

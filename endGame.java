@@ -54,6 +54,7 @@ public class endGame extends JPanel implements ActionListener  {
         nextButton.setBackground(new Color(0x949EC9));
         nextButton.setForeground(new Color(0x151B54));
 
+        RetryButton.addActionListener(this);
         this.add(OKBUtton);
         this.add(RetryButton);
         this.add(nextButton);
@@ -96,6 +97,9 @@ public class endGame extends JPanel implements ActionListener  {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == OKBUtton){
             command = 1;
+        }
+        else if(e.getSource() == RetryButton){
+            command = 2;
         }
         else{
             repaint();
