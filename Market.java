@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.net.URL;
 
 public class Market extends javax.swing.JFrame {
 
@@ -22,7 +24,10 @@ public class Market extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-
+    
+    public static void main(String[] args) {
+        new Market();
+    }
     public Market() {
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,20 +57,25 @@ public class Market extends javax.swing.JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(800, 600));
-
-        jButton1.setIcon(new ImageIcon("AA_FinalProject/yellow.jpg"));
+    
+        URL url = getClass().getResource("yellow.jpg");
+        jButton1.setIcon(new ImageIcon(new File(url.getPath()).getAbsolutePath()));
         jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        jButton2.setIcon(new ImageIcon("AA_FinalProject/green.jpg"));
+    
+        URL url2 = getClass().getResource("green.jpg");
+        jButton2.setIcon(new ImageIcon(new File(url2.getPath()).getAbsolutePath()));
         jButton2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        jButton3.setIcon(new ImageIcon("AA_FinalProject/white.jpg"));
+    
+        URL url3 = getClass().getResource("white.jpg");
+        jButton3.setIcon(new ImageIcon(new File(url3.getPath()).getAbsolutePath()));
         jButton3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        jButton4.setIcon(new ImageIcon("AA_FinalProject/red.jpg"));
+    
+        URL url4 = getClass().getResource("red.jpg");
+        jButton4.setIcon(new ImageIcon(new File(url4.getPath()).getAbsolutePath()));
         jButton4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        jButton5.setIcon(new ImageIcon("AA_FinalProject/purple.jpg"));
+    
+        URL url5 = getClass().getResource("purple.jpg");
+        jButton5.setIcon(new ImageIcon(new File(url5.getPath()).getAbsolutePath()));
         jButton5.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         jLabel2.setForeground(new Color(255, 255, 255));
@@ -267,8 +277,9 @@ public class Market extends javax.swing.JFrame {
                                         .addComponent(jLabel11)
                                         .addComponent(jLabel12))
                                 .addContainerGap()));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("AA_FinalProject/market-bg.jpg"));
+    
+        URL url6 = getClass().getResource("market-bg.jpg");
+        jLabel1.setIcon(new javax.swing.ImageIcon(new File(url6.getPath()).getAbsolutePath()));
         jPanel1.setBackground(new Color(0, 0, 0, 90));
         jLabel1.setLayout(new FlowLayout());
         jLabel1.add(jPanel1);
