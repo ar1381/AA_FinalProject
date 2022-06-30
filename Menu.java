@@ -176,19 +176,19 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 // TODO Auto-generated method stub
                 if (e.getSource() == startbtn) {
                         command = 2;
-                }
-                else if(e.getSource() == exitbtn){
+                } else if (e.getSource() == exitbtn) {
                         new LogIn();
                         this.dispose();
-                }
-                else if(e.getSource() == settingsbtn){
+                } else if (e.getSource() == settingsbtn) {
                         command = 3;
-                }
-                else if(e.getSource() == marketbtn){
+                } else if (e.getSource() == marketbtn) {
                         command = 4;
-                }
-                else if(e.getSource() == aboutbtn){
-                        JOptionPane.showMessageDialog(new JRootPane(),"we are some newbie java developers from kharazmi University");
+                } else if (e.getSource() == aboutbtn) {
+                        URL url = getClass().getResource("code.png");
+                        ImageIcon icon = new ImageIcon(new File(url.getPath()).getAbsolutePath());
+                        JOptionPane.showMessageDialog(new JRootPane(),
+                                        "Armin Jodat\n\nMohammadHossein Vafaei\n\nMohammad Mohammadi\n\nArastoo Maleki\n\nMohammadMahdi Eyni",
+                                        "Developers", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
         }
