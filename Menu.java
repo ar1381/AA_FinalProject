@@ -6,13 +6,13 @@ import java.net.URL;
 
 public class Menu extends JFrame implements ActionListener, MouseListener {
         private ButtonGroup buttonGroup1;
-        private JButton jButton1;
-        private JButton jButton2;
-        private JButton jButton3;
-        private JButton jButton4;
-        private JButton jButton5;
-        private JLabel jLabel1;
-        private JLabel jLabel2;
+        private JButton startbtn;
+        private JButton settingsbtn;
+        private JButton aboutbtn;
+        private JButton exitbtn;
+        private JButton marketbtn;
+        private JLabel titlelbl;
+        private JLabel bglbl;
         private JPanel jPanel1;
         private int command = -1;
 
@@ -26,61 +26,61 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
 
                 buttonGroup1 = new ButtonGroup();
                 jPanel1 = new JPanel();
-                jLabel1 = new JLabel();
-                jButton1 = new JButton();
-                jButton2 = new JButton();
-                jButton3 = new JButton();
-                jButton4 = new JButton();
-                jButton5 = new JButton();
+                titlelbl = new JLabel();
+                startbtn = new JButton();
+                settingsbtn = new JButton();
+                aboutbtn = new JButton();
+                exitbtn = new JButton();
+                marketbtn = new JButton();
 
                 URL url = getClass().getResource("menu-bg.jpg");
-                jLabel2 = new JLabel(new ImageIcon(new File(url.getPath()).getAbsolutePath()));
-                add(jLabel2);
+                bglbl = new JLabel(new ImageIcon(new File(url.getPath()).getAbsolutePath()));
+                add(bglbl);
 
-                jLabel1.setFont(new Font("SansSerif", 1, 60));
-                jLabel1.setForeground(new Color(204, 255, 255));
-                jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-                jLabel1.setText("AA Game");
+                titlelbl.setFont(new Font("SansSerif", 1, 60));
+                titlelbl.setForeground(new Color(204, 255, 255));
+                titlelbl.setHorizontalAlignment(SwingConstants.CENTER);
+                titlelbl.setText("AA Game");
 
-                jButton1.setBackground(new Color(11, 168, 156));
-                jButton1.setFont(new Font("Ink Free", 1, 36));
-                jButton1.setForeground(new Color(255, 255, 255));
-                jButton1.setText("Start");
-                jButton1.setFocusable(false);
-                jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                jButton1.addMouseListener(this);
+                startbtn.setBackground(new Color(11, 168, 156));
+                startbtn.setFont(new Font("Ink Free", 1, 36));
+                startbtn.setForeground(new Color(255, 255, 255));
+                startbtn.setText("Start");
+                startbtn.setFocusable(false);
+                startbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                startbtn.addMouseListener(this);
 
-                jButton2.setBackground(new Color(11, 168, 156));
-                jButton2.setFont(new Font("Ink Free", 1, 24));
-                jButton2.setForeground(new Color(255, 255, 255));
-                jButton2.setText("Settings");
-                jButton2.setFocusable(false);
-                jButton2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                jButton2.addMouseListener(this);
+                settingsbtn.setBackground(new Color(11, 168, 156));
+                settingsbtn.setFont(new Font("Ink Free", 1, 24));
+                settingsbtn.setForeground(new Color(255, 255, 255));
+                settingsbtn.setText("Settings");
+                settingsbtn.setFocusable(false);
+                settingsbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                settingsbtn.addMouseListener(this);
 
-                jButton3.setBackground(new Color(11, 168, 156));
-                jButton3.setFont(new Font("Ink Free", 1, 24));
-                jButton3.setForeground(new Color(255, 255, 255));
-                jButton3.setText("About");
-                jButton3.setFocusable(false);
-                jButton3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                jButton3.addMouseListener(this);
+                aboutbtn.setBackground(new Color(11, 168, 156));
+                aboutbtn.setFont(new Font("Ink Free", 1, 24));
+                aboutbtn.setForeground(new Color(255, 255, 255));
+                aboutbtn.setText("About");
+                aboutbtn.setFocusable(false);
+                aboutbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                aboutbtn.addMouseListener(this);
 
-                jButton4.setBackground(new Color(11, 168, 156));
-                jButton4.setFont(new Font("Ink Free", 1, 24));
-                jButton4.setForeground(new Color(255, 255, 255));
-                jButton4.setText("Exit");
-                jButton4.setFocusable(false);
-                jButton4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                jButton4.addMouseListener(this);
+                exitbtn.setBackground(new Color(11, 168, 156));
+                exitbtn.setFont(new Font("Ink Free", 1, 24));
+                exitbtn.setForeground(new Color(255, 255, 255));
+                exitbtn.setText("Exit");
+                exitbtn.setFocusable(false);
+                exitbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                exitbtn.addMouseListener(this);
 
-                jButton5.setBackground(new Color(11, 168, 156));
-                jButton5.setFont(new java.awt.Font("Ink Free", 1, 24));
-                jButton5.setForeground(new java.awt.Color(255, 255, 255));
-                jButton5.setText("Market");
-                jButton5.setFocusable(false);
-                jButton5.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                jButton5.addMouseListener(this);
+                marketbtn.setBackground(new Color(11, 168, 156));
+                marketbtn.setFont(new java.awt.Font("Ink Free", 1, 24));
+                marketbtn.setForeground(new java.awt.Color(255, 255, 255));
+                marketbtn.setText("Market");
+                marketbtn.setFocusable(false);
+                marketbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                marketbtn.addMouseListener(this);
 
                 GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
@@ -96,30 +96,30 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                                                                                                                 .createParallelGroup(
                                                                                                                                 GroupLayout.Alignment.LEADING,
                                                                                                                                 false)
-                                                                                                                .addComponent(jButton1,
+                                                                                                                .addComponent(startbtn,
                                                                                                                                 GroupLayout.DEFAULT_SIZE,
                                                                                                                                 145,
                                                                                                                                 Short.MAX_VALUE)
-                                                                                                                .addComponent(jButton2,
+                                                                                                                .addComponent(settingsbtn,
                                                                                                                                 GroupLayout.DEFAULT_SIZE,
                                                                                                                                 GroupLayout.DEFAULT_SIZE,
                                                                                                                                 Short.MAX_VALUE)
-                                                                                                                .addComponent(jButton3,
+                                                                                                                .addComponent(aboutbtn,
                                                                                                                                 GroupLayout.DEFAULT_SIZE,
                                                                                                                                 GroupLayout.DEFAULT_SIZE,
                                                                                                                                 Short.MAX_VALUE)
-                                                                                                                .addComponent(jButton4,
+                                                                                                                .addComponent(exitbtn,
                                                                                                                                 GroupLayout.DEFAULT_SIZE,
                                                                                                                                 GroupLayout.DEFAULT_SIZE,
                                                                                                                                 Short.MAX_VALUE)
-                                                                                                                .addComponent(jButton5,
+                                                                                                                .addComponent(marketbtn,
                                                                                                                                 GroupLayout.DEFAULT_SIZE,
                                                                                                                                 GroupLayout.DEFAULT_SIZE,
                                                                                                                                 Short.MAX_VALUE)))
                                                                                 .addGroup(jPanel1Layout
                                                                                                 .createSequentialGroup()
                                                                                                 .addGap(61, 61, 61)
-                                                                                                .addComponent(jLabel1,
+                                                                                                .addComponent(titlelbl,
                                                                                                                 GroupLayout.PREFERRED_SIZE,
                                                                                                                 273,
                                                                                                                 GroupLayout.PREFERRED_SIZE)))
@@ -128,43 +128,43 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                                 jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addGap(34, 34, 34)
-                                                                .addComponent(jLabel1,
+                                                                .addComponent(titlelbl,
                                                                                 GroupLayout.PREFERRED_SIZE,
                                                                                 83,
                                                                                 GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(41, 41, 41)
-                                                                .addComponent(jButton1,
+                                                                .addComponent(startbtn,
                                                                                 GroupLayout.PREFERRED_SIZE,
                                                                                 56,
                                                                                 GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(
                                                                                 LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jButton2,
+                                                                .addComponent(settingsbtn,
                                                                                 GroupLayout.PREFERRED_SIZE,
                                                                                 34,
                                                                                 GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(
                                                                                 LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jButton3,
+                                                                .addComponent(aboutbtn,
                                                                                 GroupLayout.PREFERRED_SIZE,
                                                                                 34,
                                                                                 GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(
                                                                                 LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jButton5,
+                                                                .addComponent(marketbtn,
                                                                                 GroupLayout.PREFERRED_SIZE,
                                                                                 34,
                                                                                 GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(31, 31, 31)
-                                                                .addComponent(jButton4,
+                                                                .addComponent(exitbtn,
                                                                                 GroupLayout.PREFERRED_SIZE,
                                                                                 53,
                                                                                 GroupLayout.PREFERRED_SIZE)
                                                                 .addContainerGap(44, Short.MAX_VALUE)));
 
                 jPanel1.setBackground(new Color(0, 0, 0, 80));
-                jLabel2.setLayout(new FlowLayout());
-                jLabel2.add(jPanel1);
+                bglbl.setLayout(new FlowLayout());
+                bglbl.add(jPanel1);
 
                 pack();
                 setLocationRelativeTo(null);
@@ -174,7 +174,7 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                if (e.getSource() == jButton1) {
+                if (e.getSource() == startbtn) {
                         command = 2;
                 }
 
@@ -194,26 +194,26 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-                if (e.getSource() == jButton1)
-                        jButton1.setBackground(new Color(255, 51, 0));
-                if (e.getSource() == jButton2)
-                        jButton2.setBackground(new Color(255, 51, 0));
-                if (e.getSource() == jButton3)
-                        jButton3.setBackground(new Color(255, 51, 0));
-                if (e.getSource() == jButton4)
-                        jButton4.setBackground(new Color(255, 51, 0));
-                if (e.getSource() == jButton5)
-                        jButton5.setBackground(new Color(255, 51, 0));
+                if (e.getSource() == startbtn)
+                        startbtn.setBackground(new Color(255, 51, 0));
+                if (e.getSource() == settingsbtn)
+                        settingsbtn.setBackground(new Color(255, 51, 0));
+                if (e.getSource() == aboutbtn)
+                        aboutbtn.setBackground(new Color(255, 51, 0));
+                if (e.getSource() == exitbtn)
+                        exitbtn.setBackground(new Color(255, 51, 0));
+                if (e.getSource() == marketbtn)
+                        marketbtn.setBackground(new Color(255, 51, 0));
 
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
-                jButton1.setBackground(new Color(11, 168, 156));
-                jButton2.setBackground(new Color(11, 168, 156));
-                jButton3.setBackground(new Color(11, 168, 156));
-                jButton4.setBackground(new Color(11, 168, 156));
-                jButton5.setBackground(new Color(11, 168, 156));
+                startbtn.setBackground(new Color(11, 168, 156));
+                settingsbtn.setBackground(new Color(11, 168, 156));
+                aboutbtn.setBackground(new Color(11, 168, 156));
+                exitbtn.setBackground(new Color(11, 168, 156));
+                marketbtn.setBackground(new Color(11, 168, 156));
 
         }
 
