@@ -10,6 +10,8 @@ import java.awt.geom.AffineTransform;
 import java.net.URL;
 import javax.swing.Timer;
 public class Game<url> extends JPanel implements ActionListener , MouseListener{
+    private boolean isPaused = false;
+    private boolean pauseOpened = false;
     private double speed = 2;
     private int numberOfNeedle = 1;
     private boolean trowing = false;
@@ -36,6 +38,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     private ImageIcon pauseON = new ImageIcon(new File(url4.getPath()).getAbsolutePath());
     private JCheckBox Sound = new JCheckBox();
     private JCheckBox pause = new JCheckBox();
+    private pauseMenu pausemenu = new pauseMenu();;
     private int n = 0;
     private double startTime;
     private double endTime;
@@ -97,32 +100,34 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
             g2d.drawString("when you are ready click on screen!", frame.getWidth()/2 - 170, (3*frame.getHeight())/5 + 50);
 
         }
-        for(int i = 0 ; i < numberOfNeedle; i++){
-            at = AffineTransform.getTranslateInstance((frame.getWidth() / 2 )  + imageX, (frame.getHeight() / 2) +imageY );
-            at.rotate(Math.toRadians(arr[i]),imageRadian , imageRadian);
-            g2d.setPaint(Color.black);
-            g2d.fillOval( (frame.getWidth() / 2) -100 , (frame.getHeight() / 2) - 280 , 200, 200);
-            g2d.setPaint(Color.white);            
-            g2d.setFont(new Font("MV Boli" , Font.PLAIN,50));
-            String needleLeft = String.valueOf(arr.length - numberOfNeedle);
-            g2d.drawString(needleLeft, (frame.getWidth() / 2) -20 -((needleLeft.length() - 1)*5), (frame.getHeight() / 2) - 160 );
-            g2d.drawImage(arrow, at , null);
-            if(trowing){
-                if(!isEnd){
-                at = AffineTransform.getTranslateInstance((frame.getWidth() / 2 ) , trowingY);
-                at.rotate(Math.toRadians(45));
-                g2d.drawImage(arrow, at , null);
-                trowingY -= 15;
-                if(trowingY <= (frame.getHeight()/2) +imageY + arrow.getHeight())
-                    trowing= false;
+        if(!isPaused) {
+            for (int i = 0; i < numberOfNeedle; i++) {
+                at = AffineTransform.getTranslateInstance((frame.getWidth() / 2) + imageX, (frame.getHeight() / 2) + imageY);
+                at.rotate(Math.toRadians(arr[i]), imageRadian, imageRadian);
+                g2d.setPaint(Color.black);
+                g2d.fillOval((frame.getWidth() / 2) - 100, (frame.getHeight() / 2) - 280, 200, 200);
+                g2d.setPaint(Color.white);
+                g2d.setFont(new Font("MV Boli", Font.PLAIN, 50));
+                String needleLeft = String.valueOf(arr.length - numberOfNeedle);
+                g2d.drawString(needleLeft, (frame.getWidth() / 2) - 20 - ((needleLeft.length() - 1) * 5), (frame.getHeight() / 2) - 160);
+                g2d.drawImage(arrow, at, null);
+                if (trowing) {
+                    if (!isEnd) {
+                        at = AffineTransform.getTranslateInstance((frame.getWidth() / 2), trowingY);
+                        at.rotate(Math.toRadians(45));
+                        g2d.drawImage(arrow, at, null);
+                        trowingY -= 15;
+                        if (trowingY <= (frame.getHeight() / 2) + imageY + arrow.getHeight())
+                            trowing = false;
+                    }
+                }
+                if (numberOfNeedle != arr.length) {
+                    at = AffineTransform.getTranslateInstance((frame.getWidth() / 2), 500);
+                    at.rotate(Math.toRadians(45));
+                    g2d.drawImage(arrow, at, null);
                 }
             }
-                if(numberOfNeedle != arr.length ){
-                at = AffineTransform.getTranslateInstance((frame.getWidth() / 2 ) , 500 );
-                at.rotate(Math.toRadians(45));
-                g2d.drawImage(arrow, at , null);
-            }
-    }
+        }
     }
     BufferedImage loadImage(String Filename){
         BufferedImage img = null;
@@ -135,7 +140,15 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     }
     public void actionPerformed(ActionEvent e){
         if (e.getSource() == pause){
-        
+            isPaused = true;
+            if (!pauseOpened) {
+                pausemenu.setVisible(true);
+                pauseOpened = true;
+            }
+            if(!pausemenu.isP()){
+                isPaused = pausemenu.isP();
+            }
+            
         }
         if(randomDirction){
             speed *= randomSpin(true);
@@ -242,11 +255,14 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     }
     public void DisposeFrame(){
         frame.dispose();
-        g.DisposeFrame();
+        if(g != null)
+            g.DisposeFrame();
     }
     public int getCommand(){
         if(g != null)
             return g.getCommand();
+        if(isPaused)
+            return pausemenu.getCommand();
         return -1;
     }
     public double getMoney(){

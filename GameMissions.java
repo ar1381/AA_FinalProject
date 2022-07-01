@@ -335,6 +335,13 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
                 t1.setSpeed(-4);
                 dispose();
                 break;
+            case "17":
+                double[]  arr17 = {1 , 68 , 79 , 180 , 200 , 0,0,0 ,0,0,0,0,0,0,0,0,0};
+                this.setVisible(false);
+                t1 = new Game(5, arr17 , Integer.parseInt(mission));
+                t1.setSpeed(6);
+                money =t1.getMoney();
+                break;
             case "48":
                 double[]  arr48 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0};
                 this.setVisible(false);
