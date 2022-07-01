@@ -32,7 +32,10 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     private ImageIcon soundOn = new ImageIcon(new File(url2.getPath()).getAbsolutePath());
     URL url3 = getClass().getResource("SoundOff.png");
     private ImageIcon soundOff = new ImageIcon(new File(url3.getPath()).getAbsolutePath());
+    URL url4 = getClass().getResource("pausep.png");
+    private ImageIcon pauseON = new ImageIcon(new File(url4.getPath()).getAbsolutePath());
     private JCheckBox Sound = new JCheckBox();
+    private JCheckBox pause = new JCheckBox();
     private int n = 0;
     private double startTime;
     private double endTime;
@@ -50,6 +53,8 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
         this.setLayout(null);
         Sound.setSelectedIcon(soundOff);
         Sound.setIcon(soundOn);
+        pause.setSelectedIcon(pauseON);
+        pause.setIcon(pauseON);
         try {
             audioPlayer = new SimpleAudioPlayer();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
@@ -64,6 +69,9 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
+        pause.setBounds((4 *frame.getWidth())/5, 10, 100, 100);
+        pause.addActionListener(this);
+        this.add(pause);
         Sound.setBounds((3 *frame.getWidth())/4   , (3*frame.getHeight()) /4 , 200 , 100);
         this.add(Sound);
         if(isEnd){
@@ -125,6 +133,9 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     }
     public void actionPerformed(ActionEvent e){
         double start = System.nanoTime();
+        if (e.getSource() == pause){
+        
+        }
         if(randomDirction){
             speed *= randomSpin(true);
         }
@@ -156,7 +167,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
-        
+
         if(!isEnd){
             arr[numberOfNeedle] =45;
             numberOfNeedle += 1;
