@@ -229,6 +229,7 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
                 t1 = new Game(5, arr1 , Integer.parseInt(mission));
                 t1.setSpeed(2);
                 money =t1.getMoney();
+                dispose();
                 break;
             case "2":
                 double[]  arr2 = {1 , 68 , 79 , 180  , 0,0,0};
@@ -285,6 +286,7 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
                 t1 = new Game(5, arr9 , Integer.parseInt(mission));
                 t1.setSpeed(4);
                 money =t1.getMoney();
+                dispose();
                 break;
             case "10":
                 double[]  arr10 = {1 , 68 , 79 , 180  , 0,0,0};
@@ -342,6 +344,56 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
                 t1.setSpeed(6);
                 money =t1.getMoney();
                 break;
+            case "18":
+                double[]  arr18 = {1 , 68 , 79 , 180  , 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(4, arr18 , Integer.parseInt(mission));
+                t1.setSpeed(-6);
+                dispose();
+                break;
+            case "19":
+                double[]  arr19 = {1 , 68 , 79 , 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(3, arr19 , Integer.parseInt(mission) );
+                t1.setSpeed(6 );
+                dispose();
+                break;
+            case "20":
+                double[]  arr20 = {1 , 61 , 122, 182,242, 302 , 0, 0, 0, 0, 0, 0, 0, 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(6, arr20 , Integer.parseInt(mission));
+                t1.setSpeed(-6);
+                dispose();
+                break;
+            case "21":
+                double[]  arr21 = {1 , 45 , 90, 135, 180, 225, 270, 315 , 0,0,0,0,0,0,0,0,0,0,0,0};
+                this.setVisible(false);
+                t1 = new Game(8, arr21 , Integer.parseInt(mission));
+                t1.setSpeed(6);
+                dispose();
+                break;
+            case "22":
+                double[]  arr22 = {1 , 36 , 72,108 ,144, 180, 216,252, 288, 324,0,0,0,0,0 ,0,0,0,0,0,0};
+                this.setVisible(false);
+                t1 = new Game(10, arr22 , Integer.parseInt(mission));
+                t1.setSpeed(-6);
+                dispose();
+                break;
+            case "23":
+                double[]  arr23 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0, 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(12, arr23 , Integer.parseInt(mission));
+                t1.setSpeed(6);
+                dispose();
+                break;
+            case "24":
+                double[]  arr24 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0};
+                this.setVisible(false);
+                t1 = new Game(12, arr24 , Integer.parseInt(mission));
+                t1.setSpeed(-6);
+                dispose();
+                break;
+                
             case "48":
                 double[]  arr48 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0};
                 this.setVisible(false);
