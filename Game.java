@@ -39,14 +39,16 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     private int n = 0;
     private double startTime;
     private double endTime;
-    endGame g;
+    private int level;// should add a label
+    private endGame g;
     SimpleAudioPlayer audioPlayer;
-    Game(int HitBalls , double[] arr){
+    Game(int HitBalls , double[] arr , int level){
         frame.setSize(800 , 1000);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(this);
         this.arr = arr;
+        this.level = level;
         this.addMouseListener(this);
         numberOfNeedle = HitBalls;
         arrow = loadImage(imagePathName);
@@ -132,7 +134,6 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
         return img;
     }
     public void actionPerformed(ActionEvent e){
-        double start = System.nanoTime();
         if (e.getSource() == pause){
         
         }
@@ -148,10 +149,6 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
                 arr[i] = 360;
         }
         repaint();
-        if(arr[0] == 0){
-            double end = System.nanoTime();
-            System.out.println((end - start) / Math.pow(10, 9));
-        }
     }
     @Override
     public void mouseClicked(MouseEvent e){
@@ -239,7 +236,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     }
     public void gameEnd(){
         this.setVisible(false);
-        g = new endGame(isLost, 10 ,  (int)endTime - startTime);// example
+        g = new endGame(isLost, level,  (int)endTime - startTime);
         frame.setVisible(false);
         money = g.amountOfMoney();
     }

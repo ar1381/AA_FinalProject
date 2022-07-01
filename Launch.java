@@ -4,20 +4,23 @@ import java.awt.*;
 import java.awt.event.*;
 public class Launch implements ActionListener{
     private Timer timer ;
-    private double money = 0 ;
-    private int missions  = 3;
+    private double money = 0 ;// should get from a txt in login
+    private int level  = 48; // should get from a txt in login
     private int MENU = 1;
     private int GAME_MISSIONS = 2;
     private int SETTINGS = 3;
     private int MARKET = 4;
     private int command = 1;
     private int NO_COMMAND = -1;
+    private int NEXTBUTTON_ENDGAME = 21;
+    private int RETRYBUTTON_ENDGAME = 22;
     private int n = 0;
-    private String username;
-    Menu menu = new Menu();
-    GameMissions gameMissions = new GameMissions();
-    Settings settings = new Settings();
-    Market market = new Market();
+    private int currentLevel;
+    private String username; 
+    private Menu menu = new Menu();
+    private GameMissions gameMissions;
+    private Settings settings;
+    private Market market ;
     Launch(String username){
         timer = new Timer(100, this);
         timer.start();
@@ -41,38 +44,82 @@ public class Launch implements ActionListener{
         }
         else if( command == GAME_MISSIONS){
             if(n == 0){
+                gameMissions = new GameMissions(level);
                 gameMissions.setVisible(true);
                 n++;
             }
             if(gameMissions.getCommand() != NO_COMMAND){
-                command = gameMissions.getCommand();
                 n = 0;
+                command = gameMissions.getCommand();
+                currentLevel= gameMissions.getCurrentLevel();
+                if(currentLevel + 1 > level && command ==11)// 11 means you have won the game
+                    level = currentLevel + 1;
+                gameMissions.setCommand(-1);
                 gameMissions.setVisible(false);
                 gameMissions.DisposeGame();
+                gameMissions.dispose();
+                if(command == 11)
+                    command =1;
             }
         }
         else if(command == SETTINGS){
             if(n == 0){
+                settings = new Settings();
                 settings.setVisible(true);
                 n++;
             }
             if(settings.getCommand() != NO_COMMAND){
                 command = settings.getCommand();
                 n=0;
+                settings.setCommand(-1);
                 settings.setVisible(false);
                 settings.dispose();
             }
         }
         else if (command == MARKET){
+            market = new Market();
             market.setVisible(true);
             n++;
         }
-        if (market.getCommand() != NO_COMMAND){
+        else if (market.getCommand() != NO_COMMAND){
             command = market.getCommand();
             n = 0;
             market.setVisible(false);
             market.dispose();
         }
+        else if (command == NEXTBUTTON_ENDGAME){
+            if(n == 0){
+                gameMissions = new GameMissions(level);
+                gameMissions.Missions( String.valueOf(currentLevel + 1));
+                n++;
+            }
+            if(gameMissions.getCommand() != NO_COMMAND){
+                command = gameMissions.getCommand();
+                if(command == 11)
+                    command =1;
+                n = 0;
+                currentLevel = gameMissions.getCurrentLevel();
+                if(currentLevel + 1 > level)
+                    level = currentLevel + 1;
+                gameMissions.DisposeGame();
+                gameMissions.dispose();
+            }
+        }
+        else if (command == RETRYBUTTON_ENDGAME){
+            if(n == 0){
+                gameMissions = new GameMissions(level);
+                gameMissions.Missions( String.valueOf(currentLevel));
+                n++;
+            }
+            if(gameMissions.getCommand() != NO_COMMAND){
+                command = gameMissions.getCommand();
+                n = 0;
+                currentLevel = gameMissions.getCurrentLevel();
+                gameMissions.DisposeGame();
+                gameMissions.dispose();
+            }
+        }
+
 
     }
 }

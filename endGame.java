@@ -21,7 +21,7 @@ public class endGame extends JPanel implements ActionListener  {
     endGame(boolean isLost , int level , double TimeInSecond){
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600 , 1000);
+        frame.setSize(700 , 1000);
         frame.setLocationRelativeTo(null);
         frame.add(this);
         this.isLost = isLost;
@@ -62,6 +62,7 @@ public class endGame extends JPanel implements ActionListener  {
         this.add(moneyLabel);
         this.add(runTimeLabel);
         OKBUtton.addActionListener(this);
+        nextButton.addActionListener(this);
 
         OKBUtton.setFocusable(false);
         RetryButton.setFocusable(false);
@@ -83,6 +84,9 @@ public class endGame extends JPanel implements ActionListener  {
             OKBUtton.setBounds((1 * frame.getWidth()) / 6 - 50, (2 * frame.getHeight())/3, 100, 40);
             RetryButton.setBounds((1 * frame.getWidth()) /2 - 50 , (2 * frame.getHeight())/3, 100, 40);
             nextButton.setBounds((5 * frame.getWidth()) / 6 - 50 , (2 * frame.getHeight())/3, 100, 40);
+            if(level == 48){
+                nextButton.setEnabled(false);
+            }
             label.setForeground(Color.green);
             label.setText("Success");
             label.setBounds(frame.getWidth() / 2 - 145 , frame.getHeight()/3 , 350 ,75);
@@ -96,10 +100,16 @@ public class endGame extends JPanel implements ActionListener  {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == OKBUtton){
-            command = 1;
+            if(isLost)
+                command = 1;
+            else
+                command = 11;// means you have won
         }
         else if(e.getSource() == RetryButton){
-            command = 2;
+            command = 22;
+        }
+        else if(e.getSource() == nextButton){
+            command = 21;
         }
         else{
             repaint();
