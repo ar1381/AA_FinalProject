@@ -24,6 +24,7 @@ public class Settings extends JFrame implements ActionListener, MouseListener {
         private javax.swing.JTextField newPassField;
         private javax.swing.JTextField activateField;
         private javax.swing.JLabel newUsernamelbl;
+        private int command = -1;
 
         public Settings() {
                 setLayout(new BorderLayout());
@@ -349,6 +350,8 @@ public class Settings extends JFrame implements ActionListener, MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
+                if(e.getSource() == backbtn)
+                        command = 1;
 
         }
 
@@ -387,5 +390,12 @@ public class Settings extends JFrame implements ActionListener, MouseListener {
                 // TODO Auto-generated method stub
 
         }
+        public int getCommand() {
+                return command;
+            }
+            
+         public void setCommand(int n) {
+                command = n;
+            }
 
 }
