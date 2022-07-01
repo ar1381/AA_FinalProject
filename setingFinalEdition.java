@@ -162,7 +162,7 @@ public class setingFinalEdition extends javax.swing.JFrame {
         getContentPane().add(jTextField1_cheatCode);
         jTextField1_cheatCode.setBounds(190, 374, 177, 33);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\MALEKI\\Desktop\\aa project (maleki,eyni)\\gta.jpg")); 
+        jLabel7.setIcon(new javax.swing.ImageIcon("gta.jpg")); 
         getContentPane().add(jLabel7);
         jLabel7.setBounds(-3, -87, 470, 930);
 
@@ -216,12 +216,12 @@ public class setingFinalEdition extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1_changePasswordActionPerformed
 
-    private void jTextField1_cheatCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1_cheatCodeActionPerformed
+    private void jTextField1_cheatCodeActionPerformed(java.awt.event.ActionEvent evt) {
         
         
     }//GEN-LAST:event_jTextField1_cheatCodeActionPerformed
 
-    private void jButton1_chaetBottomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_chaetBottomActionPerformed
+    private void jButton1_chaetBottomActionPerformed(java.awt.event.ActionEvent evt) {
         
         if(evt.getSource()==jButton1_chaetBottom){
             if (jTextField1_cheatCode.getText().equals("hesoyam")||jTextField1_cheatCode.getText().equals("HESOYAM") ){
