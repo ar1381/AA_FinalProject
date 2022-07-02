@@ -34,7 +34,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     private ImageIcon soundOn = new ImageIcon(new File(url2.getPath()).getAbsolutePath());
     URL url3 = getClass().getResource("SoundOff.png");
     private ImageIcon soundOff = new ImageIcon(new File(url3.getPath()).getAbsolutePath());
-    URL url4 = getClass().getResource("pausep.png");
+    URL url4 = getClass().getResource("p2.png");
     private ImageIcon pauseON = new ImageIcon(new File(url4.getPath()).getAbsolutePath());
     private JCheckBox Sound = new JCheckBox();
     private JCheckBox pause = new JCheckBox();
@@ -100,7 +100,6 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
             g2d.drawString("when you are ready click on screen!", frame.getWidth()/2 - 170, (3*frame.getHeight())/5 + 50);
 
         }
-        if(!isPaused) {
             for (int i = 0; i < numberOfNeedle; i++) {
                 at = AffineTransform.getTranslateInstance((frame.getWidth() / 2) + imageX, (frame.getHeight() / 2) + imageY);
                 at.rotate(Math.toRadians(arr[i]), imageRadian, imageRadian);
@@ -127,7 +126,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
                     g2d.drawImage(arrow, at, null);
                 }
             }
-        }
+        
     }
     BufferedImage loadImage(String Filename){
         BufferedImage img = null;
@@ -139,27 +138,22 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
         return img;
     }
     public void actionPerformed(ActionEvent e){
-        if (e.getSource() == pause){
-            isPaused = true;
-            if (!pauseOpened) {
-                pausemenu.setVisible(true);
-                pauseOpened = true;
-            }
-            if(!pausemenu.isP()){
-                isPaused = pausemenu.isP();
-            }
-            
+        if(!pausemenu.isP()){
+            isPaused = false;
+            pauseOpened = false;
+            pausemenu.dispose();
         }
         if(randomDirction){
             speed *= randomSpin(true);
         }
-        for(int i = 0; i < numberOfNeedle ; ++i){
-            arr[i] += speed;
-            if (arr[i] >= 360){
-                arr[i] = 0;
+        if (!isPaused) {
+            for (int i = 0; i < numberOfNeedle; ++i) {
+                arr[i] += speed;
+                if (arr[i] >= 360) {
+                    arr[i] = 0;
+                } else if (arr[i] <= 0)
+                    arr[i] = 360;
             }
-            else if (arr[i] <= 0)
-                arr[i] = 360;
         }
         repaint();
     }
@@ -176,6 +170,18 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
         {
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
+        }
+        if (e.getSource() == pause){
+            isPaused = true;
+            if (!pauseOpened) {
+                pausemenu = new pauseMenu();
+                pausemenu.setVisible(true);
+                pauseOpened = true;
+            }
+            if(!pausemenu.isP()){
+                isPaused = pausemenu.isP();
+            }
+        
         }
 
         if(!isEnd){
