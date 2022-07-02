@@ -77,15 +77,17 @@ public class Launch implements ActionListener{
             }
         }
         else if (command == MARKET){
-            market = new Market();
-            market.setVisible(true);
-            n++;
-        }
-        else if (market.getCommand() != NO_COMMAND){
-            command = market.getCommand();
-            n = 0;
-            market.setVisible(false);
-            market.dispose();
+            if(n == 0){
+                market = new Market();
+                market.setVisible(true);
+                n++;
+            }
+            else if (market.getCommand() != NO_COMMAND){
+                command = market.getCommand();
+                n = 0;
+                market.setVisible(false);
+                market.dispose();
+            }
         }
         else if (command == NEXTBUTTON_ENDGAME){
             if(n == 0){
