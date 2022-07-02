@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.io.File;
 import java.net.URL;
 
-public class Market extends javax.swing.JFrame {
+public class Market extends javax.swing.JFrame implements ActionListener, MouseListener {
 
         private JButton yellowbtn;
         private JButton greenbtn;
@@ -24,8 +24,9 @@ public class Market extends javax.swing.JFrame {
         private JLabel redlbl;
         private JLabel whitelbl;
         private JPanel jPanel1;
+        private javax.swing.JButton jButton6;
         private int command = -1;
-        
+
         public Market() {
                 setLayout(new BorderLayout());
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,6 +53,7 @@ public class Market extends javax.swing.JFrame {
                 moneylbl4 = new JLabel();
                 moneylbl5 = new JLabel();
                 bglbl = new JLabel();
+                jButton6 = new JButton();
 
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 setPreferredSize(new Dimension(800, 600));
@@ -75,6 +77,15 @@ public class Market extends javax.swing.JFrame {
                 URL url5 = getClass().getResource("purple.jpg");
                 purplebtn.setIcon(new ImageIcon(new File(url5.getPath()).getAbsolutePath()));
                 purplebtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+                jButton6.setBackground(new Color(11, 168, 156));
+                jButton6.setFont(new Font("Ink Free", 1, 16));
+                jButton6.setForeground(new Color(255, 255, 255));
+                jButton6.setFocusable(false);
+                jButton6.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                jButton6.setText("Back");
+                jButton6.addMouseListener(this);
+                jButton6.addMouseListener(this);
 
                 titlelabel.setForeground(new Color(255, 255, 255));
                 titlelabel.setFont(new Font("Segoe Script", 1, 60));
@@ -120,7 +131,7 @@ public class Market extends javax.swing.JFrame {
                 moneylbl5.setForeground(new Color(255, 255, 255)); // NOI18N
                 moneylbl5.setText("100$");
 
-                GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
+                javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
                 jPanel1Layout.setHorizontalGroup(
                                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,33 +160,17 @@ public class Market extends javax.swing.JFrame {
                                                                                 .addGroup(jPanel1Layout
                                                                                                 .createSequentialGroup()
                                                                                                 .addGap(78, 78, 78)
-                                                                                                .addComponent(moneylbl2,
+                                                                                                .addComponent(moneylbl4,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                 58,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                                 .addGroup(jPanel1Layout.createParallelGroup(
                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                                                jPanel1Layout
-                                                                                                                .createSequentialGroup()
-                                                                                                                .addPreferredGap(
-                                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                                Short.MAX_VALUE)
-                                                                                                                .addComponent(purplebtn,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                150,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                .addGap(86, 86, 86))
                                                                                 .addGroup(jPanel1Layout
                                                                                                 .createSequentialGroup()
                                                                                                 .addGroup(jPanel1Layout
                                                                                                                 .createParallelGroup(
                                                                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                .createSequentialGroup()
-                                                                                                                                .addGap(43, 43, 43)
-                                                                                                                                .addComponent(titlelabel))
                                                                                                                 .addGroup(jPanel1Layout
                                                                                                                                 .createSequentialGroup()
                                                                                                                                 .addGap(104, 104,
@@ -185,14 +180,34 @@ public class Market extends javax.swing.JFrame {
                                                                                                                                 .createSequentialGroup()
                                                                                                                                 .addGap(130, 130,
                                                                                                                                                 130)
-                                                                                                                                .addComponent(moneylbl5,
+                                                                                                                                .addComponent(moneylbl2,
                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                                                 58,
                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                                                                 .addPreferredGap(
                                                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                                                                                51,
-                                                                                                                Short.MAX_VALUE)))
+                                                                                                                66,
+                                                                                                                Short.MAX_VALUE))
+                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                                                jPanel1Layout.createSequentialGroup()
+                                                                                                                .addPreferredGap(
+                                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                                                Short.MAX_VALUE)
+                                                                                                                .addGroup(jPanel1Layout
+                                                                                                                                .createParallelGroup(
+                                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                                                                                                jPanel1Layout.createSequentialGroup()
+                                                                                                                                                                .addComponent(purplebtn,
+                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                                                                                150,
+                                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                                                .addGap(52, 52, 52))
+                                                                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                                                                                                jPanel1Layout.createSequentialGroup()
+                                                                                                                                                                .addComponent(titlelabel)
+                                                                                                                                                                .addGap(18, 18, 18)))))
                                                                 .addGroup(jPanel1Layout.createParallelGroup(
                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
                                                                                 .addComponent(greenbtn,
@@ -209,7 +224,7 @@ public class Market extends javax.swing.JFrame {
                                                                                                                 .addGap(14, 14, 14))
                                                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
                                                                                                 jPanel1Layout.createSequentialGroup()
-                                                                                                                .addComponent(moneylbl,
+                                                                                                                .addComponent(moneylbl3,
                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                                 58,
                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,13 +234,18 @@ public class Market extends javax.swing.JFrame {
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                 150,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(47, 47, 47))
+                                                                .addPreferredGap(
+                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jButton6,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                81,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addGap(70, 70, 70)
                                                                 .addGroup(jPanel1Layout.createParallelGroup(
                                                                                 javax.swing.GroupLayout.Alignment.TRAILING)
                                                                                 .addComponent(redlbl)
-                                                                                .addComponent(moneylbl3,
+                                                                                .addComponent(moneylbl5,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                 58,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -238,45 +258,41 @@ public class Market extends javax.swing.JFrame {
                                                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
                                                                                                 jPanel1Layout.createSequentialGroup()
                                                                                                                 .addComponent(whitelbl)
-                                                                                                                .addGap(69, 69, 69))
+                                                                                                                .addGap(106, 106,
+                                                                                                                                106))
                                                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
                                                                                                 jPanel1Layout.createSequentialGroup()
-                                                                                                                .addComponent(moneylbl4,
+                                                                                                                .addComponent(moneylbl,
                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                                 58,
                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                .addGap(86, 86, 86)))));
+                                                                                                                .addGap(129, 129,
+                                                                                                                                129)))));
                 jPanel1Layout.setVerticalGroup(
                                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                javax.swing.GroupLayout.Alignment.LEADING,
+                                                                                false)
                                                                                 .addGroup(jPanel1Layout
                                                                                                 .createSequentialGroup()
+                                                                                                .addComponent(jButton6,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                30,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                .addPreferredGap(
+                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                                                 .addGroup(jPanel1Layout
                                                                                                                 .createParallelGroup(
-                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                .createSequentialGroup()
-                                                                                                                                .addGap(22, 22, 22)
-                                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                                .createParallelGroup(
-                                                                                                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                                                                                .addComponent(yellowbtn,
-                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                                150,
-                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                .addComponent(greenbtn,
-                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                                150,
-                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                .createSequentialGroup()
-                                                                                                                                .addContainerGap()
-                                                                                                                                .addComponent(titlelabel,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                56,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                                                                .addComponent(yellowbtn,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                                150,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                .addComponent(greenbtn,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                                150,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                                 .addPreferredGap(
                                                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                                                 .addGroup(jPanel1Layout
@@ -291,7 +307,7 @@ public class Market extends javax.swing.JFrame {
                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                                                 .addPreferredGap(
                                                                                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                                                .addComponent(moneylbl)
+                                                                                                                                .addComponent(moneylbl3)
                                                                                                                                 .addPreferredGap(
                                                                                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED,
                                                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -308,7 +324,7 @@ public class Market extends javax.swing.JFrame {
                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                                                 .addPreferredGap(
                                                                                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                                                .addComponent(moneylbl2)
+                                                                                                                                .addComponent(moneylbl4)
                                                                                                                                 .addGap(61, 61, 61)
                                                                                                                                 .addComponent(redbtn,
                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -328,8 +344,16 @@ public class Market extends javax.swing.JFrame {
                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                                 .addGap(3, 3, 3))
                                                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                                                jPanel1Layout
-                                                                                                                .createSequentialGroup()
+                                                                                                jPanel1Layout.createSequentialGroup()
+                                                                                                                .addContainerGap()
+                                                                                                                .addComponent(titlelabel,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                                56,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                .addPreferredGap(
+                                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                                                Short.MAX_VALUE)
                                                                                                                 .addComponent(purplebtn,
                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                                 150,
@@ -339,13 +363,13 @@ public class Market extends javax.swing.JFrame {
                                                                                                                 .addComponent(purplelbl)
                                                                                                                 .addPreferredGap(
                                                                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                                .addComponent(moneylbl5)
+                                                                                                                .addComponent(moneylbl2)
                                                                                                                 .addGap(104, 104,
                                                                                                                                 104)))
                                                                 .addGroup(jPanel1Layout.createParallelGroup(
                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(moneylbl3)
-                                                                                .addComponent(moneylbl4))
+                                                                                .addComponent(moneylbl5)
+                                                                                .addComponent(moneylbl))
                                                                 .addContainerGap()));
 
                 URL url6 = getClass().getResource("market-bg.jpg");
@@ -358,14 +382,51 @@ public class Market extends javax.swing.JFrame {
 
                 pack();
                 setLocationRelativeTo(null);
-//                setVisible(true);
+                // setVisible(true);
         }
+
         public int getCommand() {
                 return command;
         }
-        
+
         public void setCommand(int n) {
                 command = n;
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+                if (e.getSource() == jButton6)
+                        jButton6.setBackground(new Color(255, 51, 0));
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+                jButton6.setBackground(new Color(11, 168, 156));
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+
         }
 
 }
