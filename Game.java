@@ -141,7 +141,18 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
         if(!pausemenu.isP()){
             isPaused = false;
             pauseOpened = false;
-            pausemenu.dispose();
+        }
+        if (e.getSource() == pause){
+            isPaused = true;
+            if (!pauseOpened) {
+                pausemenu.setisP(true);
+                pausemenu.setVisible(true);
+                pauseOpened = true;
+            }
+            if(!pausemenu.isP()){
+                isPaused = pausemenu.isP();
+            }
+
         }
         if(randomDirction){
             speed *= randomSpin(true);
@@ -170,18 +181,6 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
         {
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
-        }
-        if (e.getSource() == pause){
-            isPaused = true;
-            if (!pauseOpened) {
-                pausemenu = new pauseMenu();
-                pausemenu.setVisible(true);
-                pauseOpened = true;
-            }
-            if(!pausemenu.isP()){
-                isPaused = pausemenu.isP();
-            }
-        
         }
 
         if(!isEnd){

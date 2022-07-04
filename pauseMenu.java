@@ -12,7 +12,7 @@ public class pauseMenu extends JFrame implements ActionListener, MouseListener {
     private JLabel bglbl;
     private JPanel jPanel1;
     private int command = -1;
-    private boolean isp = true;
+    private boolean isp = false;
     
     public static void main(String[] args) {
         new pauseMenu();
@@ -150,7 +150,6 @@ public class pauseMenu extends JFrame implements ActionListener, MouseListener {
             resumebtn.setBackground(new Color(255, 51, 0));
         if (e.getSource() == menubtn)
             menubtn.setBackground(new Color(255, 51, 0));
-        
     }
     
     @Override
@@ -176,5 +175,8 @@ public class pauseMenu extends JFrame implements ActionListener, MouseListener {
     
     public boolean isP(){
         return isp;
+    }
+    public void setisP(boolean p){
+        isp = p;
     }
 }
