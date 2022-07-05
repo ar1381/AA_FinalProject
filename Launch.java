@@ -23,14 +23,14 @@ public class Launch implements ActionListener{
     private GameMissions gameMissions;
     private Settings settings;
     private Market market ;
-    VALS v;
+    private VALS v;
     Launch(String username){
-        timer = new Timer(100, this);
-        timer.start();
-        this.username = username;
         v = new VALS(username);
         logIn = new LogIn();
         menu = new Menu(v);
+        timer = new Timer(100, this);
+        this.username = username;
+        timer.start();
     }
 
     @Override
