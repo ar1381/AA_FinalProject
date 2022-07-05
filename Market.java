@@ -25,9 +25,11 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
         private JLabel whitelbl;
         private JPanel jPanel1;
         private javax.swing.JButton jButton6;
+        VALS v ;
         private int command = -1;
 
-        public Market() {
+        public Market(VALS v) {
+                this.v = v;
                 setLayout(new BorderLayout());
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 setTitle("Market");
@@ -377,7 +379,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                 jPanel1.setBackground(new Color(0, 0, 0, 90));
                 bglbl.setLayout(new FlowLayout());
                 bglbl.add(jPanel1);
-
+                
                 add(bglbl);
 
                 pack();
@@ -397,6 +399,15 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
         public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
 
+                if(e.getSource() == yellowbtn){
+                        if(v.isSKIN_yellow_bought()){
+                                v.setSKIN_enabled("yellow.png");
+                        }else if(v.getMoney() >= 100){
+                                v.setMoney(v.getMoney() - 100);
+                                v.enable_yellow();
+                                v.setSKIN_enabled("yellow.png");
+                        }
+                }
         }
 
         @Override
