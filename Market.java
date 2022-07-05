@@ -63,22 +63,27 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                 URL url = getClass().getResource("yellow.jpg");
                 yellowbtn.setIcon(new ImageIcon(new File(url.getPath()).getAbsolutePath()));
                 yellowbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                yellowbtn.addMouseListener(this);
 
                 URL url2 = getClass().getResource("green.jpg");
                 greenbtn.setIcon(new ImageIcon(new File(url2.getPath()).getAbsolutePath()));
                 greenbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                greenbtn.addMouseListener(this);
 
                 URL url3 = getClass().getResource("white.jpg");
                 whitebtn.setIcon(new ImageIcon(new File(url3.getPath()).getAbsolutePath()));
                 whitebtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                whitebtn.addMouseListener(this);
 
                 URL url4 = getClass().getResource("red.jpg");
                 redbtn.setIcon(new ImageIcon(new File(url4.getPath()).getAbsolutePath()));
                 redbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                redbtn.addMouseListener(this);
 
                 URL url5 = getClass().getResource("purple.jpg");
                 purplebtn.setIcon(new ImageIcon(new File(url5.getPath()).getAbsolutePath()));
                 purplebtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                purplebtn.addMouseListener(this);
 
                 jButton6.setBackground(new Color(11, 168, 156));
                 jButton6.setFont(new Font("Ink Free", 1, 16));
@@ -400,48 +405,48 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                 // TODO Auto-generated method stub
 
                 if(e.getSource() == yellowbtn){
-//                        if(v.isSKIN_yellow_bought()){
-//                                v.setSKIN_enabled("yellow.jpg");
-//                        }else if(v.getMoney() >= 100){
+                        if(v.isSKIN_yellow_bought()){
+                                v.setSKIN_enabled("yellow.jpg");
+                        }else if(v.getMoney() >= 100){
                                 v.setMoney(v.getMoney() - 100);
                                 v.enable_yellow();
                                 v.setSKIN_enabled("yellow.jpg");
-//                        }
+                        }
                 }
                 if(e.getSource() == greenbtn){
                         if(v.isSKIN_green_bought()){
-                                v.setSKIN_enabled("green.png");
+                                v.setSKIN_enabled("green.jpg");
                         }else if(v.getMoney() >= 100){
                                 v.setMoney(v.getMoney() - 100);
                                 v.setSKIN_green_bought(true);
-                                v.setSKIN_enabled("green.png");
+                                v.setSKIN_enabled("green.jpg");
                         }
                 }
                 if(e.getSource() == redbtn){
                         if(v.isSKIN_green_bought()){
-                                v.setSKIN_enabled("red.png");
+                                v.setSKIN_enabled("red.jpg");
                         }else if(v.getMoney() >= 100){
                                 v.setMoney(v.getMoney() - 100);
                                 v.setSKIN_red_bought(true);
-                                v.setSKIN_enabled("red.png");
+                                v.setSKIN_enabled("red.jpg");
                         }
                 }
                 if(e.getSource() == whitebtn){
                         if(v.isSKIN_white_bought()){
-                                v.setSKIN_enabled("white.png");
+                                v.setSKIN_enabled("white.jpg");
                         }else if(v.getMoney() >= 100){
                                 v.setMoney(v.getMoney() - 100);
                                 v.setSKIN_white_bought(true);
-                                v.setSKIN_enabled("white.png");
+                                v.setSKIN_enabled("white.jpg");
                         }
                 }
                 if(e.getSource() == purplebtn){
                         if(v.isSKIN_purple_bought()){
-                                v.setSKIN_enabled("purple.png");
+                                v.setSKIN_enabled("purple.jpg");
                         }else if(v.getMoney() >= 100){
                                 v.setMoney(v.getMoney() - 100);
                                 v.setSKIN_purple_bought(true);
-                                v.setSKIN_enabled("purple.png");
+                                v.setSKIN_enabled("purple.jpg");
                         }
                 }
                 if (e.getSource() == jButton6){
@@ -476,7 +481,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
         @Override
         public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-
+                
         }
 
 }
