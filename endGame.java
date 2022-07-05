@@ -17,8 +17,10 @@ public class endGame extends JPanel implements ActionListener , WindowListener  
     private double runTime;
     private double money;
     private int command = -1;
+    private VALS v;
     
-    endGame(boolean isLost , int level , double TimeInSecond){
+    endGame(boolean isLost , int level , double TimeInSecond, VALS v){
+        this.v = v;
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700 , 1000);
@@ -82,6 +84,8 @@ public class endGame extends JPanel implements ActionListener , WindowListener  
             label.setBounds(frame.getWidth() / 2 - 75 , frame.getHeight()/3 , 200 ,75);
         }
         else {
+            if (level + 1> v.getLevel() && level <= 47)
+                v.ChangeLevel(level + 1);
             OKBUtton.setBounds((1 * frame.getWidth()) / 6 - 50, (2 * frame.getHeight())/3, 100, 40);
             RetryButton.setBounds((1 * frame.getWidth()) /2 - 50 , (2 * frame.getHeight())/3, 100, 40);
             nextButton.setBounds((5 * frame.getWidth()) / 6 - 50 , (2 * frame.getHeight())/3, 100, 40);
@@ -94,7 +98,7 @@ public class endGame extends JPanel implements ActionListener , WindowListener  
         }
         runTimeLabel.setText("Time : " + (int) runTime / 60 + ":" + String.valueOf((String.valueOf((int)runTime % 60).length() == 2) ? ((int)runTime % 60) : ("0" +(int) runTime % 60))+ " (min)");
         runTimeLabel.setBounds((4 * frame.getWidth()) / 6 - 100 , frame.getHeight() / 2, 300, 30);
-        moneyLabel.setText("Money : " + money);
+        moneyLabel.setText("Score : " + money);
         moneyLabel.setBounds( (2 * frame.getWidth()) / 6  - 100 , frame.getHeight() / 2, 300, 30);
      }
 
@@ -118,12 +122,34 @@ public class endGame extends JPanel implements ActionListener , WindowListener  
         
     }
     public double amountOfMoney(){
-        if(isLost)
+        double n;
+        if (isLost)
             return 0;
-        money = ((level * level) / (runTime * runTime)) *100;
-        money = (Math.round(money));
-        money /= 100;
-        return money;
+        if(level < 10){
+            n = (20 * level / runTime) * 100;
+            n = Math.round(n);
+            return n / 100;
+        }
+        if(level < 20){
+            n = (40 * level / runTime)* 100;
+            n = Math.round(n);
+            return n / 100;
+        }
+        if(level < 30){
+            n = (40 * level / runTime)* 100;
+            n = Math.round(n);
+            return n / 100;
+        }
+        if(level < 40){
+            n = (60 * level / runTime)* 100;
+            n = Math.round(n);
+            return n / 100;
+        }
+        else{
+            n = (80 * level/ runTime)* 100;
+            n = Math.round(n);
+            return n / 100;
+        }
     }
     public int getCommand(){
         return command;

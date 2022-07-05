@@ -1,11 +1,8 @@
-import javax.swing.JFrame;
 import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.*;
 public class Launch implements ActionListener{
     private Timer timer ;
-    private double money = 0 ;// should get from a txt in login
-    private int level  = 48; // should get from a txt in login
     private int MENU = 1;
     private int GAME_MISSIONS = 2;
     private int SETTINGS = 3;
@@ -24,12 +21,11 @@ public class Launch implements ActionListener{
     private Settings settings;
     private Market market ;
     public VALS v;
-    Launch(String username){
-        v = new VALS(username);
+    private int level;
+    Launch(){
         logIn = new LogIn();
-        menu = new Menu(v);
-        timer = new Timer(100, this);
-        this.username = username;
+        menu = new Menu();
+        timer = new Timer(200, this);
         timer.start();
     }
 
@@ -42,6 +38,9 @@ public class Launch implements ActionListener{
             }
             if( logIn.getCommand() != NO_COMMAND){
                 command = logIn.getCommand();
+                username = logIn.getUserName();
+                v = new VALS(username);
+                level = v.getLevel();
                 logIn.setCommand(-1);
                 logIn.setVisible(false);
                 n = 0;
@@ -63,7 +62,8 @@ public class Launch implements ActionListener{
         }
         else if( command == GAME_MISSIONS){
             if(n == 0){
-                gameMissions = new GameMissions(level, v);
+                level = v.getLevel();
+                gameMissions = new GameMissions(v);
                 gameMissions.setVisible(true);
                 n++;
             }
@@ -110,7 +110,7 @@ public class Launch implements ActionListener{
         }
         else if (command == NEXTBUTTON_ENDGAME){
             if(n == 0){
-                gameMissions = new GameMissions(level, v);
+                gameMissions = new GameMissions(v);
                 gameMissions.Missions( String.valueOf(currentLevel + 1));
                 n++;
             }
@@ -128,7 +128,7 @@ public class Launch implements ActionListener{
         }
         else if (command == RETRYBUTTON_ENDGAME){
             if(n == 0){
-                gameMissions = new GameMissions(level, v);
+                gameMissions = new GameMissions(v);
                 gameMissions.Missions( String.valueOf(currentLevel));
                 n++;
             }
