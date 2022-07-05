@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -119,9 +121,14 @@ public class Settings extends javax.swing.JFrame implements ActionListener, Mous
         getContentPane().add(jLabel_Score);
         jLabel_Score.setBounds(107, 45, 76, 16);
 
-        jButton_Back.setText("Back");
-        jButton_Back.setFont(new Font("MV Boli", Font.PLAIN, 10));
+        jButton_Back.setBackground(new Color(11, 168, 156));
+        jButton_Back.setFont(new Font("Ink Free", 1, 12));
+        jButton_Back.setForeground(new Color(255, 255, 255));
         jButton_Back.setFocusable(false);
+        jButton_Back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton_Back.setText("Back");
+        jButton_Back.setFocusable(false);
+        jButton_Back.addMouseListener(this);
         jButton_Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_BackActionPerformed(evt);
@@ -137,6 +144,7 @@ public class Settings extends javax.swing.JFrame implements ActionListener, Mous
         jTextField3_newPassword.setBounds(190, 218, 177, 33);
 
         jLabel3.setText("UserName:");
+
         getContentPane().add(jLabel3);
         jLabel3.setBounds(48, 132, 110, 16);
 
@@ -146,10 +154,16 @@ public class Settings extends javax.swing.JFrame implements ActionListener, Mous
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel5.setText("New Pssword:");
+        jLabel5.setText("New Password:");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(48, 226, 120, 20);
 
+        jButton1_changePassword.setBackground(new Color(11, 168, 156));
+        jButton1_changePassword.setFont(new Font("Ink Free", 1, 12));
+        jButton1_changePassword.setForeground(new Color(255, 255, 255));
+        jButton1_changePassword.setFocusable(false);
+        jButton1_changePassword.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton1_changePassword.addMouseListener(this);
         jButton1_changePassword.setText("change password");
         jButton1_changePassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,7 +185,13 @@ public class Settings extends javax.swing.JFrame implements ActionListener, Mous
         getContentPane().add(jLabel8);
         jLabel8.setBounds(48, 379, 120, 30);
 
+        jButton1_chaetBottom.setBackground(new Color(11, 168, 156));
+        jButton1_chaetBottom.setFont(new Font("Ink Free", 1, 12));
+        jButton1_chaetBottom.setForeground(new Color(255, 255, 255));
+        jButton1_chaetBottom.setFocusable(false);
+        jButton1_chaetBottom.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton1_chaetBottom.setText("Cheat");
+        jButton1_chaetBottom.addMouseListener(this);
         jButton1_chaetBottom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1_chaetBottomActionPerformed(evt);
@@ -356,19 +376,25 @@ public class Settings extends javax.swing.JFrame implements ActionListener, Mous
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
+        if (e.getSource() == jButton1_chaetBottom)
+            jButton1_chaetBottom.setBackground(new Color(255, 51, 0));
+        if (e.getSource() == jButton1_changePassword)
+            jButton1_changePassword.setBackground(new Color(255, 51, 0));
+        if (e.getSource() == jButton_Back)
+            jButton_Back.setBackground(new Color(255, 51, 0));
 
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
+        jButton1_chaetBottom.setBackground(new Color(11, 168, 156));
+        jButton1_changePassword.setBackground(new Color(11, 168, 156));
+        jButton_Back.setBackground(new Color(11, 168, 156));
 
     }
 
