@@ -10,7 +10,7 @@ public class Launch implements ActionListener{
     private int GAME_MISSIONS = 2;
     private int SETTINGS = 3;
     private int MARKET = 4;
-    private int command = 1;
+    private int command = 0;
     private int NO_COMMAND = -1;
     private int NEXTBUTTON_ENDGAME = 21;
     private int RETRYBUTTON_ENDGAME = 22;
@@ -18,6 +18,8 @@ public class Launch implements ActionListener{
     private int currentLevel;
     private String username; 
     private Menu menu = new Menu();
+    private LogIn logIn = new LogIn();
+    private int LOGIN = 0;
     private GameMissions gameMissions;
     private Settings settings;
     private Market market ;
@@ -29,6 +31,19 @@ public class Launch implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if( command == LOGIN){
+            if(n == 0){
+                logIn.setVisible(true);
+                n++;
+            }
+            if( logIn.getCommand() != NO_COMMAND){
+                command = logIn.getCommand();
+                logIn.setCommand(-1);
+                logIn.setVisible(false);
+                n = 0;
+                logIn.dispose();
+            }
+        }
         if(command == MENU){
             if(n == 0 ){
                 menu.setVisible(true);
