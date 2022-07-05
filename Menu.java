@@ -168,7 +168,7 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
 
                 pack();
                 setLocationRelativeTo(null);
-                setVisible(true);
+                setVisible(false);
         }
 
         @Override

@@ -3,13 +3,11 @@ import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class SignUp extends javax.swing.JFrame {
 
-    private Scanner myReader;
 
     public SignUp() {
         initComponents();
@@ -99,9 +97,8 @@ public class SignUp extends javax.swing.JFrame {
         jLabel3.setText("sign up");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(300, 30, 290, 50);
-    
-        URL url = getClass().getResource("Login-bg.jpg");
-        jLabel2.setIcon(new javax.swing.ImageIcon(new File(url.getPath()).getAbsolutePath())); // NOI18N
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("Login-bg.jpg")); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(-10, 0, 750, 430);
 
@@ -121,9 +118,8 @@ public class SignUp extends javax.swing.JFrame {
             if(!user11.equals("") && !pass.equals("") && !passc.equals("")){
 
                 if(pass.equals(passc)){
-    
-                    URL url2 = getClass().getResource("userPass.txt");
-                      File userPass1 = new File(new File(url2.getPath()).getAbsolutePath());
+
+                      File userPass1 = new File("userPass.txt");
                     try {
                         Scanner myReader = new Scanner(userPass1);
                         while (myReader.hasNextLine()){

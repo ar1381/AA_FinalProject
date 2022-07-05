@@ -38,7 +38,7 @@ public class pauseMenu extends JFrame implements ActionListener, MouseListener {
         titlelbl.setFont(new Font("SansSerif", 1, 60));
         titlelbl.setForeground(new Color(204, 255, 255));
         titlelbl.setHorizontalAlignment(SwingConstants.CENTER);
-        titlelbl.setText("PAuse");
+        titlelbl.setText("Pause");
         
         resumebtn.setBackground(new Color(11, 168, 156));
         resumebtn.setFont(new Font("Ink Free", 1, 36));

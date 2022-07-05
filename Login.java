@@ -1,18 +1,32 @@
 import java.awt.Color;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.net.URL;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class LogIn extends javax.swing.JFrame {
+	// az inga  on system match ke khastebody shoromishe 
+	private int command =-1;
+	public int getCommand() {
+		return command; 
+	}
+	public void setCommand(int n) {
+		command=n;
+	}
+	
+	/* vali in zamani kar mikone ke barname login baste nabashe
+	vali age lagin baste beshe on moghe dige command hammon -1 mishe
+	*/
       
     public LogIn() {
         initComponents();
         this.getContentPane().setBackground(new Color(51,51,51));
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
     }
+
 
     private void initComponents() {
 
@@ -84,9 +98,9 @@ public class LogIn extends javax.swing.JFrame {
         jLabel1.setText("Login");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(300, 30, 320, 70);
-    
-        URL url = getClass().getResource("img.png");
-        jLabel2.setIcon(new javax.swing.ImageIcon(new File(url.getPath()).getAbsolutePath())); // NOI18N
+//		"Login-bg.jpg" in aks mored pasand bache hA asht
+        //"img.png" in mad nazar ma hast
+        jLabel2.setIcon(new javax.swing.ImageIcon("Login-bg.jpg")); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 910, 450);
 
@@ -97,6 +111,9 @@ public class LogIn extends javax.swing.JFrame {
         if(evt.getSource()==buttonSignUp){
             SignUp signUp1=new SignUp();
             signUp1.setVisible(true);
+            
+           
+            
         }
            
     }
@@ -107,8 +124,7 @@ public class LogIn extends javax.swing.JFrame {
             String pass22=String.copyValueOf(loginPassword.getPassword());
             boolean checkUser=false;
             boolean checkPass=false;
-            URL url2 = getClass().getResource("userPass.txt");
-            File userPass1 = new File(new File(url2.getPath()).getAbsolutePath());
+            File userPass1 = new File("userPass.txt");
             try {
                 Scanner myReader = new Scanner(userPass1);
                 while (myReader.hasNextLine()){
@@ -118,13 +134,27 @@ public class LogIn extends javax.swing.JFrame {
                         if (data.substring(data.indexOf(':')+1,data.length()).equals(pass22)){
                             checkPass=true;
                             JOptionPane.showMessageDialog(rootPane,"You are in");
-                            new Launch(user22);
-                            this.dispose();
-                            //کد ها رو اینجا بزنید
+                            // in ham az dastorat
+                            
+                            try{
+                                BufferedWriter passWriter=new BufferedWriter(new FileWriter("witchUserIsInTheGame.txt"));
+                                passWriter.write(user22+":"+pass22);
+                                passWriter.close();
+                                
+
+                            }catch(IOException e){
+                                JOptionPane.showMessageDialog(null,"file doesn't exist");
+
+                            }
+                          //inja baiad kod hatono mizadid 
+                            command = 1;
+                            //JOptionPane.showMessageDialog(rootPane,"command ="+String.valueOf(command) ,"Error",JOptionPane.ERROR_MESSAGE);
+                            
                         }
                     }
 
                 }
+                myReader.close();
 
             } catch (FileNotFoundException e) {
                 JOptionPane.showMessageDialog(null,"file not exist");
@@ -139,13 +169,14 @@ public class LogIn extends javax.swing.JFrame {
         }
     }
 
-//    public static void main(String args[]) {
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new LogIn().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LogIn().setVisible(true);
+            }
+        });
+    }
 
 
     private javax.swing.JButton buttonLogin;
