@@ -26,7 +26,7 @@ public class Settings extends JFrame implements ActionListener, MouseListener {
         private javax.swing.JLabel newUsernamelbl;
         private int command = -1;
 
-        public Settings() {
+        public Settings(VALS v) {
                 setLayout(new BorderLayout());
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 setTitle("Settings");

@@ -17,16 +17,20 @@ public class Launch implements ActionListener{
     private int n = 0;
     private int currentLevel;
     private String username; 
-    private Menu menu = new Menu();
-    private LogIn logIn = new LogIn();
+    private Menu menu;
+    private LogIn logIn;
     private int LOGIN = 0;
     private GameMissions gameMissions;
     private Settings settings;
     private Market market ;
+    VALS v;
     Launch(String username){
         timer = new Timer(100, this);
         timer.start();
         this.username = username;
+        v = new VALS(username);
+        logIn = new LogIn();
+        menu = new Menu(v);
     }
 
     @Override
@@ -79,7 +83,7 @@ public class Launch implements ActionListener{
         }
         else if(command == SETTINGS){
             if(n == 0){
-                settings = new Settings();
+                settings = new Settings(v);
                 settings.setVisible(true);
                 n++;
             }
@@ -93,7 +97,7 @@ public class Launch implements ActionListener{
         }
         else if (command == MARKET){
             if(n == 0){
-                market = new Market();
+                market = new Market(v);
                 market.setVisible(true);
                 n++;
             }

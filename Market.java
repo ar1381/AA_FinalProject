@@ -408,6 +408,42 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 v.setSKIN_enabled("yellow.png");
                         }
                 }
+                if(e.getSource() == greenbtn){
+                        if(v.isSKIN_green_bought()){
+                                v.setSKIN_enabled("green.png");
+                        }else if(v.getMoney() >= 100){
+                                v.setMoney(v.getMoney() - 100);
+                                v.setSKIN_green_bought(true);
+                                v.setSKIN_enabled("green.png");
+                        }
+                }
+                if(e.getSource() == redbtn){
+                        if(v.isSKIN_green_bought()){
+                                v.setSKIN_enabled("red.png");
+                        }else if(v.getMoney() >= 100){
+                                v.setMoney(v.getMoney() - 100);
+                                v.setSKIN_red_bought(true);
+                                v.setSKIN_enabled("red.png");
+                        }
+                }
+                if(e.getSource() == whitebtn){
+                        if(v.isSKIN_white_bought()){
+                                v.setSKIN_enabled("white.png");
+                        }else if(v.getMoney() >= 100){
+                                v.setMoney(v.getMoney() - 100);
+                                v.setSKIN_white_bought(true);
+                                v.setSKIN_enabled("white.png");
+                        }
+                }
+                if(e.getSource() == purplebtn){
+                        if(v.isSKIN_purple_bought()){
+                                v.setSKIN_enabled("purple.png");
+                        }else if(v.getMoney() >= 100){
+                                v.setMoney(v.getMoney() - 100);
+                                v.setSKIN_purple_bought(true);
+                                v.setSKIN_enabled("purple.png");
+                        }
+                }
         }
 
         @Override
