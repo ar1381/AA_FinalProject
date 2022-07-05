@@ -23,7 +23,7 @@ public class Launch implements ActionListener{
     private GameMissions gameMissions;
     private Settings settings;
     private Market market ;
-    private VALS v;
+    public VALS v;
     Launch(String username){
         v = new VALS(username);
         logIn = new LogIn();
@@ -63,7 +63,7 @@ public class Launch implements ActionListener{
         }
         else if( command == GAME_MISSIONS){
             if(n == 0){
-                gameMissions = new GameMissions(level);
+                gameMissions = new GameMissions(level, v);
                 gameMissions.setVisible(true);
                 n++;
             }
@@ -110,7 +110,7 @@ public class Launch implements ActionListener{
         }
         else if (command == NEXTBUTTON_ENDGAME){
             if(n == 0){
-                gameMissions = new GameMissions(level);
+                gameMissions = new GameMissions(level, v);
                 gameMissions.Missions( String.valueOf(currentLevel + 1));
                 n++;
             }
@@ -128,7 +128,7 @@ public class Launch implements ActionListener{
         }
         else if (command == RETRYBUTTON_ENDGAME){
             if(n == 0){
-                gameMissions = new GameMissions(level);
+                gameMissions = new GameMissions(level, v);
                 gameMissions.Missions( String.valueOf(currentLevel));
                 n++;
             }

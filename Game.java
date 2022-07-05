@@ -30,8 +30,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     private AffineTransform at;
     private BufferedImage arrow;
     private double money;
-    URL url = getClass().getResource("DefaultArrow.png");
-    private String imagePathName = new File(url.getPath()).getAbsolutePath();
+    private String imagePathName;
     URL url2 = getClass().getResource("SoundOn.png");
     private ImageIcon soundOn = new ImageIcon(new File(url2.getPath()).getAbsolutePath());
     URL url3 = getClass().getResource("SoundOff.png");
@@ -49,7 +48,11 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     private SimpleAudioPlayer audioPlayer;
     private boolean reduceSpeedInGame = false;
     private int[] reduseDegree;
-    Game(int HitBalls , double[] arr , int level){
+    VALS v;
+    Game(int HitBalls , double[] arr , int level, VALS v){
+        this.v = v;
+//        URL url = getClass().getResource(v.getSKIN_enabled());
+        imagePathName = v.getSKIN_enabled();
         frame.setSize(800 , 1000);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

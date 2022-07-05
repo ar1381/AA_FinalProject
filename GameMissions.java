@@ -25,8 +25,10 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
     private JPanel backPanel ;
     private JPanel southRightPanel;
     private int command =-1;
+    VALS v;
 
-    GameMissions(int level){
+    GameMissions(int level, VALS v){
+        this.v =v;
         this.level = level;
         pageNumber = new JLabel("       " +page);
         pageNumber.setForeground(Color.white);
@@ -226,7 +228,7 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
             case "1":
                 double[]  arr1 = {1 , 68 , 79 , 180 , 200 , 0,0,0 ,0,0,0,0,0,0,0,0,0};
                 this.setVisible(false);
-                t1 = new Game(5, arr1 , Integer.parseInt(mission));
+                t1 = new Game(5, arr1 , Integer.parseInt(mission), v);
                 t1.setSpeed(2);
                 money =t1.getMoney();
                 dispose();
@@ -234,56 +236,56 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
             case "2":
                 double[]  arr2 = {1 , 68 , 79 , 180  , 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(4, arr2 , Integer.parseInt(mission));
+                t1 = new Game(4, arr2 , Integer.parseInt(mission), v);
                 t1.setSpeed(-2);
                 dispose();
                 break;
             case "3":
                 double[]  arr3 = {1 , 68 , 79 , 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(3, arr3 , Integer.parseInt(mission));
+                t1 = new Game(3, arr3 , Integer.parseInt(mission), v);
                 t1.setSpeed(2);
                 dispose();
                 break;
             case "4":
                 double[]  arr4 = {1 , 61 , 122, 182,242, 302 , 0, 0, 0, 0, 0, 0, 0, 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(6, arr4 , Integer.parseInt(mission));
+                t1 = new Game(6, arr4 , Integer.parseInt(mission), v);
                 t1.setSpeed(-2);
                 dispose();
                 break;
             case "5":
                 double[]  arr5 = {1 , 45 , 90, 135, 180, 225, 270, 315 , 0,0,0,0,0,0,0,0,0,0,0,0};
                 this.setVisible(false);
-                t1 = new Game(8, arr5 , Integer.parseInt(mission));
+                t1 = new Game(8, arr5 , Integer.parseInt(mission), v);
                 t1.setSpeed(2);
                 dispose();
                 break;
             case "6":
                 double[]  arr6 = {1 , 36 , 72,108 ,144, 180, 216,252, 288, 324,0,0,0,0,0 ,0,0,0,0,0,0};
                 this.setVisible(false);
-                t1 = new Game(10, arr6 , Integer.parseInt(mission)) ;
+                t1 = new Game(10, arr6 , Integer.parseInt(mission), v) ;
                 t1.setSpeed(-2);
                 dispose();
                 break;
             case "7":
                 double[]  arr7 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0, 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(12, arr7 , Integer.parseInt(mission));
+                t1 = new Game(12, arr7 , Integer.parseInt(mission), v);
                 t1.setSpeed(2);
                 dispose();
                 break;
             case "8":
                 double[]  arr8 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(12, arr8 , Integer.parseInt(mission));
+                t1 = new Game(12, arr8 , Integer.parseInt(mission), v);
                 t1.setSpeed(-2);
                 dispose();
                 break;
             case "9":
                 double[]  arr9 = {1 , 68 , 79 , 180 , 200 , 0,0,0 ,0,0,0,0,0,0,0,0,0};
                 this.setVisible(false);
-                t1 = new Game(5, arr9 , Integer.parseInt(mission));
+                t1 = new Game(5, arr9 , Integer.parseInt(mission), v);
                 t1.setSpeed(4);
                 money =t1.getMoney();
                 dispose();
@@ -291,105 +293,105 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
             case "10":
                 double[]  arr10 = {1 , 68 , 79 , 180  , 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(4, arr10 , Integer.parseInt(mission));
+                t1 = new Game(4, arr10 , Integer.parseInt(mission), v);
                 t1.setSpeed(-4);
                 dispose();
                 break;
             case "11":
                 double[]  arr11 = {1 , 68 , 79 , 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(3, arr11 , Integer.parseInt(mission) );
+                t1 = new Game(3, arr11 , Integer.parseInt(mission), v );
                 t1.setSpeed(4 );
                 dispose();
                 break;
             case "12":
                 double[]  arr12 = {1 , 61 , 122, 182,242, 302 , 0, 0, 0, 0, 0, 0, 0, 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(6, arr12 , Integer.parseInt(mission));
+                t1 = new Game(6, arr12 , Integer.parseInt(mission), v);
                 t1.setSpeed(-4);
                 dispose();
                 break;
             case "13":
                 double[]  arr13 = {1 , 45 , 90, 135, 180, 225, 270, 315 , 0,0,0,0,0,0,0,0,0,0,0,0};
                 this.setVisible(false);
-                t1 = new Game(8, arr13 , Integer.parseInt(mission));
+                t1 = new Game(8, arr13 , Integer.parseInt(mission), v);
                 t1.setSpeed(4);
                 dispose();
                 break;
             case "14":
                 double[]  arr14 = {1 , 36 , 72,108 ,144, 180, 216,252, 288, 324,0,0,0,0,0 ,0,0,0,0,0,0};
                 this.setVisible(false);
-                t1 = new Game(10, arr14 , Integer.parseInt(mission));
+                t1 = new Game(10, arr14 , Integer.parseInt(mission), v);
                 t1.setSpeed(-4);
                 dispose();
                 break;
             case "15":
                 double[]  arr15 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0, 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(12, arr15 , Integer.parseInt(mission));
+                t1 = new Game(12, arr15 , Integer.parseInt(mission), v);
                 t1.setSpeed(4);
                 dispose();
                 break;
             case "16":
                 double[]  arr16 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(12, arr16 , Integer.parseInt(mission));
+                t1 = new Game(12, arr16 , Integer.parseInt(mission), v);
                 t1.setSpeed(-4);
                 dispose();
                 break;
             case "17":
                 double[]  arr17 = {1 , 68 , 79 , 180 , 200 , 0,0,0 ,0,0,0,0,0,0,0,0,0};
                 this.setVisible(false);
-                t1 = new Game(5, arr17 , Integer.parseInt(mission));
+                t1 = new Game(5, arr17 , Integer.parseInt(mission), v);
                 t1.setSpeed(6);
                 money =t1.getMoney();
                 break;
             case "18":
                 double[]  arr18 = {1 , 68 , 79 , 180  , 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(4, arr18 , Integer.parseInt(mission));
+                t1 = new Game(4, arr18 , Integer.parseInt(mission), v);
                 t1.setSpeed(-6);
                 dispose();
                 break;
             case "19":
                 double[]  arr19 = {1 , 68 , 79 , 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(3, arr19 , Integer.parseInt(mission) );
+                t1 = new Game(3, arr19 , Integer.parseInt(mission) , v);
                 t1.setSpeed(6 );
                 dispose();
                 break;
             case "20":
                 double[]  arr20 = {1 , 61 , 122, 182,242, 302 , 0, 0, 0, 0, 0, 0, 0, 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(6, arr20 , Integer.parseInt(mission));
+                t1 = new Game(6, arr20 , Integer.parseInt(mission), v);
                 t1.setSpeed(-6);
                 dispose();
                 break;
             case "21":
                 double[]  arr21 = {1 , 45 , 90, 135, 180, 225, 270, 315 , 0,0,0,0,0,0,0,0,0,0,0,0};
                 this.setVisible(false);
-                t1 = new Game(8, arr21 , Integer.parseInt(mission));
+                t1 = new Game(8, arr21 , Integer.parseInt(mission), v);
                 t1.setSpeed(6);
                 dispose();
                 break;
             case "22":
                 double[]  arr22 = {1 , 36 , 72,108 ,144, 180, 216,252, 288, 324,0,0,0,0,0 ,0,0,0,0,0,0};
                 this.setVisible(false);
-                t1 = new Game(10, arr22 , Integer.parseInt(mission));
+                t1 = new Game(10, arr22 , Integer.parseInt(mission), v);
                 t1.setSpeed(-6);
                 dispose();
                 break;
             case "23":
                 double[]  arr23 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0, 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(12, arr23 , Integer.parseInt(mission));
+                t1 = new Game(12, arr23 , Integer.parseInt(mission), v);
                 t1.setSpeed(6);
                 dispose();
                 break;
             case "24":
                 double[]  arr24 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0};
                 this.setVisible(false);
-                t1 = new Game(12, arr24 , Integer.parseInt(mission));
+                t1 = new Game(12, arr24 , Integer.parseInt(mission), v);
                 t1.setSpeed(-6);
                 dispose();
                 break;
@@ -397,7 +399,7 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
             case "48":
                 double[]  arr48 = {1 , 30 , 60,90,120,150,180,210,240,270,300,330,0};
                 this.setVisible(false);
-                t1 = new Game(11, arr48 , Integer.parseInt(mission));
+                t1 = new Game(11, arr48 , Integer.parseInt(mission), v);
                 t1.setSpeed(-4);
                 dispose();
                 break;

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class VALS {
     private int MAX_level = 0;
-    private int money = 0;
+    private int money = 200;
     private String SKIN_enabled = "DefaultArrow.png";
     private boolean SKIN_yellow_bought = false;
     private boolean SKIN_green_bought = false;
@@ -54,6 +54,7 @@ public class VALS {
     }
     public void enable_yellow(){
         //file thing
+        this.SKIN_yellow_bought = true;
     }
     
     public boolean isSKIN_green_bought() {

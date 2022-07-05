@@ -400,13 +400,13 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                 // TODO Auto-generated method stub
 
                 if(e.getSource() == yellowbtn){
-                        if(v.isSKIN_yellow_bought()){
-                                v.setSKIN_enabled("yellow.png");
-                        }else if(v.getMoney() >= 100){
+//                        if(v.isSKIN_yellow_bought()){
+//                                v.setSKIN_enabled("yellow.jpg");
+//                        }else if(v.getMoney() >= 100){
                                 v.setMoney(v.getMoney() - 100);
                                 v.enable_yellow();
-                                v.setSKIN_enabled("yellow.png");
-                        }
+                                v.setSKIN_enabled("yellow.jpg");
+//                        }
                 }
                 if(e.getSource() == greenbtn){
                         if(v.isSKIN_green_bought()){
@@ -443,6 +443,9 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 v.setSKIN_purple_bought(true);
                                 v.setSKIN_enabled("purple.png");
                         }
+                }
+                if (e.getSource() == jButton6){
+                        command = 1;
                 }
         }
 
