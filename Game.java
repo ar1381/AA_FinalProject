@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
+import java.util.Arrays;
+
 import javax.swing.Timer;
 public class Game<url> extends JPanel implements ActionListener , MouseListener{
     private boolean isPaused = false;
@@ -44,7 +46,9 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     private double endTime;
     private int level;// should add a label
     private endGame g;
-    SimpleAudioPlayer audioPlayer;
+    private SimpleAudioPlayer audioPlayer;
+    private boolean reduceSpeedInGame = false;
+    private int[] reduseDegree;
     Game(int HitBalls , double[] arr , int level){
         frame.setSize(800 , 1000);
         frame.setLocationRelativeTo(null);
@@ -60,8 +64,9 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
         Sound.setIcon(soundOn);
         pause.setSelectedIcon(pauseON);
         pause.setIcon(pauseON);
+        pause.addActionListener(this);
         try {
-            audioPlayer = new SimpleAudioPlayer();
+            audioPlayer = new SimpleAudioPlayer("Blop-Free-Sound-Effect.wav");
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -75,7 +80,6 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
         pause.setBounds((4 *frame.getWidth())/5, 10, 100, 100);
-        pause.addActionListener(this);
         this.add(pause);
         Sound.setBounds((3 *frame.getWidth())/4   , (3*frame.getHeight()) /4 , 200 , 100);
         this.add(Sound);
@@ -83,6 +87,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
             if(isLost){
             g2d.setPaint(Color.red);
             Sound.setBackground(Color.red);
+            pause.setBackground(Color.red);
             g2d.fillRect(0, 0, frame.getWidth() , frame.getHeight());   
             g2d.setFont(new Font("MV Boli" , Font.BOLD,30));
             g2d.setPaint(Color.BLACK);   
@@ -91,6 +96,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
             else{
                 g2d.setPaint(Color.GREEN);
                 Sound.setBackground(Color.green);
+                pause.setBackground(Color.green);
                 g2d.fillRect(0, 0, frame.getWidth() , frame.getHeight());   
                 g2d.setFont(new Font("MV Boli" , Font.BOLD,30));
                 g2d.setPaint(Color.BLACK);   
@@ -138,6 +144,13 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
         return img;
     }
     public void actionPerformed(ActionEvent e){
+        if(pauseOpened ){
+            if(!pausemenu.isP()){
+                isPaused = pausemenu.isP();
+                pauseOpened = false;
+                pausemenu.dispose();
+            }
+        }
         if(!pausemenu.isP()){
             isPaused = false;
             pauseOpened = false;
@@ -165,12 +178,23 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
                 } else if (arr[i] <= 0)
                     arr[i] = 360;
             }
+            if(reduceSpeedInGame){
+                for(int j = 0; j < reduseDegree.length ; ++j){
+                        if(arr[0] >= reduseDegree[j] && arr[0] < reduseDegree[j] + speed || arr[0] >= reduseDegree[j] && arr[0] < reduseDegree[j] - speed){
+                            if(j % 2 == 1)
+                                speed *= 2;
+                            else
+                                speed /= 2;
+                        }
+                }
+            }
         }
         repaint();
     }
     @Override
     public void mouseClicked(MouseEvent e){
         //invoked when a mouse button has been clicked (pressed and released) on a component
+        if(!Sound.isSelected() && !pauseOpened){
         try
         {
         audioPlayer.clip.stop();
@@ -182,8 +206,9 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
+        }
 
-        if(!isEnd){
+        if(!isEnd && !isPaused){
             arr[numberOfNeedle] =45;
             numberOfNeedle += 1;
             trowing = true;
@@ -202,7 +227,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
                 endTime = System.nanoTime()/  Math.pow(10, 9);
             }
         }
-        else {
+        else if(isEnd) {
             if(n == 0){
             gameEnd();
             n++;
@@ -237,6 +262,10 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
             return -1;
         }
         return 1;
+    }
+    public void reduceSpeed( int[] degree ){
+        reduceSpeedInGame = true;
+        reduseDegree = degree;
     }
     public boolean lost(){
         for (int i = 0 ; i < numberOfNeedle  - 1 ; ++i){
@@ -273,5 +302,4 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     public double getMoney(){
         return money;
     }
-
 }

@@ -14,15 +14,16 @@ public class SimpleAudioPlayer
     Clip clip;
     String status;
     AudioInputStream audioInputStream;
-    URL url = getClass().getResource("Blop-Free-Sound-Effect.wav");
-    String filePath = new File(url.getPath()).getAbsolutePath();
+    URL url ;
+    String filePath ;
     
 
-    public SimpleAudioPlayer()
+    public SimpleAudioPlayer(String Name)
             throws UnsupportedAudioFileException,
             IOException, LineUnavailableException
     {
-
+        url = getClass().getResource(Name);
+        filePath = new File(url.getPath()).getAbsolutePath();
         audioInputStream =
                 AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
 

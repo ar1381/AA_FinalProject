@@ -4,7 +4,7 @@ import javax.swing.*;
 
 
 
-public class endGame extends JPanel implements ActionListener  {
+public class endGame extends JPanel implements ActionListener , WindowListener  {
     private JFrame frame;
     private JButton OKBUtton;
     private JButton RetryButton;
@@ -68,6 +68,7 @@ public class endGame extends JPanel implements ActionListener  {
         RetryButton.setFocusable(false);
         nextButton.setFocusable(false);
 
+        frame.addWindowListener(this);
         frame.setVisible(true);
 
     }
@@ -154,5 +155,33 @@ public class endGame extends JPanel implements ActionListener  {
     public void DisposeFrame(){
         command = -1;
         frame.dispose();
+    }
+    @Override
+    public void windowActivated(WindowEvent e){
+
+    }
+    @Override
+    public void windowClosing(WindowEvent e){
+        
+    }
+    @Override
+    public void windowIconified(WindowEvent e){
+        
+    }
+    @Override
+    public void windowOpened(WindowEvent e){
+        
+    }
+    @Override
+    public void windowClosed(WindowEvent e){
+        
+    }
+    @Override
+    public void windowDeiconified(WindowEvent e){
+        
+    }
+    @Override
+    public void windowDeactivated(WindowEvent e){
+        
     }
 }
