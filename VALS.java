@@ -95,10 +95,13 @@ public class VALS {
         try {
             Scanner myReader = new Scanner(new File(filePath));
             while (myReader.hasNextLine()){
-                String data = myReader.nextLine();
-                if(data.substring(0,data.indexOf(':')).equals(username)){
-                    marketItems = data.substring(username.length()+ 1, username.length() +6);
-                }
+                try{
+                    String data = myReader.nextLine();
+                    if(data.substring(0,data.indexOf(':')).equals(username)){
+                        marketItems = data.substring(username.length()+ 1, username.length() +6);
+                    }
+                }catch (Exception e){}
+                
             }
             if (marketItems == null){
                 int[] arr = {0,0,0,0,0};
