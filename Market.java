@@ -406,11 +406,11 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
 
                 if(e.getSource() == yellowbtn){
                         if(v.isSKIN_yellow_bought()){
-                                v.setSKIN_enabled("yellow.jpg");
+                                v.setSKIN_enabled("1p.png");
                         }else if(v.getMoney() >= 100){
                                 v.setMoney(v.getMoney() - 100);
                                 v.enable_yellow();
-                                v.setSKIN_enabled("yellow.jpg");
+                                v.setSKIN_enabled("1p.png");
                         }
                 }
                 if(e.getSource() == greenbtn){
