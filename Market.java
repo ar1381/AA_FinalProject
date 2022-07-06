@@ -406,47 +406,47 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
 
                 if(e.getSource() == yellowbtn){
                         if(v.isSKIN_yellow_bought()){
-                                v.setSKIN_enabled("1p.png");
+                                v.setSKIN_enabled("YellowArrow.png");
                         }else if(v.getMoney() >= 100){
                                 v.changeScore(v.getMoney() - 100);
                                 v.enable_yellow();
-                                v.setSKIN_enabled("1p.png");
+                                v.setSKIN_enabled("YellowArrow.png");
                         }
                 }
                 if(e.getSource() == greenbtn){
                         if(v.isSKIN_green_bought()){
-                                v.setSKIN_enabled("2p.jpg");
+                                v.setSKIN_enabled("GreenArrow.png");
                         }else if(v.getMoney() >= 100){
                                 v.changeScore(v.getMoney() - 100);
                                 v.setSKIN_green_bought(true);
-                                v.setSKIN_enabled("green.jpg");
+                                v.setSKIN_enabled("GreenArrow.png");
                         }
                 }
                 if(e.getSource() == redbtn){
                         if(v.isSKIN_green_bought()){
-                                v.setSKIN_enabled("red.jpg");
+                                v.setSKIN_enabled("RedArrow.png");
                         }else if(v.getMoney() >= 100){
                                 v.changeScore(v.getMoney() - 100);
                                 v.setSKIN_red_bought(true);
-                                v.setSKIN_enabled("red.jpg");
+                                v.setSKIN_enabled("RedArrow.png");
                         }
                 }
                 if(e.getSource() == whitebtn){
                         if(v.isSKIN_white_bought()){
-                                v.setSKIN_enabled("white.jpg");
+                                v.setSKIN_enabled("WhiteArrow.png");
                         }else if(v.getMoney() >= 100){
                                 v.changeScore(v.getMoney() - 100);
                                 v.setSKIN_white_bought(true);
-                                v.setSKIN_enabled("white.jpg");
+                                v.setSKIN_enabled("WhiteArrow.png");
                         }
                 }
                 if(e.getSource() == purplebtn){
                         if(v.isSKIN_purple_bought()){
-                                v.setSKIN_enabled("purple.jpg");
+                                v.setSKIN_enabled("PurpleArrow.png");
                         }else if(v.getMoney() >= 100){
                                 v.changeScore(v.getMoney() - 100);
                                 v.setSKIN_purple_bought(true);
-                                v.setSKIN_enabled("purple.jpg");
+                                v.setSKIN_enabled("PurpleArrow.png");
                         }
                 }
                 if (e.getSource() == jButton6){
