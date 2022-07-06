@@ -195,6 +195,11 @@ public class VALS {
         }catch(IOException e){
         }
         marketItems = items;
+        enable_Green();
+        enable_Purple();
+        enable_Red();
+        enable_White();
+        enable_yellow();
     }
     public void ChangeLevel(int newLevel){
         try{

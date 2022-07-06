@@ -408,16 +408,16 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                         if(v.isSKIN_yellow_bought()){
                                 v.setSKIN_enabled("1p.png");
                         }else if(v.getMoney() >= 100){
-                                v.setMoney(v.getMoney() - 100);
+                                v.changeScore(v.getMoney() - 100);
                                 v.enable_yellow();
                                 v.setSKIN_enabled("1p.png");
                         }
                 }
                 if(e.getSource() == greenbtn){
                         if(v.isSKIN_green_bought()){
-                                v.setSKIN_enabled("green.jpg");
+                                v.setSKIN_enabled("2p.jpg");
                         }else if(v.getMoney() >= 100){
-                                v.setMoney(v.getMoney() - 100);
+                                v.changeScore(v.getMoney() - 100);
                                 v.setSKIN_green_bought(true);
                                 v.setSKIN_enabled("green.jpg");
                         }
@@ -426,7 +426,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                         if(v.isSKIN_green_bought()){
                                 v.setSKIN_enabled("red.jpg");
                         }else if(v.getMoney() >= 100){
-                                v.setMoney(v.getMoney() - 100);
+                                v.changeScore(v.getMoney() - 100);
                                 v.setSKIN_red_bought(true);
                                 v.setSKIN_enabled("red.jpg");
                         }
@@ -435,7 +435,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                         if(v.isSKIN_white_bought()){
                                 v.setSKIN_enabled("white.jpg");
                         }else if(v.getMoney() >= 100){
-                                v.setMoney(v.getMoney() - 100);
+                                v.changeScore(v.getMoney() - 100);
                                 v.setSKIN_white_bought(true);
                                 v.setSKIN_enabled("white.jpg");
                         }
@@ -444,7 +444,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                         if(v.isSKIN_purple_bought()){
                                 v.setSKIN_enabled("purple.jpg");
                         }else if(v.getMoney() >= 100){
-                                v.setMoney(v.getMoney() - 100);
+                                v.changeScore(v.getMoney() - 100);
                                 v.setSKIN_purple_bought(true);
                                 v.setSKIN_enabled("purple.jpg");
                         }
