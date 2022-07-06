@@ -4,7 +4,7 @@ import javax.swing.*;
 
 
 
-public class endGame extends JPanel implements ActionListener , WindowListener  {
+public class endGame extends JPanel implements ActionListener{
     private JFrame frame;
     private JButton OKBUtton;
     private JButton RetryButton;
@@ -18,6 +18,8 @@ public class endGame extends JPanel implements ActionListener , WindowListener  
     private double money;
     private int command = -1;
     private VALS v;
+    private int nlevel = 0;
+    private int nscore = 0;
     
     endGame(boolean isLost , int level , double TimeInSecond, VALS v){
         this.v = v;
@@ -30,6 +32,7 @@ public class endGame extends JPanel implements ActionListener , WindowListener  
         this.level = level;
         runTime = TimeInSecond;
         money = amountOfMoney();
+        money = Math.round(money);
         this.setLayout(null);
         this.setBackground(Color.WHITE);
         OKBUtton = new JButton("OK");
@@ -70,7 +73,6 @@ public class endGame extends JPanel implements ActionListener , WindowListener  
         RetryButton.setFocusable(false);
         nextButton.setFocusable(false);
 
-        frame.addWindowListener(this);
         frame.setVisible(true);
 
     }
@@ -84,8 +86,14 @@ public class endGame extends JPanel implements ActionListener , WindowListener  
             label.setBounds(frame.getWidth() / 2 - 75 , frame.getHeight()/3 , 200 ,75);
         }
         else {
-            if (level + 1> v.getLevel() && level <= 47)
+            if ( nlevel == 0&& level + 1> v.getLevel() && level <= 47){
                 v.ChangeLevel(level + 1);
+                nlevel++;
+            }
+            if(nscore == 0){
+                v.changeScore((int) money);
+                nscore++;
+            }
             OKBUtton.setBounds((1 * frame.getWidth()) / 6 - 50, (2 * frame.getHeight())/3, 100, 40);
             RetryButton.setBounds((1 * frame.getWidth()) /2 - 50 , (2 * frame.getHeight())/3, 100, 40);
             nextButton.setBounds((5 * frame.getWidth()) / 6 - 50 , (2 * frame.getHeight())/3, 100, 40);
@@ -126,29 +134,24 @@ public class endGame extends JPanel implements ActionListener , WindowListener  
         if (isLost)
             return 0;
         if(level < 10){
-            n = (20 * level / runTime) * 100;
-            n = Math.round(n);
-            return n / 100;
+            n = (20 * level / runTime) ;
+            return n;
         }
         if(level < 20){
-            n = (40 * level / runTime)* 100;
-            n = Math.round(n);
-            return n / 100;
+            n = (40 * level / runTime);
+            return n;
         }
         if(level < 30){
-            n = (40 * level / runTime)* 100;
-            n = Math.round(n);
-            return n / 100;
+            n = (40 * level / runTime);
+            return n ;
         }
         if(level < 40){
-            n = (60 * level / runTime)* 100;
-            n = Math.round(n);
-            return n / 100;
+            n = (60 * level / runTime);
+            return n;
         }
         else{
-            n = (80 * level/ runTime)* 100;
-            n = Math.round(n);
-            return n / 100;
+            n = (80 * level/ runTime);
+            return n;
         }
     }
     public int getCommand(){
@@ -181,33 +184,5 @@ public class endGame extends JPanel implements ActionListener , WindowListener  
     public void DisposeFrame(){
         command = -1;
         frame.dispose();
-    }
-    @Override
-    public void windowActivated(WindowEvent e){
-
-    }
-    @Override
-    public void windowClosing(WindowEvent e){
-        
-    }
-    @Override
-    public void windowIconified(WindowEvent e){
-        
-    }
-    @Override
-    public void windowOpened(WindowEvent e){
-        
-    }
-    @Override
-    public void windowClosed(WindowEvent e){
-        
-    }
-    @Override
-    public void windowDeiconified(WindowEvent e){
-        
-    }
-    @Override
-    public void windowDeactivated(WindowEvent e){
-        
     }
 }

@@ -1,13 +1,8 @@
-import javax.swing.*;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.System.Logger.Level;
 import java.net.URL;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Scanner;
 
 public class VALS {
@@ -96,12 +91,11 @@ public class VALS {
             Scanner myReader = new Scanner(new File(filePath));
             while (myReader.hasNextLine()){
                 try{
-                    String data = myReader.nextLine();
-                    if(data.substring(0,data.indexOf(':')).equals(username)){
-                        marketItems = data.substring(username.length()+ 1, username.length() +6);
-                    }
-                }catch (Exception e){}
-                
+                String data = myReader.nextLine();
+                if(data.substring(0,data.indexOf(':')).equals(username)){
+                    marketItems = data.substring(username.length()+ 1, username.length() +6);
+                }
+            }catch(Exception e){}
             }
             if (marketItems == null){
                 int[] arr = {0,0,0,0,0};
@@ -189,7 +183,26 @@ public class VALS {
     public int getLevel(){
         return MAX_level;
     }
-    public static void main(String[] args) {
-        new VALS("m").changeMarketItems("00112");        
+    public void changeScore(int score){
+        try{
+            filePath = "userScore.txt";
+            Scanner sc = new Scanner(new File(filePath));
+            StringBuffer buffer = new StringBuffer();
+            while (sc.hasNextLine()) {
+                buffer.append(sc.nextLine()+System.lineSeparator());
+            }
+            String fileContents = buffer.toString();
+            sc.close();
+            String oldLine = username+":"+money ;
+            int n = score + money;
+            String newLine = username+":"+n;
+            fileContents = fileContents.replaceAll(oldLine, newLine);
+            FileWriter writer = new FileWriter(filePath);
+            writer.append(fileContents);
+            writer.flush();
+            writer.close();
+        }catch(IOException e){
+        }
+        money += score; 
     }
 }
