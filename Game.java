@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
-import java.util.Arrays;
 
 import javax.swing.Timer;
 public class Game<url> extends JPanel implements ActionListener , MouseListener{
@@ -48,7 +47,10 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     private SimpleAudioPlayer audioPlayer;
     private boolean reduceSpeedInGame = false;
     private int[] reduseDegree;
-    VALS v;
+    private VALS v;
+    private double pauseTime =0;
+    private double pauseStart;
+    private double pauseEnd;
     Game(int HitBalls , double[] arr , int level, VALS v){
         this.v = v;
 //        URL url = getClass().getResource(v.getSKIN_enabled());
@@ -149,6 +151,9 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     public void actionPerformed(ActionEvent e){
         if(pauseOpened ){
             if(!pausemenu.isP()){
+                pause.setEnabled(true);
+                pauseEnd = System.nanoTime()/ Math.pow(10, 9);
+                pauseTime += pauseEnd - pauseStart;
                 isPaused = pausemenu.isP();
                 pauseOpened = false;
                 pausemenu.dispose();
@@ -162,6 +167,8 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
             isPaused = true;
             if (!pauseOpened) {
                 pausemenu.setisP(true);
+                pause.setEnabled(false);
+                pauseStart = System.nanoTime()/ Math.pow(10, 9);
                 pausemenu.setVisible(true);
                 pauseOpened = true;
             }
@@ -286,7 +293,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     }
     public void gameEnd(){
         this.setVisible(false);
-        g = new endGame(isLost, level,  (int)endTime - startTime);
+        g = new endGame(isLost, level,  (int)((endTime - startTime) - pauseTime) ,v);
         frame.setVisible(false);
         money = g.amountOfMoney();
     }

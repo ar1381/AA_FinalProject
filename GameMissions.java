@@ -18,18 +18,18 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
     private JLabel label;
     private int maxPage = 3;
     private double money;
-    private int level = 1;
+    private int level;
     private int currentLevel;
     private Game t1;
     private JLabel back ;
     private JPanel backPanel ;
     private JPanel southRightPanel;
     private int command =-1;
-    VALS v;
+    private VALS v;
 
-    GameMissions(int level, VALS v){
+    GameMissions(VALS v){
         this.v =v;
-        this.level = level;
+        level = v.getLevel();
         pageNumber = new JLabel("       " +page);
         pageNumber.setForeground(Color.white);
         pageNumber.setPreferredSize(new Dimension(60 , 60));
@@ -226,24 +226,23 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
         currentLevel = Integer.parseInt(mission);
         switch(mission){
             case "1":
-                double[]  arr1 = {1 , 68 , 79 , 180 , 200 , 0,0,0 ,0,0,0,0,0,0,0,0,0};
+                double[]  arr1 = {45 , 135 , 225 , 315 , 0 ,0 ,0 ,0};
                 this.setVisible(false);
-                t1 = new Game(5, arr1 , Integer.parseInt(mission), v);
+                t1 = new Game(4, arr1 , Integer.parseInt(mission), v);
                 t1.setSpeed(2);
-                money =t1.getMoney();
                 dispose();
                 break;
             case "2":
-                double[]  arr2 = {1 , 68 , 79 , 180  , 0,0,0};
+                double[]  arr2 = {45 , 135 , 225 , 315 , 0 ,0 ,0 ,0};
                 this.setVisible(false);
                 t1 = new Game(4, arr2 , Integer.parseInt(mission), v);
                 t1.setSpeed(-2);
                 dispose();
                 break;
             case "3":
-                double[]  arr3 = {1 , 68 , 79 , 0,0,0};
+                double[]  arr3 = {0 , 72 , 144 ,216,288,360 , 0 ,0 ,0 ,0 ,0 ,0};
                 this.setVisible(false);
-                t1 = new Game(3, arr3 , Integer.parseInt(mission), v);
+                t1 = new Game(5, arr3 , Integer.parseInt(mission), v);
                 t1.setSpeed(2);
                 dispose();
                 break;
@@ -265,7 +264,7 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
                 double[]  arr6 = {1 , 36 , 72,108 ,144, 180, 216,252, 288, 324,0,0,0,0,0 ,0,0,0,0,0,0};
                 this.setVisible(false);
                 t1 = new Game(10, arr6 , Integer.parseInt(mission), v) ;
-                t1.setSpeed(-2);
+                t1.setSpeed(-3);
                 dispose();
                 break;
             case "7":
@@ -273,6 +272,8 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
                 this.setVisible(false);
                 t1 = new Game(12, arr7 , Integer.parseInt(mission), v);
                 t1.setSpeed(2);
+                int[] reduce ={30 , 60 , 180 , 210};
+                t1.reduceSpeed(reduce);
                 dispose();
                 break;
             case "8":
@@ -287,7 +288,6 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
                 this.setVisible(false);
                 t1 = new Game(5, arr9 , Integer.parseInt(mission), v);
                 t1.setSpeed(4);
-                money =t1.getMoney();
                 dispose();
                 break;
             case "10":
@@ -295,6 +295,7 @@ public class GameMissions extends JFrame  implements ActionListener , MouseListe
                 this.setVisible(false);
                 t1 = new Game(4, arr10 , Integer.parseInt(mission), v);
                 t1.setSpeed(-4);
+                t1.randomSpin(true);
                 dispose();
                 break;
             case "11":

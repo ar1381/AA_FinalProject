@@ -1,22 +1,33 @@
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.System.Logger.Level;
 import java.net.URL;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class VALS {
     private int MAX_level = 0;
-    private int money = 200;
+    private int money = 0;
     private String SKIN_enabled = "DefaultArrow.png";
     private boolean SKIN_yellow_bought = false;
     private boolean SKIN_green_bought = false;
     private boolean SKIN_white_bought = false;
     private boolean SKIN_purple_bought = false;
     private boolean SKIN_red_bought = false;
+    private String selectedSkin = "Default";
     private String username;
-    
+    private String marketItems;
+    private String filePath;
+    private GameUser gameUser;
     public VALS(String username){
         this.username = username;
+        getMarketItems();
+        getMaxLevel();
         boolean checkUser=false;
         boolean checkPass=false;
         URL url = getClass().getResource("userScore.txt");
@@ -31,8 +42,10 @@ public class VALS {
                 }
             
             }
+            myReader.close();
         } catch (FileNotFoundException e) {
         }
+        System.out.println(marketItems);
     }
     
     public boolean isSKIN_yellow_bought() {
@@ -53,8 +66,48 @@ public class VALS {
         //file thing
     }
     public void enable_yellow(){
-        //file thing
-        this.SKIN_yellow_bought = true;
+        if(marketItems.charAt(0) == '1'){
+            SKIN_yellow_bought = true;
+        }
+        if(marketItems.charAt(0) == '2'){
+            SKIN_yellow_bought= true;
+            selectedSkin = "yellow";// should get address of image
+        }
+    }
+    private void getMaxLevel(){
+
+        filePath = "Level.txt";
+        try {
+            Scanner myReader = new Scanner(new File(filePath));
+            while (myReader.hasNextLine()){
+                String data = myReader.nextLine();
+                if(data.substring(0,data.indexOf(':')).equals(username)){
+                    MAX_level =Integer.parseInt(data.substring(username.length()+ 1,data.length())) ;
+                }
+            
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+        }  
+    }
+    private void getMarketItems(){
+            filePath = "Market_Items.txt";
+        try {
+            Scanner myReader = new Scanner(new File(filePath));
+            while (myReader.hasNextLine()){
+                String data = myReader.nextLine();
+                if(data.substring(0,data.indexOf(':')).equals(username)){
+                    marketItems = data.substring(username.length()+ 1, username.length() +6);
+                }
+            }
+            if (marketItems == null){
+                int[] arr = {0,0,0,0,0};
+                gameUser = new GameUser(1, arr, username);
+                getMarketItems();
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+        }  
     }
     
     public boolean isSKIN_green_bought() {
@@ -87,5 +140,53 @@ public class VALS {
     
     public void setSKIN_red_bought(boolean SKIN_red_bought) {
         this.SKIN_red_bought = SKIN_red_bought;
+    }
+    public void changeMarketItems(String items){
+        try{
+            filePath = "Market_Items.txt";
+            Scanner sc = new Scanner(new File(filePath));
+            StringBuffer buffer = new StringBuffer();
+            while (sc.hasNextLine()) {
+                buffer.append(sc.nextLine()+System.lineSeparator());
+            }
+            String fileContents = buffer.toString();
+            sc.close();
+            String oldLine =username+":"+marketItems ;
+            String newLine = username+":"+items;
+            fileContents = fileContents.replaceAll(oldLine, newLine);
+            FileWriter writer = new FileWriter(filePath);
+            writer.append(fileContents);
+            writer.flush();
+            writer.close();
+        }catch(IOException e){
+        }
+        marketItems = items;
+    }
+    public void ChangeLevel(int newLevel){
+        try{
+        filePath = "Level.txt";
+        Scanner sc = new Scanner(new File(filePath));
+        StringBuffer buffer = new StringBuffer();
+        while (sc.hasNextLine()) {
+            buffer.append(sc.nextLine()+System.lineSeparator());
+        }
+        String fileContents = buffer.toString();
+        sc.close();
+        String oldLine =username+":"+MAX_level ;
+        String newLine = username+":"+newLevel;
+        fileContents = fileContents.replaceAll(oldLine, newLine);
+        FileWriter writer = new FileWriter(filePath);
+        writer.append(fileContents);
+        writer.flush();
+        writer.close();
+    }catch(IOException e){
+    }
+    MAX_level = newLevel;
+    }
+    public int getLevel(){
+        return MAX_level;
+    }
+    public static void main(String[] args) {
+        new VALS("m").changeMarketItems("00112");        
     }
 }

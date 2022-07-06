@@ -16,6 +16,9 @@ public class LogIn extends javax.swing.JFrame {
 	public void setCommand(int n) {
 		command=n;
 	}
+    public String getUserName(){
+        return user22;
+    }
 	
 	/* vali in zamani kar mikone ke barname login baste nabashe
 	vali age lagin baste beshe on moghe dige command hammon -1 mishe
@@ -120,7 +123,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         if(evt.getSource()==buttonLogin){
-            String user22=loginUserName.getText();
+            user22=loginUserName.getText();
             String pass22=String.copyValueOf(loginPassword.getPassword());
             boolean checkUser=false;
             boolean checkPass=false;
@@ -188,5 +191,6 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel labelLoginUserName;
     private javax.swing.JPasswordField loginPassword;
     private javax.swing.JTextField loginUserName;
+    private String user22;
 
 }

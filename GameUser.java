@@ -12,25 +12,25 @@ public class GameUser {
         this.items = items;
         this.userName = userName;
         try{
-            URL url = getClass().getResource("Level.txt");
-            BufferedWriter levelWriter = new BufferedWriter(new FileWriter(new File(url.getPath()).getAbsolutePath(),true));
-            levelWriter.write(userName+":"+level+"\n");
-            levelWriter.close();
-            URL url2 = getClass().getResource("Market_Items.txt");
-            BufferedWriter  itemsWriter=new BufferedWriter(new FileWriter(new File(url.getPath()).getAbsolutePath(),true));
-            itemsWriter.write(userName+":");
-            for(int i = 0 ; i < items.length - 1; ++i){
-                itemsWriter.write(String.valueOf(items[i]));
+            BufferedWriter passWriter=new BufferedWriter(new FileWriter("Level.txt",true));
+            passWriter.write(this.userName+":"+this.level+"\n");
+            passWriter.close();
+            BufferedWriter  scoreWriter=new BufferedWriter(new FileWriter("Market_Items.txt",true));
+            scoreWriter.write(this.userName+":");
+            for (int i = 0 ; i < items.length ; ++i){
+                scoreWriter.write(String.valueOf(items[i]));
             }
-            itemsWriter.write(items[4] + "}\n");
-            itemsWriter.close();
-            System.out.println("Finish");
-
+            scoreWriter.write("\n");
+            scoreWriter.close();
 
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"file doesn't exist");
 
         }
+    }
+    public static void main(String[] args) {
+        int[] i = {0 , 0, 0, 0,0};
+        new GameUser(3,i, "M");
     }
 
 }

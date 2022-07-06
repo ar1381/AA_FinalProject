@@ -16,7 +16,7 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
         private JPanel jPanel1;
         private int command = -1;
 
-        Menu(VALS v) {
+        Menu() {
                 setLayout(new BorderLayout());
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 setTitle("AA Game");

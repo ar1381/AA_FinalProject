@@ -1,401 +1,406 @@
+import java.awt.event.*;
+import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
-import java.net.URL;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 
-public class Settings extends JFrame implements ActionListener, MouseListener {
-        private javax.swing.JButton backbtn;
-        private javax.swing.JButton passbtn;
-        private javax.swing.JButton activatebtn;
-        private javax.swing.JLabel jLabel1;
-        private javax.swing.JLabel cheatlbl;
-        private javax.swing.JLabel hintlbl;
-        private javax.swing.JLabel usernameToplbl;
-        private javax.swing.JLabel scoreToplbl;
-        private javax.swing.JLabel usernameToplbl2;
-        private javax.swing.JLabel scoreToplbl2;
-        private javax.swing.JLabel titlelbl;
-        private javax.swing.JLabel oldPasslbl;
-        private javax.swing.JLabel newPasslbl;
-        private javax.swing.JPanel jPanel1;
-        private javax.swing.JTextField usernameField;
-        private javax.swing.JTextField oldPassField;
-        private javax.swing.JTextField newPassField;
-        private javax.swing.JTextField activateField;
-        private javax.swing.JLabel newUsernamelbl;
-        private int command = -1;
+/**
+ *
+ * @author MALEKI && Mohammadi
+ */
+public class Settings extends javax.swing.JFrame implements ActionListener, MouseListener {
+    String userg = "";
+    String Score = "";
 
-        public Settings(VALS v) {
-                setLayout(new BorderLayout());
-                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                setTitle("Settings");
-                setBackground(new Color(0, 64, 255));
-                setPreferredSize(new Dimension(800, 700));
-                setResizable(false);
+    /**
+     * Creates new form Settings
+     */
+    public int getCommand() {
+        return command;
+    }
 
-                jPanel1 = new javax.swing.JPanel();
-                usernameToplbl = new javax.swing.JLabel();
-                scoreToplbl = new javax.swing.JLabel();
-                usernameToplbl2 = new javax.swing.JLabel();
-                scoreToplbl2 = new javax.swing.JLabel();
-                titlelbl = new javax.swing.JLabel();
-                backbtn = new javax.swing.JButton();
-                oldPasslbl = new javax.swing.JLabel();
-                newPasslbl = new javax.swing.JLabel();
-                cheatlbl = new javax.swing.JLabel();
-                oldPassField = new javax.swing.JTextField();
-                newPassField = new javax.swing.JTextField();
-                activateField = new javax.swing.JTextField();
-                passbtn = new javax.swing.JButton();
-                activatebtn = new javax.swing.JButton();
-                hintlbl = new javax.swing.JLabel();
-                newUsernamelbl = new javax.swing.JLabel();
-                usernameField = new javax.swing.JTextField();
-                jLabel1 = new javax.swing.JLabel();
+    public void setCommand(int n) {
+        command = n;
+    }
 
-                usernameToplbl.setFont(new java.awt.Font("Ink Free", 1, 18)); // NOI18N
-                usernameToplbl.setForeground(new java.awt.Color(255, 153, 0));
-                usernameToplbl.setText("username :");
-
-                scoreToplbl.setFont(new java.awt.Font("Ink Free", 1, 18));
-                scoreToplbl.setForeground(new java.awt.Color(255, 153, 0));// NOI18N
-                scoreToplbl.setText("Score :");
-
-                usernameToplbl2.setForeground(new java.awt.Color(255, 255, 255));
-                usernameToplbl2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-                usernameToplbl2.setText("dssdd");
-
-                scoreToplbl2.setForeground(new java.awt.Color(255, 255, 255));
-                scoreToplbl2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-                scoreToplbl2.setText("dssdd");
-
-                titlelbl.setForeground(new java.awt.Color(255, 153, 0));
-                titlelbl.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
-                titlelbl.setText("Settings");
-
-                newUsernamelbl.setForeground(new java.awt.Color(255, 255, 255));
-                newUsernamelbl.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
-                newUsernamelbl.setText("Username :");
-
-                oldPasslbl.setForeground(new java.awt.Color(255, 255, 255));
-                oldPasslbl.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
-                oldPasslbl.setText("Old password :");
-
-                newPasslbl.setForeground(new java.awt.Color(255, 255, 255));
-                newPasslbl.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
-                newPasslbl.setText("New password :");
-
-                cheatlbl.setForeground(new java.awt.Color(255, 255, 255));
-                cheatlbl.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
-                cheatlbl.setText("Cheat Code :");
-
-                usernameField.setBackground(new java.awt.Color(0, 15, 18));
-                usernameField.setForeground(new java.awt.Color(255, 255, 255));
-
-                oldPassField.setBackground(new java.awt.Color(0, 15, 18));
-                oldPassField.setForeground(new java.awt.Color(255, 255, 255));
-
-                newPassField.setBackground(new java.awt.Color(0, 15, 18));
-                newPassField.setForeground(new java.awt.Color(255, 255, 255));
-
-                activateField.setBackground(new java.awt.Color(0, 15, 18));
-                activateField.setForeground(new java.awt.Color(255, 255, 255));
-
-                backbtn.setBackground(new Color(11, 168, 156));
-                backbtn.setFont(new Font("Ink Free", 1, 16));
-                backbtn.setForeground(new Color(255, 255, 255));
-                backbtn.setText("Back");
-                backbtn.setFocusable(false);
-                backbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                backbtn.addMouseListener(this);
-                backbtn.addActionListener(this);
-
-                passbtn.setBackground(new Color(11, 168, 156));
-                passbtn.setFont(new Font("Ink Free", 1, 16));
-                passbtn.setForeground(new Color(255, 255, 255));
-                passbtn.setText("Change Password");
-                passbtn.setFocusable(false);
-                passbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                passbtn.addMouseListener(this);
-                passbtn.addActionListener(this);
-
-                activatebtn.setBackground(new Color(11, 168, 156));
-                activatebtn.setFont(new Font("Ink Free", 1, 16));
-                activatebtn.setForeground(new Color(255, 255, 255));
-                activatebtn.setText("Activate");
-                activatebtn.setFocusable(false);
-                activatebtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                activatebtn.addMouseListener(this);
-                activatebtn.addActionListener(this);
-
-                hintlbl.setForeground(new java.awt.Color(0, 255, 51));
-                hintlbl.setText("Only OG's know about it ( HINT: gta max health && money )");
-
-                javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-                jPanel1.setLayout(jPanel1Layout);
-                jPanel1Layout.setHorizontalGroup(
-                                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(jPanel1Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addContainerGap()
-                                                                                                .addGroup(jPanel1Layout
-                                                                                                                .createParallelGroup(
-                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                .createSequentialGroup()
-                                                                                                                                .addComponent(scoreToplbl,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                61,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                .addPreferredGap(
-                                                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                                                .addComponent(scoreToplbl2,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                181,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                .addGap(42, 42, 42)
-                                                                                                                                .addComponent(titlelbl,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                152,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                .createSequentialGroup()
-                                                                                                                                .addComponent(usernameToplbl)
-                                                                                                                                .addPreferredGap(
-                                                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                                                .addComponent(usernameToplbl2,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                181,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                                                .addGroup(jPanel1Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(295, 295, 295)
-                                                                                                .addComponent(activatebtn,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                170,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                .addGroup(jPanel1Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(293, 293, 293)
-                                                                                                .addComponent(passbtn,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                170,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                Short.MAX_VALUE))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout
-                                                                .createSequentialGroup()
-                                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                Short.MAX_VALUE)
-                                                                .addComponent(backbtn))
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(jPanel1Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(184, 184, 184)
-                                                                                                .addGroup(jPanel1Layout
-                                                                                                                .createParallelGroup(
-                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                .createSequentialGroup()
-                                                                                                                                .addComponent(cheatlbl)
-                                                                                                                                .addGap(92, 92, 92)
-                                                                                                                                .addComponent(activateField,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                190,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                .createSequentialGroup()
-                                                                                                                                .addComponent(newPasslbl)
-                                                                                                                                .addGap(61, 61, 61)
-                                                                                                                                .addComponent(newPassField,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                190,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                .createSequentialGroup()
-                                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                                .createParallelGroup(
-                                                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                                                .addComponent(oldPasslbl)
-                                                                                                                                                .addComponent(newUsernamelbl))
-                                                                                                                                .addGap(70, 70, 70)
-                                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                                .createParallelGroup(
-                                                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                                                                                                                                false)
-                                                                                                                                                .addComponent(oldPassField,
-                                                                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                                                                190,
-                                                                                                                                                                Short.MAX_VALUE)
-                                                                                                                                                .addComponent(usernameField)))))
-                                                                                .addGroup(jPanel1Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(213, 213, 213)
-                                                                                                .addComponent(hintlbl)))
-                                                                .addGap(0, 219, Short.MAX_VALUE)));
-                jPanel1Layout.setVerticalGroup(
-                                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(jPanel1Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addComponent(backbtn,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                39,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                .addPreferredGap(
-                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                                                                                164,
-                                                                                                                Short.MAX_VALUE))
-                                                                                .addGroup(jPanel1Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(0, 69, Short.MAX_VALUE)
-                                                                                                .addGroup(jPanel1Layout
-                                                                                                                .createParallelGroup(
-                                                                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                                                .addComponent(usernameToplbl)
-                                                                                                                .addComponent(usernameToplbl2,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                25,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                .addPreferredGap(
-                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                .addGroup(jPanel1Layout
-                                                                                                                .createParallelGroup(
-                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                .addComponent(titlelbl)
-                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                .createParallelGroup(
-                                                                                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                                                                .addComponent(scoreToplbl,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                26,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                .addComponent(scoreToplbl2,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                22,
-                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                                                .addGap(44, 44, 44)))
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                                                false)
-                                                                                .addComponent(newUsernamelbl,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                Short.MAX_VALUE)
-                                                                                .addComponent(usernameField))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(oldPasslbl)
-                                                                                .addComponent(oldPassField,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                33,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(newPassField,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                31,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addComponent(newPasslbl))
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(passbtn,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                30,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(65, 65, 65)
-                                                                .addComponent(hintlbl)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(cheatlbl)
-                                                                                .addComponent(activateField,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                33,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(activatebtn,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                31,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(74, 74, 74)));
-
-                URL url = getClass().getResource("gta-bg.jpg");
-                jLabel1 = new JLabel(new ImageIcon(new File(url.getPath()).getAbsolutePath()));
-                add(jLabel1);
-
-                jPanel1.setBackground(new Color(0, 0, 0, 90));
-                jLabel1.setLayout(new FlowLayout());
-                jLabel1.add(jPanel1);
-
-                pack();
-                setLocationRelativeTo(null);
-                setVisible(true);
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-                // TODO Auto-generated method stub
-                if(e.getSource() == backbtn)
-                        command = 1;
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-                if (e.getSource() == backbtn)
-                        backbtn.setBackground(new Color(255, 51, 0));
-                if (e.getSource() == passbtn)
-                        passbtn.setBackground(new Color(255, 51, 0));
-                if (e.getSource() == activatebtn)
-                        activatebtn.setBackground(new Color(255, 51, 0));
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-                backbtn.setBackground(new Color(11, 168, 156));
-                passbtn.setBackground(new Color(11, 168, 156));
-                activatebtn.setBackground(new Color(11, 168, 156));
-
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-
-        }
-        public int getCommand() {
-                return command;
+    public Settings(VALS v) {
+        // String userg="";
+        // String Score="";
+        initComponents();
+        // this.setLocationRelativeTo(null);
+        // this.setSize(470, 763);
+        this.setBounds(500, 0, 470, 763);
+        File userPass1 = new File("witchUserIsInTheGame.txt");
+        try {
+            Scanner myReader = new Scanner(userPass1);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                jLabel_userName.setText(data.substring(0, data.indexOf(":")));
+                userg = data.substring(0, data.indexOf(":"));
             }
-            
-         public void setCommand(int n) {
-                command = n;
-            }
+            myReader.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "file doesn't exist");
 
+        }
+        File userPass2 = new File("userScore.txt");
+        try {
+            Scanner myReader = new Scanner(userPass2);
+            while (myReader.hasNextLine()) {
+                String data2 = myReader.nextLine();
+                // JOptionPane.showMessageDialog(rootPane, data2+" "+userg);
+                if (userg.equals(data2.substring(0, data2.indexOf(":")))) {
+                    Score = data2.substring(1 + data2.indexOf(":"), data2.length());
+                    // JOptionPane.showMessageDialog(rootPane, Score);
+
+                    jLabel_Score.setText(Score);
+                }
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "file doesn't exist");
+
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel_userName = new javax.swing.JLabel();
+        jLabel_Score = new javax.swing.JLabel();
+        jButton_Back = new javax.swing.JButton();
+        jTextField1_usserName = new javax.swing.JTextField();
+        jTextField2_oldPassword = new javax.swing.JTextField();
+        jTextField3_newPassword = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton1_changePassword = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton1_chaetBottom = new javax.swing.JButton();
+        jTextField1_cheatCode = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        jLabel1.setText("UserName:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(12, 13, 90, 16);
+
+        jLabel2.setText("Score:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(12, 45, 70, 16);
+
+        jLabel_userName.setText("arma");
+        getContentPane().add(jLabel_userName);
+        jLabel_userName.setBounds(107, 13, 76, 16);
+
+        jLabel_Score.setText("1000");
+        getContentPane().add(jLabel_Score);
+        jLabel_Score.setBounds(107, 45, 76, 16);
+
+        jButton_Back.setBackground(new Color(11, 168, 156));
+        jButton_Back.setFont(new Font("Ink Free", 1, 12));
+        jButton_Back.setForeground(new Color(255, 255, 255));
+        jButton_Back.setFocusable(false);
+        jButton_Back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton_Back.setText("Back");
+        jButton_Back.setFocusable(false);
+        jButton_Back.addMouseListener(this);
+        jButton_Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_BackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_Back);
+        jButton_Back.setBounds(394, 13, 57, 25);
+        getContentPane().add(jTextField1_usserName);
+        jTextField1_usserName.setBounds(190, 125, 177, 31);
+        getContentPane().add(jTextField2_oldPassword);
+        jTextField2_oldPassword.setBounds(190, 169, 177, 31);
+        getContentPane().add(jTextField3_newPassword);
+        jTextField3_newPassword.setBounds(190, 218, 177, 33);
+
+        jLabel3.setText("UserName:");
+
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(48, 132, 110, 16);
+
+        jLabel4.setText("Old Password:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(48, 176, 120, 16);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel5.setText("New Password:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(48, 226, 120, 20);
+
+        jButton1_changePassword.setBackground(new Color(11, 168, 156));
+        jButton1_changePassword.setFont(new Font("Ink Free", 1, 12));
+        jButton1_changePassword.setForeground(new Color(255, 255, 255));
+        jButton1_changePassword.setFocusable(false);
+        jButton1_changePassword.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton1_changePassword.addMouseListener(this);
+        jButton1_changePassword.setText("change password");
+        jButton1_changePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_changePasswordActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1_changePassword);
+        jButton1_changePassword.setBounds(190, 269, 177, 25);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("If you know so you know");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(150, 340, 270, 25);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Cheat Code:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(48, 379, 120, 30);
+
+        jButton1_chaetBottom.setBackground(new Color(11, 168, 156));
+        jButton1_chaetBottom.setFont(new Font("Ink Free", 1, 12));
+        jButton1_chaetBottom.setForeground(new Color(255, 255, 255));
+        jButton1_chaetBottom.setFocusable(false);
+        jButton1_chaetBottom.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton1_chaetBottom.setText("Cheat");
+        jButton1_chaetBottom.addMouseListener(this);
+        jButton1_chaetBottom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_chaetBottomActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1_chaetBottom);
+        jButton1_chaetBottom.setBounds(190, 425, 177, 36);
+
+        jTextField1_cheatCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1_cheatCodeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField1_cheatCode);
+        jTextField1_cheatCode.setBounds(190, 374, 177, 33);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("gta.jpg")); // NOI18N
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(-3, -87, 470, 930);
+
+        setResizable(false);
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton_BackActionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == jButton_Back) {
+            command = 1;
+            this.setVisible(false);
+
+        }
+    }// GEN-LAST:event_jButton_BackActionPerformed
+
+    private void jButton1_changePasswordActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1_changePasswordActionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == jButton1_changePassword) {
+            // String stUser = jTextField1_usserName.getText();
+            String username = jTextField1_usserName.getText();
+            String oldpassword = jTextField2_oldPassword.getText();
+            String newPassword = jTextField3_newPassword.getText();
+            try {
+                // Instantiating the File class
+                String filePath = "userPass.txt";
+                // Instantiating the Scanner class to read the file
+                Scanner sc = new Scanner(new File(filePath));
+                // instantiating the StringBuffer class
+                StringBuffer buffer = new StringBuffer();
+                // Reading lines of the file and appending them to StringBuffer
+                while (sc.hasNextLine()) {
+                    buffer.append(sc.nextLine() + System.lineSeparator());
+                }
+                String fileContents = buffer.toString();
+                System.out.println("Contents of the file: " + fileContents);
+                // closing the Scanner object
+                sc.close();
+                String oldLine = username + ":" + oldpassword;
+                String newLine = username + ":" + newPassword;
+                // Replacing the old line with new line
+                fileContents = fileContents.replaceAll(oldLine, newLine);
+                // instantiating the FileWriter class
+                FileWriter writer = new FileWriter(filePath);
+                // System.out.println("");
+                // System.out.println("new data: "+fileContents);
+                writer.append(fileContents);
+                writer.flush();
+                JOptionPane.showMessageDialog(rootPane, "pass changed successfully");
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(rootPane, "change pass error");
+            }
+        }
+    }// GEN-LAST:event_jButton1_changePasswordActionPerformed
+
+    private void jTextField1_cheatCodeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField1_cheatCodeActionPerformed
+        // TODO add your handling code here:
+
+    }// GEN-LAST:event_jTextField1_cheatCodeActionPerformed
+
+    private void jButton1_chaetBottomActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1_chaetBottomActionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == jButton1_chaetBottom) {
+            if (jTextField1_cheatCode.getText().equals("hesoyam")
+                    || jTextField1_cheatCode.getText().equals("HESOYAM")) {
+                try {
+                    String filePath = "userScore.txt";
+                    Scanner sc = new Scanner(new File(filePath));
+                    StringBuffer buffer = new StringBuffer();
+                    while (sc.hasNextLine()) {
+                        buffer.append(sc.nextLine() + System.lineSeparator());
+                    }
+                    String userg = "";
+                    String Score = "";
+                    String fileContents = buffer.toString();
+                    sc.close();
+                    String oldLine = userg + ":" + Score;
+                    String newLine = userg + ":" + "1000000000";
+                    fileContents = fileContents.replaceAll(oldLine, newLine);
+                    FileWriter writer = new FileWriter(filePath);
+                    writer.append(fileContents);
+                    writer.flush();
+                    JOptionPane.showMessageDialog(rootPane, "cheat applied  successfully , enjoy ");
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(rootPane, "cheat  error");
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "code is wrong , ha ha ha you are not one of us");
+            }
+        }
+    }// GEN-LAST:event_jButton1_chaetBottomActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Settings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Settings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Settings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Settings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        // </editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Settings(v).setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1_chaetBottom;
+    private javax.swing.JButton jButton1_changePassword;
+    private javax.swing.JButton jButton_Back;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel_Score;
+    private javax.swing.JLabel jLabel_userName;
+    private javax.swing.JTextField jTextField1_cheatCode;
+    private javax.swing.JTextField jTextField1_usserName;
+    private javax.swing.JTextField jTextField2_oldPassword;
+    private javax.swing.JTextField jTextField3_newPassword;
+    public static VALS v;
+    private int command = -1;
+
+    // End of variables declaration//GEN-END:variables
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        if (e.getSource() == jButton1_chaetBottom)
+            jButton1_chaetBottom.setBackground(new Color(255, 51, 0));
+        if (e.getSource() == jButton1_changePassword)
+            jButton1_changePassword.setBackground(new Color(255, 51, 0));
+        if (e.getSource() == jButton_Back)
+            jButton_Back.setBackground(new Color(255, 51, 0));
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        jButton1_chaetBottom.setBackground(new Color(11, 168, 156));
+        jButton1_changePassword.setBackground(new Color(11, 168, 156));
+        jButton_Back.setBackground(new Color(11, 168, 156));
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+
+    }
 }
