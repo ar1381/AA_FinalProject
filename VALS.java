@@ -23,6 +23,11 @@ public class VALS {
         this.username = username;
         getMarketItems();
         getMaxLevel();
+        enable_Green();
+        enable_Purple();
+        enable_Red();
+        enable_White();
+        enable_yellow();
         boolean checkUser=false;
         boolean checkPass=false;
         URL url = getClass().getResource("userScore.txt");
@@ -56,10 +61,6 @@ public class VALS {
     public int getMoney(){
         return money;
     }
-    public void setMoney(int m){
-        this.money = m;
-        //file thing
-    }
     public void enable_yellow(){
         if(marketItems.charAt(0) == '1'){
             SKIN_yellow_bought = true;
@@ -67,6 +68,42 @@ public class VALS {
         if(marketItems.charAt(0) == '2'){
             SKIN_yellow_bought= true;
             selectedSkin = "yellow";// should get address of image
+        }
+    }
+    public void enable_Green(){
+        if(marketItems.charAt(1) == '1'){
+            SKIN_green_bought = true;
+        }
+        if(marketItems.charAt(1) == '2'){
+            SKIN_green_bought= true;
+            selectedSkin = "Green";// should get address of image
+        }
+    }
+    public void enable_White(){
+        if(marketItems.charAt(2) == '1'){
+            SKIN_white_bought = true;
+        }
+        if(marketItems.charAt(2) == '2'){
+            SKIN_white_bought= true;
+            selectedSkin = "white";// should get address of image
+        }
+    }
+    public void enable_Purple(){
+        if(marketItems.charAt(3) == '1'){
+            SKIN_purple_bought = true;
+        }
+        if(marketItems.charAt(3) == '2'){
+            SKIN_purple_bought= true;
+            selectedSkin = "Purple";// should get address of image
+        }
+    }
+    public void enable_Red(){
+        if(marketItems.charAt(4) == '1'){
+            SKIN_red_bought = true;
+        }
+        if(marketItems.charAt(4) == '2'){
+            SKIN_red_bought= true;
+            selectedSkin = "Red";// should get address of image
         }
     }
     private void getMaxLevel(){
