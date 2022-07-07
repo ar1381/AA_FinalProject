@@ -1,12 +1,17 @@
-
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
 
-public class LeaderBoard extends javax.swing.JFrame {
+public class LeaderBoard extends javax.swing.JFrame implements MouseListener {
 
 
     public LeaderBoard() {
         initComponents();
+        
         new LeaderBoardWriterF(jTextArea1);
         this.setLocationRelativeTo(null);
     }
@@ -33,6 +38,7 @@ public class LeaderBoard extends javax.swing.JFrame {
         jTextArea1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jTextArea1.setRows(5);
         jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea1.setEditable(false);
         jScrollPane2.setViewportView(jTextArea1);
 
         getContentPane().add(jScrollPane2);
@@ -53,11 +59,20 @@ public class LeaderBoard extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 0));
         getContentPane().add(jLabel4);
         jLabel4.setBounds(390, 50, 340, 25);
+        
+        back = new JLabel("back");
+        back.setBounds(20 , 20 , 80 , 40);
+        back.setFont(new Font("MV Boli" , Font.PLAIN, 20));
+        back.setForeground(Color.red);
+        back.setFocusable(false);
+        back.addMouseListener(this);
+        getContentPane().add(back);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mohammad Mahdi Eyni\\Desktop\\aaFinalProject(ma-ei-mo)\\com.mycompany_mavenproject2_jar_1.0-SNAPSHOT\\Login-bg.jpg")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("Login-bg.jpg")); // NOI18N
         jLabel6.setText("jLabel6");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(-90, -490, 1030, 1260);
+        setResizable(false);
 
         pack();
     }
@@ -89,12 +104,57 @@ public class LeaderBoard extends javax.swing.JFrame {
         });
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(e.getSource() == back){
+            command = 2;
+        }       
+    }
 
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        if(e.getSource() == back){
+            back.setForeground(Color.white);
+        }
+        
+    }
+
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        if(e.getSource() == back){
+            back.setForeground(Color.red);
+        }
+        
+    }
+    public void setCommand(int n){
+        command = n;
+    }
+    public int getCommand(){
+        return command;
+    }
     private javax.swing.JLabel jLabel2;
+    private JLabel   back;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private int command = -1;
 
 }

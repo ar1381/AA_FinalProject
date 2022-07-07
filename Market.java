@@ -25,11 +25,15 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
         private JLabel whitelbl;
         private JPanel jPanel1;
         private javax.swing.JButton jButton6;
-        VALS v ;
+        private VALS v ;
+        private String itemString;
         private int command = -1;
+        private int money;
 
         public Market(VALS v) {
                 this.v = v;
+                itemString = v.getItems();
+                money = v.getMoney();
                 setLayout(new BorderLayout());
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 setTitle("Market");
@@ -406,48 +410,106 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
 
                 if(e.getSource() == yellowbtn){
                         if(v.isSKIN_yellow_bought()){
-                                v.setSKIN_enabled("YellowArrow.png");
-                        }else if(v.getMoney() >= 100){
-                                v.changeScore(v.getMoney() - 100);
-                                v.enable_yellow();
-                                v.setSKIN_enabled("YellowArrow.png");
+                                itemString = itemString.replaceAll("2", "1");
+                                itemString = "2" + itemString.substring(1);
+                                v.changeMarketItems(itemString);
+                                JOptionPane.showMessageDialog(null, "You Selcted Yellow Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
+                        }else if(money >= 100){
+                                if(JOptionPane.showConfirmDialog(null, "Do you want to buy this Arrow ?", "Buy", JOptionPane.YES_NO_OPTION) == 0){
+                                money -= 100;
+                                v.changeScore(-100);
+                                itemString = itemString.replaceAll("2", "1");
+                                itemString = "2" + itemString.substring(1);
+                                v.changeMarketItems(itemString);
+                                JOptionPane.showMessageDialog(null, "from now you have this Skin\nYour score :"+v.getMoney(), "message", JOptionPane.INFORMATION_MESSAGE);
+                                }
                         }
+                        else{
+                                JOptionPane.showMessageDialog(null, "You dont have enough score", "Warning", JOptionPane.WARNING_MESSAGE);
+                        }
+                                
                 }
                 if(e.getSource() == greenbtn){
                         if(v.isSKIN_green_bought()){
-                                v.setSKIN_enabled("GreenArrow.png");
-                        }else if(v.getMoney() >= 100){
-                                v.changeScore(v.getMoney() - 100);
-                                v.setSKIN_green_bought(true);
-                                v.setSKIN_enabled("GreenArrow.png");
+                                itemString = itemString.replaceAll("2", "1");
+                                itemString = itemString.substring(0, 1)+"2" + itemString.substring(2);
+                                v.changeMarketItems(itemString);
+                                JOptionPane.showMessageDialog(null, "You Selcted Green Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
+                        }else if(money >= 100){
+                                if(JOptionPane.showConfirmDialog(null, "Do you want to buy this Arrow ?", "Buy", JOptionPane.YES_NO_OPTION) == 0){
+                                money -= 100;
+                                v.changeScore(-100);
+                                itemString = itemString.replaceAll("2", "1");
+                                itemString = itemString.charAt(0)+"2" + itemString.substring(2);
+                                v.changeMarketItems(itemString);
+                                JOptionPane.showMessageDialog(null, "from now you have this Skin\nYour score :"+v.getMoney(), "message", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                        }
+                        else{
+                                JOptionPane.showMessageDialog(null, "You dont have enough score", "Warning", JOptionPane.WARNING_MESSAGE);
                         }
                 }
                 if(e.getSource() == redbtn){
-                        if(v.isSKIN_green_bought()){
-                                v.setSKIN_enabled("RedArrow.png");
-                        }else if(v.getMoney() >= 100){
-                                v.changeScore(v.getMoney() - 100);
-                                v.setSKIN_red_bought(true);
-                                v.setSKIN_enabled("RedArrow.png");
+                        if(v.isSKIN_red_bought()){
+                                itemString = itemString.replaceAll("2", "1");
+                                itemString = itemString.subSequence(0, 4)+"2";
+                                v.changeMarketItems(itemString);
+                                JOptionPane.showMessageDialog(null, "You Selcted Red Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
+                        }else if(money >= 100){
+                                if(JOptionPane.showConfirmDialog(null, "Do you want to buy this Arrow ?", "Buy", JOptionPane.YES_NO_OPTION) == 0){
+                                money -=100;
+                                v.changeScore((-100));
+                                itemString = itemString.replaceAll("2", "1");
+                                itemString = itemString.subSequence(0, 4)+"2";
+                                v.changeMarketItems(itemString);
+                                JOptionPane.showMessageDialog(null, "from now you have this Skin\nYour score :"+v.getMoney(), "message", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                        }
+                        else{
+                                JOptionPane.showMessageDialog(null, "You dont have enough score", "Warning", JOptionPane.WARNING_MESSAGE);
                         }
                 }
                 if(e.getSource() == whitebtn){
                         if(v.isSKIN_white_bought()){
-                                v.setSKIN_enabled("WhiteArrow.png");
-                        }else if(v.getMoney() >= 100){
-                                v.changeScore(v.getMoney() - 100);
-                                v.setSKIN_white_bought(true);
-                                v.setSKIN_enabled("WhiteArrow.png");
+                                itemString = itemString.replaceAll("2", "1");
+                                itemString = itemString.subSequence(0, 2)+"2" + itemString.substring(3);
+                                v.changeMarketItems(itemString);
+                                JOptionPane.showMessageDialog(null, "You Selcted White Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
+                        }else if(money >= 100){
+                                if(JOptionPane.showConfirmDialog(null, "Do you want to buy this Arrow ?", "Buy", JOptionPane.YES_NO_OPTION) == 0){
+                                money -= 100;
+                                v.changeScore((-100));
+                                itemString = itemString.replaceAll("2", "1");
+                                itemString = itemString.subSequence(0, 2)+"2" + itemString.substring(3);
+                                v.changeMarketItems(itemString);
+                                JOptionPane.showMessageDialog(null, "from now you have this Skin\nYour score :"+v.getMoney(), "message", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                        }
+                        else{
+                                JOptionPane.showMessageDialog(null, "You dont have enough score", "Warning", JOptionPane.WARNING_MESSAGE);
                         }
                 }
                 if(e.getSource() == purplebtn){
                         if(v.isSKIN_purple_bought()){
-                                v.setSKIN_enabled("PurpleArrow.png");
-                        }else if(v.getMoney() >= 100){
-                                v.changeScore(v.getMoney() - 100);
-                                v.setSKIN_purple_bought(true);
-                                v.setSKIN_enabled("PurpleArrow.png");
+                                itemString = itemString.replaceAll("2", "1");
+                                itemString = itemString.subSequence(0, 3)+"2" + itemString.substring(4);
+                                v.changeMarketItems(itemString);
+                                JOptionPane.showMessageDialog(null, "You Selcted Purple Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
                         }
+                        else if(money >= 100){
+                                if(JOptionPane.showConfirmDialog(null, "Do you want to buy this Arrow ?", "Buy", JOptionPane.YES_NO_OPTION) == 0){
+                                money -= 100;
+                                v.changeScore(-100);
+                                itemString = itemString.replaceAll("2", "1");
+                                itemString = itemString.subSequence(0, 3)+"2" + itemString.substring(4);
+                                v.changeMarketItems(itemString);
+                                JOptionPane.showMessageDialog(null, "from now you have this Skin\nYour score :"+v.getMoney(), "message", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                        }
+                        else{
+                                JOptionPane.showMessageDialog(null, "You dont have enough score", "Warning", JOptionPane.WARNING_MESSAGE);
+                        }
+
                 }
                 if (e.getSource() == jButton6){
                         command = 1;
@@ -483,5 +545,4 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                 // TODO Auto-generated method stub
                 
         }
-
 }

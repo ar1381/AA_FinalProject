@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import javax.sql.rowset.spi.SyncResolver;
+
 public class VALS {
     private int MAX_level = 0;
     private int money = 0;
@@ -14,7 +16,7 @@ public class VALS {
     private boolean SKIN_white_bought = false;
     private boolean SKIN_purple_bought = false;
     private boolean SKIN_red_bought = false;
-    private String selectedSkin = "Default";
+    private String selectedSkin = "DefaultArrow.png";
     private String username;
     private String marketItems;
     private String filePath;
@@ -28,8 +30,6 @@ public class VALS {
         enable_Red();
         enable_White();
         enable_yellow();
-        boolean checkUser=false;
-        boolean checkPass=false;
         URL url = getClass().getResource("userScore.txt");
         File userPass1 = new File(new File(url.getPath()).getAbsolutePath());
         try {
@@ -37,7 +37,6 @@ public class VALS {
             while (myReader.hasNextLine()){
                 String data = myReader.nextLine();
                 if(data.substring(0,data.indexOf(':')).equals(username)){
-                    checkUser=true;
                     this.money = Integer.parseInt(data.substring(data.indexOf(':')+1,data.length()));
                 }
             
@@ -45,7 +44,6 @@ public class VALS {
             myReader.close();
         } catch (FileNotFoundException e) {
         }
-        System.out.println(marketItems);
     }
     
     public boolean isSKIN_yellow_bought() {
@@ -67,7 +65,7 @@ public class VALS {
         }
         if(marketItems.charAt(0) == '2'){
             SKIN_yellow_bought= true;
-            selectedSkin = "yellow";// should get address of image
+            selectedSkin = "YellowArrow.png";
         }
     }
     public void enable_Green(){
@@ -76,7 +74,7 @@ public class VALS {
         }
         if(marketItems.charAt(1) == '2'){
             SKIN_green_bought= true;
-            selectedSkin = "Green";// should get address of image
+            selectedSkin = "GreenArrow.png";
         }
     }
     public void enable_White(){
@@ -85,7 +83,7 @@ public class VALS {
         }
         if(marketItems.charAt(2) == '2'){
             SKIN_white_bought= true;
-            selectedSkin = "white";// should get address of image
+            selectedSkin = "WhiteArrow.png";
         }
     }
     public void enable_Purple(){
@@ -94,7 +92,7 @@ public class VALS {
         }
         if(marketItems.charAt(3) == '2'){
             SKIN_purple_bought= true;
-            selectedSkin = "Purple";// should get address of image
+            selectedSkin = "PurpleArrow.png";
         }
     }
     public void enable_Red(){
@@ -103,7 +101,7 @@ public class VALS {
         }
         if(marketItems.charAt(4) == '2'){
             SKIN_red_bought= true;
-            selectedSkin = "Red";// should get address of image
+            selectedSkin = "RedArrow.png";
         }
     }
     private void getMaxLevel(){
@@ -236,7 +234,7 @@ public class VALS {
             String fileContents = buffer.toString();
             sc.close();
             String oldLine = username+":"+money ;
-            int n = score + money;
+            int n = money + score;
             String newLine = username+":"+n;
             fileContents = fileContents.replaceAll(oldLine, newLine);
             FileWriter writer = new FileWriter(filePath);
@@ -246,5 +244,11 @@ public class VALS {
         }catch(IOException e){
         }
         money += score; 
+    }
+    public String getItems(){
+        return marketItems;
+    }
+    public String getSelectedSkin(){
+        return selectedSkin;
     }
 }

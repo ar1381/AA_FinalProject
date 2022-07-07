@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 public class Launch implements ActionListener{
     private Timer timer ;
+    private int LEADERBOARD = 5;
     private int MENU = 1;
     private int GAME_MISSIONS = 2;
     private int SETTINGS = 3;
@@ -22,6 +23,7 @@ public class Launch implements ActionListener{
     private Market market ;
     public VALS v;
     private int level;
+    private LeaderBoard board;
     Launch(){
         logIn = new LogIn();
         menu = new Menu();
@@ -78,7 +80,7 @@ public class Launch implements ActionListener{
                 gameMissions.DisposeGame();
                 gameMissions.dispose();
                 if(command == 11)
-                    command =1;
+                    command =2;
             }
         }
         else if(command == SETTINGS){
@@ -140,6 +142,21 @@ public class Launch implements ActionListener{
                 gameMissions.dispose();
             }
         }
+        else if( command == LEADERBOARD){
+            if ( n == 0){
+                board = new LeaderBoard();
+                board.setVisible(true);
+                n ++;
+            }
+            if(board.getCommand() != -1){
+                command = board.getCommand();
+                board.setCommand(-1);
+                board.setVisible(false);
+                n = 0;
+                board.dispose();
+            }
+        }
+        
 
 
     }

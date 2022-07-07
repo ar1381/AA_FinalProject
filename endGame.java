@@ -114,7 +114,7 @@ public class endGame extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == OKBUtton){
             if(isLost)
-                command = 1;
+                command = 2;
             else
                 command = 11;// means you have won
         }
@@ -131,26 +131,29 @@ public class endGame extends JPanel implements ActionListener{
     }
     public double amountOfMoney(){
         double n;
+        if(runTime < 1){
+            runTime = 1;
+        }
         if (isLost)
             return 0;
         if(level < 10){
-            n = (20 * level / runTime) ;
+            n = (10 * level / runTime) ;
             return n;
         }
         if(level < 20){
-            n = (40 * level / runTime);
+            n = (15 * level / runTime);
             return n;
         }
         if(level < 30){
-            n = (40 * level / runTime);
+            n = (10 * level / runTime);
             return n ;
         }
         if(level < 40){
-            n = (60 * level / runTime);
+            n = (15 * level / runTime);
             return n;
         }
         else{
-            n = (80 * level/ runTime);
+            n = (20 * level/ runTime);
             return n;
         }
     }

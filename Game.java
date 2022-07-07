@@ -54,7 +54,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     Game(int HitBalls , double[] arr , int level, VALS v){
         this.v = v;
 //        URL url = getClass().getResource(v.getSKIN_enabled());
-        imagePathName = v.getSKIN_enabled();
+        imagePathName = v.getSelectedSkin();
         frame.setSize(800 , 1000);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -137,6 +137,30 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
                     g2d.drawImage(arrow, at, null);
                 }
             }
+            if(numberOfNeedle == 0){
+                g2d.setPaint(Color.black);
+                g2d.fillOval((frame.getWidth() / 2) - 100, (frame.getHeight() / 2) - 280, 200, 200);
+                g2d.setPaint(Color.white);
+                g2d.setFont(new Font("MV Boli", Font.PLAIN, 50));
+                String needleLeft = String.valueOf(arr.length - numberOfNeedle);
+                g2d.drawString(needleLeft, (frame.getWidth() / 2) - 20 - ((needleLeft.length() - 1) * 5), (frame.getHeight() / 2) - 160);
+                g2d.drawImage(arrow, at, null);
+                if (trowing) {
+                    if (!isEnd) {
+                        at = AffineTransform.getTranslateInstance((frame.getWidth() / 2), trowingY);
+                        at.rotate(Math.toRadians(45));
+                        g2d.drawImage(arrow, at, null);
+                        trowingY -= 15;
+                        if (trowingY <= (frame.getHeight() / 2) + imageY + arrow.getHeight())
+                            trowing = false;
+                    }
+                }
+                if (numberOfNeedle != arr.length) {
+                    at = AffineTransform.getTranslateInstance((frame.getWidth() / 2), 500);
+                    at.rotate(Math.toRadians(45));
+                    g2d.drawImage(arrow, at, null);
+                }
+            }
         
     }
     BufferedImage loadImage(String Filename){
@@ -161,6 +185,7 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
         }
         if(!pausemenu.isP()){
             isPaused = false;
+            //
             pauseOpened = false;
         }
         if (e.getSource() == pause){
@@ -190,12 +215,22 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
             }
             if(reduceSpeedInGame){
                 for(int j = 0; j < reduseDegree.length ; ++j){
+                    if(speed>0){
                         if(arr[0] >= reduseDegree[j] && arr[0] < reduseDegree[j] + speed || arr[0] >= reduseDegree[j] && arr[0] < reduseDegree[j] - speed){
                             if(j % 2 == 1)
                                 speed *= 2;
                             else
                                 speed /= 2;
                         }
+                    }
+                    else{
+                        if(arr[0] >= reduseDegree[j] && arr[0] < reduseDegree[j] + speed || arr[0] >= reduseDegree[j] && arr[0] < reduseDegree[j] - speed){
+                            if(j % 2 == 1)
+                                speed /= 2;
+                            else
+                                speed *= 2;
+                        }
+                    }
                 }
             }
         }
