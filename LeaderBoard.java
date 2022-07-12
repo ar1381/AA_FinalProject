@@ -67,8 +67,7 @@ public class LeaderBoard extends javax.swing.JFrame implements MouseListener {
         back.setFocusable(false);
         back.addMouseListener(this);
         getContentPane().add(back);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("Login-bg.jpg")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("Login-bg.jpg"))); // NOI18N
         jLabel6.setText("jLabel6");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(-90, -490, 1030, 1260);

@@ -30,12 +30,9 @@ public class Game<url> extends JPanel implements ActionListener , MouseListener{
     private BufferedImage arrow;
     private double money;
     private String imagePathName;
-    URL url2 = getClass().getResource("SoundOn.png");
-    private ImageIcon soundOn = new ImageIcon(new File(url2.getPath()).getAbsolutePath());
-    URL url3 = getClass().getResource("SoundOff.png");
-    private ImageIcon soundOff = new ImageIcon(new File(url3.getPath()).getAbsolutePath());
-    URL url4 = getClass().getResource("p2.png");
-    private ImageIcon pauseON = new ImageIcon(new File(url4.getPath()).getAbsolutePath());
+    private ImageIcon soundOn = new ImageIcon(getClass().getClassLoader().getResource(("SoundOn.png")));
+    private ImageIcon soundOff = new ImageIcon(getClass().getClassLoader().getResource("SoundOff.png"));
+    private ImageIcon pauseON = new ImageIcon(getClass().getClassLoader().getResource("p2.png"));
     private JCheckBox Sound = new JCheckBox();
     private JCheckBox pause = new JCheckBox();
     private pauseMenu pausemenu = new pauseMenu();;

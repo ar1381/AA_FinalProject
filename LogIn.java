@@ -103,7 +103,7 @@ public class LogIn extends javax.swing.JFrame {
         jLabel1.setBounds(300, 30, 320, 70);
 //		"Login-bg.jpg" in aks mored pasand bache hA asht
         //"img.png" in mad nazar ma hast
-        jLabel2.setIcon(new javax.swing.ImageIcon("Login-bg.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("Login-bg.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 910, 450);
 

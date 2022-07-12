@@ -64,28 +64,28 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 setPreferredSize(new Dimension(800, 600));
 
-                URL url = getClass().getResource("yellow.jpg");
-                yellowbtn.setIcon(new ImageIcon(new File(url.getPath()).getAbsolutePath()));
+                //URL url = getClass().getResource("yellow.jpg");
+                yellowbtn.setIcon(new ImageIcon(getClass().getClassLoader().getResource("yellow.jpg")));
                 yellowbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 yellowbtn.addMouseListener(this);
 
-                URL url2 = getClass().getResource("green.jpg");
-                greenbtn.setIcon(new ImageIcon(new File(url2.getPath()).getAbsolutePath()));
+                //URL url2 = getClass().getResource("green.jpg");
+                greenbtn.setIcon(new ImageIcon("green.jpg"));
                 greenbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 greenbtn.addMouseListener(this);
 
-                URL url3 = getClass().getResource("white.jpg");
-                whitebtn.setIcon(new ImageIcon(new File(url3.getPath()).getAbsolutePath()));
+                //URL url3 = getClass().getResource("white.jpg");
+                whitebtn.setIcon(new ImageIcon(getClass().getClassLoader().getResource("white.jpg")));
                 whitebtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 whitebtn.addMouseListener(this);
 
-                URL url4 = getClass().getResource("red.jpg");
-                redbtn.setIcon(new ImageIcon(new File(url4.getPath()).getAbsolutePath()));
+                //URL url4 = getClass().getResource("red.jpg");
+                redbtn.setIcon(new ImageIcon(getClass().getClassLoader().getResource("red.jpg")));
                 redbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 redbtn.addMouseListener(this);
 
-                URL url5 = getClass().getResource("purple.jpg");
-                purplebtn.setIcon(new ImageIcon(new File(url5.getPath()).getAbsolutePath()));
+                //URL url5 = getClass().getResource("purple.jpg");
+                purplebtn.setIcon(new ImageIcon(getClass().getClassLoader().getResource("purple.jpg")));
                 purplebtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 purplebtn.addMouseListener(this);
 
@@ -383,8 +383,8 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                                                                 .addComponent(moneylbl))
                                                                 .addContainerGap()));
 
-                URL url6 = getClass().getResource("market-bg.jpg");
-                bglbl.setIcon(new javax.swing.ImageIcon(new File(url6.getPath()).getAbsolutePath()));
+                //URL url6 = getClass().getResource("market-bg.jpg");
+                bglbl.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("market-bg.jpg")));
                 jPanel1.setBackground(new Color(0, 0, 0, 90));
                 bglbl.setLayout(new FlowLayout());
                 bglbl.add(jPanel1);
@@ -413,7 +413,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 itemString = itemString.replaceAll("2", "1");
                                 itemString = "2" + itemString.substring(1);
                                 v.changeMarketItems(itemString);
-                                JOptionPane.showMessageDialog(null, "You Selcted Yellow Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "You have Selcted Yellow Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
                         }else if(money >= 100){
                                 if(JOptionPane.showConfirmDialog(null, "Do you want to buy this Arrow ?", "Buy", JOptionPane.YES_NO_OPTION) == 0){
                                 money -= 100;
@@ -425,7 +425,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 }
                         }
                         else{
-                                JOptionPane.showMessageDialog(null, "You dont have enough score", "Warning", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "You dont have enough score\nScore : "+v.getMoney(), "Warning", JOptionPane.WARNING_MESSAGE);
                         }
                                 
                 }
@@ -434,7 +434,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 itemString = itemString.replaceAll("2", "1");
                                 itemString = itemString.substring(0, 1)+"2" + itemString.substring(2);
                                 v.changeMarketItems(itemString);
-                                JOptionPane.showMessageDialog(null, "You Selcted Green Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "You have Selcted Green Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
                         }else if(money >= 100){
                                 if(JOptionPane.showConfirmDialog(null, "Do you want to buy this Arrow ?", "Buy", JOptionPane.YES_NO_OPTION) == 0){
                                 money -= 100;
@@ -446,7 +446,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 }
                         }
                         else{
-                                JOptionPane.showMessageDialog(null, "You dont have enough score", "Warning", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "You dont have enough score\nScore : "+v.getMoney(), "Warning", JOptionPane.WARNING_MESSAGE);
                         }
                 }
                 if(e.getSource() == redbtn){
@@ -454,7 +454,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 itemString = itemString.replaceAll("2", "1");
                                 itemString = itemString.subSequence(0, 4)+"2";
                                 v.changeMarketItems(itemString);
-                                JOptionPane.showMessageDialog(null, "You Selcted Red Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "You have Selcted Red Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
                         }else if(money >= 100){
                                 if(JOptionPane.showConfirmDialog(null, "Do you want to buy this Arrow ?", "Buy", JOptionPane.YES_NO_OPTION) == 0){
                                 money -=100;
@@ -466,7 +466,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 }
                         }
                         else{
-                                JOptionPane.showMessageDialog(null, "You dont have enough score", "Warning", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "You dont have enough score\nScore : "+v.getMoney(), "Warning", JOptionPane.WARNING_MESSAGE);
                         }
                 }
                 if(e.getSource() == whitebtn){
@@ -474,7 +474,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 itemString = itemString.replaceAll("2", "1");
                                 itemString = itemString.subSequence(0, 2)+"2" + itemString.substring(3);
                                 v.changeMarketItems(itemString);
-                                JOptionPane.showMessageDialog(null, "You Selcted White Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "You have Selcted White Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
                         }else if(money >= 100){
                                 if(JOptionPane.showConfirmDialog(null, "Do you want to buy this Arrow ?", "Buy", JOptionPane.YES_NO_OPTION) == 0){
                                 money -= 100;
@@ -486,7 +486,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 }
                         }
                         else{
-                                JOptionPane.showMessageDialog(null, "You dont have enough score", "Warning", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "You dont have enough score\nScore : "+v.getMoney(), "Warning", JOptionPane.WARNING_MESSAGE);
                         }
                 }
                 if(e.getSource() == purplebtn){
@@ -494,7 +494,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 itemString = itemString.replaceAll("2", "1");
                                 itemString = itemString.subSequence(0, 3)+"2" + itemString.substring(4);
                                 v.changeMarketItems(itemString);
-                                JOptionPane.showMessageDialog(null, "You Selcted Purple Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "You have Selcted Purple Arrow", "Selected Skin", JOptionPane.INFORMATION_MESSAGE);
                         }
                         else if(money >= 100){
                                 if(JOptionPane.showConfirmDialog(null, "Do you want to buy this Arrow ?", "Buy", JOptionPane.YES_NO_OPTION) == 0){
@@ -507,7 +507,7 @@ public class Market extends javax.swing.JFrame implements ActionListener, MouseL
                                 }
                         }
                         else{
-                                JOptionPane.showMessageDialog(null, "You dont have enough score", "Warning", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "You dont have enough score\nScore : "+v.getMoney(), "Warning", JOptionPane.WARNING_MESSAGE);
                         }
 
                 }

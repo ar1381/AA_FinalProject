@@ -31,8 +31,8 @@ public class pauseMenu extends JFrame implements ActionListener, MouseListener {
         resumebtn = new JButton();
         menubtn = new JButton();
         
-        URL url = getClass().getResource("menu-bg.jpg");
-        bglbl = new JLabel(new ImageIcon(new File(url.getPath()).getAbsolutePath()));
+        //URL url = getClass().getResource("menu-bg.jpg");
+        bglbl = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("menu-bg.jpg")));
         add(bglbl);
         
         titlelbl.setFont(new Font("SansSerif", 1, 60));

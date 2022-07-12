@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.jar.Attributes.Name;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -22,10 +24,10 @@ public class SimpleAudioPlayer
             throws UnsupportedAudioFileException,
             IOException, LineUnavailableException
     {
-        url = getClass().getResource(Name);
-        filePath = new File(url.getPath()).getAbsolutePath();
+        //url = getClass().getResource(Name);
+        //filePath = new File(url.getPath()).getAbsolutePath();
         audioInputStream =
-                AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
+                AudioSystem.getAudioInputStream(getClass().getClassLoader().getResource(Name));
 
         clip = AudioSystem.getClip();
 

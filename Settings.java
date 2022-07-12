@@ -2,6 +2,7 @@ import java.awt.event.*;
 import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import java.io.File;
@@ -36,6 +37,7 @@ public class Settings extends javax.swing.JFrame implements ActionListener, Mous
     }
 
     public Settings(VALS v) {
+        this.v = v;
         // String userg="";
         // String Score="";
         initComponents();
@@ -274,27 +276,29 @@ public class Settings extends javax.swing.JFrame implements ActionListener, Mous
         if (evt.getSource() == jButton1_chaetBottom) {
             if (jTextField1_cheatCode.getText().equals("hesoyam")
                     || jTextField1_cheatCode.getText().equals("HESOYAM")) {
-                try {
-                    String filePath = "userScore.txt";
-                    Scanner sc = new Scanner(new File(filePath));
-                    StringBuffer buffer = new StringBuffer();
-                    while (sc.hasNextLine()) {
-                        buffer.append(sc.nextLine() + System.lineSeparator());
-                    }
-                    String userg = "";
-                    String Score = "";
-                    String fileContents = buffer.toString();
-                    sc.close();
-                    String oldLine = userg + ":" + Score;
-                    String newLine = userg + ":" + "1000000000";
-                    fileContents = fileContents.replaceAll(oldLine, newLine);
-                    FileWriter writer = new FileWriter(filePath);
-                    writer.append(fileContents);
-                    writer.flush();
-                    JOptionPane.showMessageDialog(rootPane, "cheat applied  successfully , enjoy ");
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(rootPane, "cheat  error");
-                }
+                        v.changeScore(10000);
+                // try {
+                //     String filePath = "userScore.txt";
+                //     Scanner sc = new Scanner(new File(filePath));
+                //     StringBuffer buffer = new StringBuffer();
+                //     while (sc.hasNextLine()) {
+                //         buffer.append(sc.nextLine() + System.lineSeparator());
+                //     }
+                //     String userg = "";
+                //     String Score = "";
+                //     String fileContents = buffer.toString();
+                //     sc.close();
+                //     String oldLine = userg + ":" + Score;
+                //     String newLine = userg + ":" + "100000";
+                //     fileContents = fileContents.replaceAll(oldLine, newLine);
+                //     FileWriter writer = new FileWriter(filePath);
+                //     writer.append(fileContents);
+                //     writer.flush();
+                //     writer.close();
+                JOptionPane.showMessageDialog(rootPane, "cheat applied  successfully , enjoy ");
+                // } catch (IOException e) {
+                //     JOptionPane.showMessageDialog(rootPane, "cheat  error");
+                // }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "code is wrong , ha ha ha you are not one of us");
             }
@@ -335,7 +339,7 @@ public class Settings extends javax.swing.JFrame implements ActionListener, Mous
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Settings(v).setVisible(true);
+              //  new Settings(v).setVisible(true);
             }
         });
     }
@@ -358,7 +362,7 @@ public class Settings extends javax.swing.JFrame implements ActionListener, Mous
     private javax.swing.JTextField jTextField1_usserName;
     private javax.swing.JTextField jTextField2_oldPassword;
     private javax.swing.JTextField jTextField3_newPassword;
-    public static VALS v;
+    public VALS v;
     private int command = -1;
 
     // End of variables declaration//GEN-END:variables

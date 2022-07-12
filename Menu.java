@@ -33,8 +33,8 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 exitbtn = new JButton();
                 marketbtn = new JButton();
 
-                URL url = getClass().getResource("menu-bg.jpg");
-                bglbl = new JLabel(new ImageIcon(new File(url.getPath()).getAbsolutePath()));
+                //URL url = getClass().getResource("menu-bg.jpg");
+                bglbl = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("menu-bg.jpg")));
                 add(bglbl);
 
                 titlelbl.setFont(new Font("SansSerif", 1, 60));
@@ -187,7 +187,7 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                         URL url = getClass().getResource("code.png");
                         ImageIcon icon = new ImageIcon(new File(url.getPath()).getAbsolutePath());
                         JOptionPane.showMessageDialog(new JRootPane(),
-                                        "Armin Jodat\n\nMohammadHossein Vafaei\n\nMohammad Mohammadi\n\nArastoo Maleki\n\nMohammadMahdi Eyni",
+                                        "Armin Jodat\n\nMohammadHossein Vafaei\n\nMohammad Mohammadi\n\nArastoo Maleki\n\nMohammadMahdi Eyni\n\nGithub : https://github.com/ar1381/AA_FinalProject",
                                         "Developers", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
