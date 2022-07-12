@@ -30,8 +30,8 @@ public class VALS {
         enable_Red();
         enable_White();
         enable_yellow();
-        URL url = getClass().getResource("userScore.txt");
-        File userPass1 = new File(new File(url.getPath()).getAbsolutePath());
+        //URL url = getClass().getResource("userScore.txt");
+        File userPass1 = new File("userScore.txt");
         try {
             Scanner myReader = new Scanner(userPass1);
             while (myReader.hasNextLine()){

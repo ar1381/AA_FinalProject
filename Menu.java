@@ -177,15 +177,14 @@ public class Menu extends JFrame implements ActionListener, MouseListener {
                 if (e.getSource() == startbtn) {
                         command = 2;
                 } else if (e.getSource() == exitbtn) {
-                        new LogIn();
-                        this.dispose();
+                        System.exit(0);
                 } else if (e.getSource() == settingsbtn) {
                         command = 3;
                 } else if (e.getSource() == marketbtn) {
                         command = 4;
                 } else if (e.getSource() == aboutbtn) {
-                        URL url = getClass().getResource("code.png");
-                        ImageIcon icon = new ImageIcon(new File(url.getPath()).getAbsolutePath());
+                        //URL url = getClass().getResource("code.png");
+                        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(("code.png")));
                         JOptionPane.showMessageDialog(new JRootPane(),
                                         "Armin Jodat\n\nMohammadHossein Vafaei\n\nMohammad Mohammadi\n\nArastoo Maleki\n\nMohammadMahdi Eyni\n\nGithub : https://github.com/ar1381/AA_FinalProject",
                                         "Developers", JOptionPane.INFORMATION_MESSAGE, icon);
